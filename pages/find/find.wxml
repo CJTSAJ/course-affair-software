@@ -1,0 +1,40 @@
+<view class='find'>
+  <view class='nav left'>
+    <image src='/images/icons/file.png'></image>
+    <text>文件</text>
+  </view>
+  <view class='nav right' bindtap='toPerson'>
+    <image src='/images/icons/person.png'></image>
+    <text>我的</text>
+  </view>
+  <view class='nav left' bindtap='toNotice'>
+    <image src='/images/icons/notice.png'></image>
+    <text>公告</text>
+  </view>
+  <view class='nav right' bindtap='sign'>
+    <image src='/images/icons/sign.png'></image>
+    <text>签到</text>
+  </view>
+  <view class='nav left'>
+    <image src='/images/icons/test.png'></image>
+    <text>测验</text>
+  </view>
+  <view class='nav right' bindtap='toHomework'>
+    <image src='/images/icons/grade.png'></image>
+    <text>作业</text>
+  </view>
+
+  <view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+  <view class="modal-dialog" wx:if="{{showModal}}">
+    <view class="modal-title">签到</view>
+    <view class="modal-content">
+      <view class="modal-input">
+        <input placeholder-class="input-holder" type="number" maxlength="10" bindinput="inputChange" class="input" placeholder="请输入签到码"></input>
+      </view>
+    </view>
+    <view class="modal-footer">
+      <view class="btn-cancel" bindtap="onCancel" data-status="cancel">取消</view>
+      <view class="btn-confirm" bindtap="onConfirm" data-status="confirm">确定</view>
+    </view>
+  </view>
+</view>

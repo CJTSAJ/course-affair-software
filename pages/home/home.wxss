@@ -1,0 +1,27 @@
+.information{
+  width: 700rpx;
+  height: 300rpx;
+  background-color: white;
+  margin-top: 50rpx;
+  overflow: hidden;
+}
+
+.title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #D3D3D3;
+}
+
+.title text{
+  color: gray;
+}
+
+.content{
+  margin-left: 10rpx;
+}
+.content text{
+  font-size: 20rpx;
+  color: gray;
+}

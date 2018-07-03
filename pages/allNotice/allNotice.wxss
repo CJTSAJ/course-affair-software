@@ -1,0 +1,16 @@
+.notice{
+  overflow: hidden;
+  width: 700rpx;
+  height: 300rpx;
+  background-color: white;
+  margin-top: 50rpx;
+}
+
+.title{
+  border-bottom: 1rpx solid #D3D3D3;
+}
+
+.content text{
+  font-size: 20rpx;
+  color: gray;
+}

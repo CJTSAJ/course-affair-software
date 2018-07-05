@@ -1,9 +1,22 @@
 {
-  "pages": ["pages/home/home","pages/allHomework/allHomework","pages/allNotice/allNotice","pages/notice/notice","pages/homework/homework","pages/find/find","pages/person/person","pages/about/about","pages/weekly/weekly"],
-  "tabBar":{
+  "pages": [
+    "pages/getUserInfo/getUserInfo",
+    "pages/home/home",
+    "pages/allHomework/allHomework",
+    "pages/allNotice/allNotice",
+    "pages/notice/notice",
+    "pages/homework/homework",
+    "pages/find/find",
+    "pages/person/person",
+    "pages/about/about",
+    "pages/weekly/weekly",
+    "pages/locationTest/locationTest",
+    "pages/shareToGroup/shareToGroup"
+  ],
+  "tabBar": {
     "list": [
       {
-        "text":"主页",
+        "text": "主页",
         "pagePath": "pages/home/home",
         "iconPath": "images/icons/home.png",
         "selectedIconPath": "images/icons/homeSelect.png"
@@ -22,7 +35,7 @@
       }
     ]
   },
-  "window":{
+  "window": {
     "navigationBarTitleText": "课程事务管理",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTextStyle": "black"

@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
   /**
@@ -7,7 +8,8 @@ Page({
     name: "XXX",
     studentID: 516030910000,
     showName: true,
-    showID:true
+    showID:true,
+    userInfo: null
   },
   userNameInput:function(e)
   {
@@ -39,6 +41,11 @@ Page({
   idModify:function(){
     this.setData({
       showID: false
+    })
+  },
+  onLoad: function(){
+    this.setData({
+      userInfo: app.globalData.userInfo
     })
   }
 })

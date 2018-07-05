@@ -1,45 +1,40 @@
 App({
   onLaunch: function(options){
-    if(options.scene==1008){
-      wx.login({
-        success: function (res) {
-          if (res.code) {
-            //获取openId
-            wx.request({
-              url: 'https://api.weixin.qq.com/sns/jscode2session',
-              data: {
-                //小程序唯一标识
-                appid: 'wxfb56f7506a576cf3',
-                //小程序的 app secret
-                secret: '5e961359ec8cd3648d6f9de665a4b698',
-                grant_type: 'authorization_code',
-                js_code: res.code
-              },
-              method: 'GET',
-              header: { 'content-type': 'application/json' },
-              success: function (openIdRes) {
-                console.log("登录成功返回的openId：" + openIdRes.data.openid);
-                // 判断openId是否获取成功
-                if (openIdRes.data.openid != null & openIdRes.data.openid != undefined) {
-                  console.log("授权成功")
-                } else {
-                  console.info("获取用户openId失败");
-                }
-              },
-              fail: function (error) {
+    console.log(options.scene)
+    wx.login({
+      success: function (res) {
+        if (res.code) {
+          //获取openId
+          wx.request({
+            url: 'https://api.weixin.qq.com/sns/jscode2session',
+            data: {
+              //小程序唯一标识
+              appid: 'wxfb56f7506a576cf3',
+              //小程序的 app secret
+              secret: '5e961359ec8cd3648d6f9de665a4b698',
+              grant_type: 'authorization_code',
+              js_code: res.code
+            },
+            method: 'GET',
+            header: { 'content-type': 'application/json' },
+            success: function (openIdRes) {
+              console.log("登录成功返回的openId：" + openIdRes.data.openid);
+
+              // 判断openId是否获取成功
+              if (openIdRes.data.openid != null & openIdRes.data.openid != undefined) {
+                console.log("授权成功")
+              } else {
                 console.info("获取用户openId失败");
-                console.info(error);
               }
-            })
-          }
+            },
+            fail: function (error) {
+              console.info("获取用户openId失败");
+              console.info(error);
+            }
+          })
         }
-      });
-    }
-    else{
-      wx.reLaunch({
-        url: '/pages/shareToGroup/shareToGroup',
-      })
-    }
+      }
+    });
     
     // 获取用户信息
     /*wx.getSetting({
@@ -63,7 +58,23 @@ App({
       }
     });*/
   },
+  onShow: function(options){
+    console.log(options.scene)
+    console.log(this.globalData.openId)
+    if(options.scene==1008){
+      console.log("成功从群进入")
+      wx.redirectTo({
+        url: '/pages/getUserInfo/getUserInfo'
+      })
+    }
+    else{
+      wx.redirectTo({
+        url: '/pages/shareToGroup/shareToGroup'
+      })
+    }
+  },
   globalData: {
+    openId: null,
     userInfo: null,
     longitude: null,
     latitude: null

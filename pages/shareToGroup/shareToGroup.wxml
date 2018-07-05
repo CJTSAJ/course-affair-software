@@ -1,2 +1,4 @@
 <!--pages/shareToGroup/shareToGroup.wxml-->
-<text>pages/shareToGroup/shareToGroup.wxml</text>
+<view>
+  <button>分享到群</button>
+</view>

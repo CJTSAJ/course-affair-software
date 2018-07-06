@@ -1,3 +1,4 @@
+const app = getApp();
 // pages/addNotice/addNotice.js
 Page({
 
@@ -5,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    content: null,
+    content: '',
     openid: null
   },
 
@@ -81,12 +82,14 @@ Page({
     })
   },
   getContent:function(e){
+    var c = e.detail.value;
+    console.log(c)
     this.setData({
-      content:e.target.value
+      content:c
     })
   },
   confirm:function(){
-    var id = this.data.openid;
+    var id = app.globalData.openId;
     var content = this.data.content;
     wx.request({
       url: 'https://localhost/8080/addNotice',
@@ -97,7 +100,9 @@ Page({
       method: 'GET',
       header: { 'content-type': 'application/json' },
       success: function (res) {
-       
+        wx.redirectTo({
+          url: '/pages/allNotice/allNotice',
+        })
       },
       fail: function (error) {
         

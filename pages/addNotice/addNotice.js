@@ -92,7 +92,7 @@ Page({
     var id = app.globalData.openId;
     var content = this.data.content;
     wx.request({
-      url: 'https://localhost/8080/addNotice',
+      url: 'https://127.0.0.1:8080/addNotice',
       data: {
         openid: id,
         content: content

@@ -20,7 +20,7 @@ Page({
     var openid = app.globalData.openId;
     console.log(openid);
     wx.request({
-      url: 'https://localhost/8080/getNotice',
+      url: 'https://127.0.0.1:8080/getNotice',
       data: {
         openid: openid
       },

@@ -12,6 +12,7 @@
     </schema>
     <schema id="4" parent="1" name="course_affair">
       <Current>1</Current>
+      <Visible>1</Visible>
       <Collation>latin1_swedish_ci</Collation>
     </schema>
     <schema id="5" parent="1" name="information_schema">
@@ -27,8 +28,6 @@
       <Collation>utf8_general_ci</Collation>
     </schema>
     <schema id="9" parent="1" name="test">
-      <Current>1</Current>
-      <Visible>1</Visible>
       <Collation>latin1_swedish_ci</Collation>
     </schema>
     <collation id="10" parent="1" name="armscii8_bin">
@@ -919,26 +918,571 @@
       <Charset>utf8mb4</Charset>
       <DefaultForCharset>0</DefaultForCharset>
     </collation>
-    <table id="232" parent="9" name="User">
+    <table id="232" parent="4" name="Answer">
       <Engine>InnoDB</Engine>
     </table>
-    <column id="233" parent="232" name="id_user">
+    <table id="233" parent="4" name="Choice">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="234" parent="4" name="CorrectAnswer">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="235" parent="4" name="Homework">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="236" parent="4" name="HwGrade">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="237" parent="4" name="Notification">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="238" parent="4" name="Question">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="239" parent="4" name="SignIn">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="240" parent="4" name="SignInRecord">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="241" parent="4" name="Student">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="242" parent="4" name="TA">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="243" parent="4" name="Teacher">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="244" parent="4" name="Test">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="245" parent="4" name="Vote">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="246" parent="4" name="VoteChoice">
+      <Engine>InnoDB</Engine>
+    </table>
+    <table id="247" parent="4" name="VoteChoose">
+      <Engine>InnoDB</Engine>
+    </table>
+    <column id="248" parent="232" name="studentID">
+      <Position>1</Position>
+      <DataType>varchar(28)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="249" parent="232" name="studentGroupID">
+      <Position>2</Position>
+      <DataType>varchar(28)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="250" parent="232" name="testID">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="251" parent="232" name="questionID">
+      <Position>4</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="252" parent="232" name="answer">
+      <Position>5</Position>
+      <DataType>varchar(8)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="253" parent="232" name="FK_Answer">
+      <ColNames>studentID
+studentGroupID</ColNames>
+    </index>
+    <index id="254" parent="232" name="FK_Answer2">
+      <ColNames>testID
+questionID</ColNames>
+    </index>
+    <key id="255" parent="232" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>testID
+studentID
+studentGroupID
+questionID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="256" parent="232" name="FK_Answer">
+      <ColNames>studentID
+studentGroupID</ColNames>
+      <RefSchemaName>course_affair</RefSchemaName>
+      <RefTableName>Student</RefTableName>
+      <RefColNames>studentID
+studentGroupID</RefColNames>
+    </foreign-key>
+    <foreign-key id="257" parent="232" name="FK_Answer2">
+      <ColNames>testID
+questionID</ColNames>
+      <RefSchemaName>course_affair</RefSchemaName>
+      <RefTableName>Question</RefTableName>
+      <RefColNames>testID
+questionID</RefColNames>
+    </foreign-key>
+    <column id="258" parent="233" name="testID">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="234" parent="232" name="psw">
+    <column id="259" parent="233" name="questionID">
       <Position>2</Position>
-      <DataType>varchar(45)|0</DataType>
+      <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="235" parent="232" name="PRIMARY">
+    <column id="260" parent="233" name="choiceNo">
+      <Position>3</Position>
+      <DataType>varchar(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="261" parent="233" name="choiceContent">
+      <Position>4</Position>
+      <DataType>varchar(1024)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="262" parent="233" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
-      <ColNames>id_user</ColNames>
+      <ColNames>testID
+questionID
+choiceNo</ColNames>
       <Primary>1</Primary>
     </key>
+    <foreign-key id="263" parent="233" name="FK_Relationship_2">
+      <ColNames>testID
+questionID</ColNames>
+      <RefSchemaName>course_affair</RefSchemaName>
+      <RefTableName>Question</RefTableName>
+      <RefColNames>testID
+questionID</RefColNames>
+    </foreign-key>
+    <column id="264" parent="234" name="testID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="265" parent="234" name="questionID">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="266" parent="234" name="correctAns">
+      <Position>3</Position>
+      <DataType>varchar(8)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="267" parent="234" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>testID
+questionID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="268" parent="234" name="FK_Relationship_3">
+      <ColNames>testID
+questionID</ColNames>
+      <RefSchemaName>course_affair</RefSchemaName>
+      <RefTableName>Question</RefTableName>
+      <RefColNames>testID
+questionID</RefColNames>
+    </foreign-key>
+    <column id="269" parent="235" name="HomeworkID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="270" parent="235" name="homeworkGroupID">
+      <Position>2</Position>
+      <DataType>varchar(28)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="271" parent="235" name="homeworkContent">
+      <Position>3</Position>
+      <DataType>varchar(1024)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="272" parent="235" name="hwdate">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="273" parent="235" name="deadline">
+      <Position>5</Position>
+      <DataType>datetime|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="274" parent="235" name="publisherID">
+      <Position>6</Position>
+      <DataType>varchar(28)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="275" parent="235" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>HomeworkID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="276" parent="236" name="studentID">
+      <Position>1</Position>
+      <DataType>varchar(28)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="277" parent="236" name="studentGroupID">
+      <Position>2</Position>
+      <DataType>varchar(28)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="278" parent="236" name="HomeworkID">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="279" parent="236" name="grade">
+      <Position>4</Position>
+      <DataType>varchar(5)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="280" parent="236" name="FK_HwGrade2">
+      <ColNames>HomeworkID</ColNames>
+    </index>
+    <key id="281" parent="236" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>studentID
+studentGroupID
+HomeworkID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="282" parent="236" name="FK_HwGrade">
+      <ColNames>studentID
+studentGroupID</ColNames>
+      <RefSchemaName>course_affair</RefSchemaName>
+      <RefTableName>Student</RefTableName>
+      <RefColNames>studentID
+studentGroupID</RefColNames>
+    </foreign-key>
+    <foreign-key id="283" parent="236" name="FK_HwGrade2">
+      <ColNames>HomeworkID</ColNames>
+      <RefSchemaName>course_affair</RefSchemaName>
+      <RefTableName>Homework</RefTableName>
+      <RefColNames>HomeworkID</RefColNames>
+    </foreign-key>
+    <column id="284" parent="237" name="notificationID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="285" parent="237" name="notificationGroupID">
+      <Position>2</Position>
+      <DataType>varchar(28)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="286" parent="237" name="notificationContent">
+      <Position>3</Position>
+      <DataType>varchar(1024)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="287" parent="237" name="notificationDate">
+      <Position>4</Position>
+      <DataType>datetime|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="288" parent="237" name="notificationPublisherID">
+      <Position>5</Position>
+      <DataType>varchar(28)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="289" parent="237" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>notificationID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="290" parent="238" name="testID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="291" parent="238" name="questionID">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="292" parent="238" name="questionContent">
+      <Position>3</Position>
+      <DataType>varchar(1024)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="293" parent="238" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>testID
+questionID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="294" parent="238" name="FK_Relationship_1">
+      <ColNames>testID</ColNames>
+      <RefSchemaName>course_affair</RefSchemaName>
+      <RefTableName>Test</RefTableName>
+      <RefColNames>testID</RefColNames>
+    </foreign-key>
+    <column id="295" parent="239" name="signInID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="296" parent="239" name="signInGroupID">
+      <Position>2</Position>
+      <DataType>varchar(28)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="297" parent="239" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>signInID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="298" parent="240" name="studentID">
+      <Position>1</Position>
+      <DataType>varchar(28)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="299" parent="240" name="studentGroupID">
+      <Position>2</Position>
+      <DataType>varchar(28)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="300" parent="240" name="signInID">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="301" parent="240" name="present">
+      <Position>4</Position>
+      <DataType>tinyint(1)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="302" parent="240" name="FK_SignInRecord2">
+      <ColNames>signInID</ColNames>
+    </index>
+    <key id="303" parent="240" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>studentID
+studentGroupID
+signInID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="304" parent="240" name="FK_SignInRecord">
+      <ColNames>studentID
+studentGroupID</ColNames>
+      <RefSchemaName>course_affair</RefSchemaName>
+      <RefTableName>Student</RefTableName>
+      <RefColNames>studentID
+studentGroupID</RefColNames>
+    </foreign-key>
+    <foreign-key id="305" parent="240" name="FK_SignInRecord2">
+      <ColNames>signInID</ColNames>
+      <RefSchemaName>course_affair</RefSchemaName>
+      <RefTableName>SignIn</RefTableName>
+      <RefColNames>signInID</RefColNames>
+    </foreign-key>
+    <column id="306" parent="241" name="studentID">
+      <Position>1</Position>
+      <DataType>varchar(28)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="307" parent="241" name="studentGroupID">
+      <Position>2</Position>
+      <DataType>varchar(28)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="308" parent="241" name="sno">
+      <Position>3</Position>
+      <DataType>varchar(20)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="309" parent="241" name="sname">
+      <Position>4</Position>
+      <DataType>varchar(20)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="310" parent="241" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>studentID
+studentGroupID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="311" parent="242" name="TAID">
+      <Position>1</Position>
+      <DataType>varchar(28)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="312" parent="242" name="TAGroupID">
+      <Position>2</Position>
+      <DataType>varchar(28)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="313" parent="242" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>TAID
+TAGroupID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="314" parent="243" name="teacherID">
+      <Position>1</Position>
+      <DataType>varchar(28)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="315" parent="243" name="teacherGroupID">
+      <Position>2</Position>
+      <DataType>varchar(28)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="316" parent="243" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>teacherID
+teacherGroupID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="317" parent="244" name="testID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="318" parent="244" name="testGroupID">
+      <Position>2</Position>
+      <DataType>varchar(28)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="319" parent="244" name="testContent">
+      <Position>3</Position>
+      <DataType>varchar(1024)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="320" parent="244" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>testID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="321" parent="245" name="voteID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="322" parent="245" name="voteGroupID">
+      <Position>2</Position>
+      <DataType>varchar(28)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="323" parent="245" name="voteContent">
+      <Position>3</Position>
+      <DataType>varchar(1024)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="324" parent="245" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>voteID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="325" parent="246" name="voteID">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="326" parent="246" name="voteChoiceNo">
+      <Position>2</Position>
+      <DataType>varchar(1)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="327" parent="246" name="voteChoiceContent">
+      <Position>3</Position>
+      <DataType>varchar(1024)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <key id="328" parent="246" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>voteID
+voteChoiceNo</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="329" parent="246" name="FK_Relationship_4">
+      <ColNames>voteID</ColNames>
+      <RefSchemaName>course_affair</RefSchemaName>
+      <RefTableName>Vote</RefTableName>
+      <RefColNames>voteID</RefColNames>
+    </foreign-key>
+    <column id="330" parent="247" name="studentID">
+      <Position>1</Position>
+      <DataType>varchar(28)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="331" parent="247" name="studentGroupID">
+      <Position>2</Position>
+      <DataType>varchar(28)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="332" parent="247" name="voteID">
+      <Position>3</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="333" parent="247" name="voteChoose">
+      <Position>4</Position>
+      <DataType>varchar(8)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="334" parent="247" name="FK_VoteChoose2">
+      <ColNames>voteID</ColNames>
+    </index>
+    <key id="335" parent="247" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>studentID
+studentGroupID
+voteID</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="336" parent="247" name="FK_VoteChoose">
+      <ColNames>studentID
+studentGroupID</ColNames>
+      <RefSchemaName>course_affair</RefSchemaName>
+      <RefTableName>Student</RefTableName>
+      <RefColNames>studentID
+studentGroupID</RefColNames>
+    </foreign-key>
+    <foreign-key id="337" parent="247" name="FK_VoteChoose2">
+      <ColNames>voteID</ColNames>
+      <RefSchemaName>course_affair</RefSchemaName>
+      <RefTableName>Vote</RefTableName>
+      <RefColNames>voteID</RefColNames>
+    </foreign-key>
   </database-model>
 </dataSource>

@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/allNotice/allNotice",
     "pages/getUserInfo/getUserInfo",
     "pages/home/home",
     "pages/allHomework/allHomework",
@@ -11,8 +12,8 @@
     "pages/weekly/weekly",
     "pages/locationTest/locationTest",
     "pages/shareToGroup/shareToGroup",
-    "pages/addNotice/addNotice",
-    "pages/allNotice/allNotice"
+    "pages/addNotice/addNotice"
+    
     
   ],
   "tabBar": {

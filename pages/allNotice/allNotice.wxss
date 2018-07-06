@@ -4,6 +4,7 @@
   height: 300rpx;
   background-color: white;
   margin-top: 50rpx;
+  margin-left: 25rpx;
 }
 
 .title{
@@ -17,11 +18,16 @@
 
 .addNotice{
   position:fixed; 
-  bottom:0;
+  bottom:10rpx;
 }
 
 .addNotice button{
   color: white;
   background-color: black;
   width: 750rpx;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
 }

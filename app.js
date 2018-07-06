@@ -1,5 +1,12 @@
 App({
+  globalData: {
+    openId: null,
+    userInfo: null,
+    longitude: null,
+    latitude: null
+  },
   onLaunch: function(options){
+    var self = this;
     console.log(options.scene)
     wx.login({
       success: function (res) {
@@ -19,7 +26,7 @@ App({
             header: { 'content-type': 'application/json' },
             success: function (openIdRes) {
               console.log("登录成功返回的openId：" + openIdRes.data.openid);
-
+              self.globalData.openId = openIdRes.data.openid;
               // 判断openId是否获取成功
               if (openIdRes.data.openid != null & openIdRes.data.openid != undefined) {
                 console.log("授权成功")
@@ -35,7 +42,7 @@ App({
         }
       }
     });
-    
+
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -60,7 +67,6 @@ App({
   },
   onShow: function(options){
     console.log(options.scene)
-    console.log(this.globalData.openId)
     if(options.scene==1044){
       console.log("成功从群进入")
       console.log(options.shareTicket)
@@ -79,11 +85,5 @@ App({
         url: '/pages/shareToGroup/shareToGroup'
       })
     }
-  },
-  globalData: {
-    openId: null,
-    userInfo: null,
-    longitude: null,
-    latitude: null
   }
 })

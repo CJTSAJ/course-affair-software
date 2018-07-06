@@ -1,3 +1,4 @@
+const app = getApp();
 // pages/shareToGroup/shareToGroup.js
 Page({
 
@@ -62,6 +63,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+    console.log("获取openid:" + app.globalData.openId)
     wx.showShareMenu({
       withShareTicket: true,
     });

@@ -1,20 +1,14 @@
 <view class='container'>
-  <view class='notice' bindtap='toDetail'>
+  <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
+  <view class='notice' bindtap='toDetail' wx:for="{{allContent}}" wx:for-index="key" wx:for-item="value">
     <view class='title'>
       <text class='time'>{{time0}}</text>
     </view>
     <view class='content'>
-      <text>{{content0}}</text>
+      <text>{{value}}</text>
     </view>
   </view>
-  <view class='notice'>
-    <view class='title'>
-      <text class='time'>{{time1}}</text>
-    </view>
-    <view class='content'>
-      <text>{{content1}}</text>
-    </view>
-  </view>
+  </scroll-view>
 
   <view class='addNotice'>
     <button bindtap='toEdit'>发布公告</button>

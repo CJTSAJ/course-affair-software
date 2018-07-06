@@ -1,14 +1,17 @@
 package com.example.jpatry.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
 
 @Entity
 public class Student {
+
     @Id
-    @Min(value = 20110001,message="学号不得小于20110001")
     private int sno;
+
     private String name;
     private String major;
 

@@ -24,7 +24,7 @@ Page({
       data: {
         openid: openid
       },
-      method: 'GET',
+      method: 'POST',
       header: { 'content-type': 'application/json' },
       success: function (content) {
         self.setData({

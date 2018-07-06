@@ -97,7 +97,7 @@ Page({
         openid: id,
         content: content
       },
-      method: 'GET',
+      method: 'POST',
       header: { 'content-type': 'application/json' },
       success: function (res) {
         wx.redirectTo({

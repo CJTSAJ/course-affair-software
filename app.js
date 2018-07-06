@@ -37,7 +37,7 @@ App({
     });
     
     // 获取用户信息
-    /*wx.getSetting({
+    wx.getSetting({
       success: res => {
         if (res.authSetting['scope.userInfo']) {
           // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
@@ -56,13 +56,20 @@ App({
           })
         }
       }
-    });*/
+    });
   },
   onShow: function(options){
     console.log(options.scene)
     console.log(this.globalData.openId)
-    if(options.scene==1008){
+    if(options.scene==1044){
       console.log("成功从群进入")
+      console.log(options.shareTicket)
+      wx.getShareInfo({
+        shareTicket: options.shareTicket,
+        complete(res) {
+          console.log(res)
+        }
+      })
       wx.redirectTo({
         url: '/pages/getUserInfo/getUserInfo'
       })

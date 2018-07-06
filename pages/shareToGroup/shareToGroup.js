@@ -5,7 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    encryptedData: null,
+    iv:null
   },
 
   /**
@@ -61,6 +62,27 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    wx.showShareMenu({
+      withShareTicket: true,
+    });
+    var that = this
+    return {
+      title: "分享到群",
+      path: '/pages/shareToGroup/shareToGroup',
+      success(res) {
+        wx.getShareInfo({
+          shareTicket: res.shareTickets[0],
+          success(res) {
+            console.log(res.encryptedData)
+            console.log(res.iv)
+            that.setData({
+              encryptedData: res.encryptedData,
+              iv: res.iv
+            })
+            //后台解密，获取 openGId
+          }
+        })
+      }
+    }
   }
 })

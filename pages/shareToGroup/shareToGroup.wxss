@@ -1,1 +1,4 @@
 /* pages/shareToGroup/shareToGroup.wxss */
+.shareToGroup{
+  margin-top: 375rpx;
+}

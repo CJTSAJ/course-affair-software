@@ -9,5 +9,10 @@ Page({
     wx.navigateTo({
       url: '/pages/notice/notice',
     })
+  },
+  toEdit:function(){
+    wx.redirectTo({
+      url: '/pages/addNotice/addNotice',
+    })
   }
 })

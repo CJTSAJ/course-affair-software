@@ -15,4 +15,8 @@
       <text>{{content1}}</text>
     </view>
   </view>
+
+  <view class='addNotice'>
+    <button bindtap='toEdit'>发布公告</button>
+  </view>
 </view>

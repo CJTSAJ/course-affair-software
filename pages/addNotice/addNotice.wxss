@@ -1,0 +1,25 @@
+/* pages/addNotice/addNotice.wxss */
+.addNotice textarea{
+  border: 1rpx solid black;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+  width: 740rpx;
+  height: 600rpx;
+}
+
+.bottomButton{
+  position:fixed; 
+  bottom:0;
+}
+.cancel{
+  width: 315rpx;
+  display: inline-block;
+  background-color: #D3D3D3;
+  margin-left: 50rpx;
+  margin-right: 20rpx;
+}
+.confirm{
+  width: 315rpx;
+  display: inline-block;
+  background-color: #32CD32;
+}

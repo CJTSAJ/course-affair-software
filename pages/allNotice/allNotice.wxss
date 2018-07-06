@@ -14,3 +14,14 @@
   font-size: 20rpx;
   color: gray;
 }
+
+.addNotice{
+  position:fixed; 
+  bottom:0;
+}
+
+.addNotice button{
+  color: white;
+  background-color: black;
+  width: 750rpx;
+}

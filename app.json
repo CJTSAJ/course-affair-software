@@ -3,7 +3,6 @@
     "pages/getUserInfo/getUserInfo",
     "pages/home/home",
     "pages/allHomework/allHomework",
-    "pages/allNotice/allNotice",
     "pages/notice/notice",
     "pages/homework/homework",
     "pages/find/find",
@@ -11,7 +10,10 @@
     "pages/about/about",
     "pages/weekly/weekly",
     "pages/locationTest/locationTest",
-    "pages/shareToGroup/shareToGroup"
+    "pages/shareToGroup/shareToGroup",
+    "pages/addNotice/addNotice",
+    "pages/allNotice/allNotice"
+    
   ],
   "tabBar": {
     "list": [

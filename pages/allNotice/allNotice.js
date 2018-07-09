@@ -18,17 +18,20 @@ Page({
   onShow: function(){
     var self = this;
     var openid = app.globalData.openId;
-    console.log(openid);
+    console.log("openid:" + openid);
+    var openidData = {
+      'opengid': openid
+    }
     wx.request({
-      url: 'https://127.0.0.1:8080/getNotice',
-      data: {
-        openid: openid
-      },
+      url: 'http://127.0.0.1:8080/hibernate/getNotice',
+      data: openid,
       method: 'POST',
       header: { 'content-type': 'application/json' },
-      success: function (content) {
+      success: function (res) {
+        console.log("content::" + res.data[0])
         self.setData({
-          allContent: content
+          
+          allContent: res.data
         })
       },
       fail: function (error) {

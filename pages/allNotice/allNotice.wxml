@@ -2,10 +2,10 @@
   <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
   <view class='notice' bindtap='toDetail' wx:for="{{allContent}}" wx:for-index="key" wx:for-item="value">
     <view class='title'>
-      <text class='time'>{{time0}}</text>
+      <text class='time'>{{value[1]}}</text>
     </view>
     <view class='content'>
-      <text>{{value}}</text>
+      <text>{{value[0]}}</text>
     </view>
   </view>
   </scroll-view>

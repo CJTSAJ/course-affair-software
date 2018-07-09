@@ -91,13 +91,19 @@ Page({
   confirm:function(){
     var id = app.globalData.openId;
     var content = this.data.content;
+    console.log(id)
+    console.log(content)
+    var tempData = {
+      openid: id,
+      content: content
+    }
     wx.request({
-      url: 'https://127.0.0.1:8080/addNotice',
+      url: 'http://127.0.0.1:8080/hibernate/addNotice',
       data: {
         openid: id,
         content: content
       },
-      method: 'POST',
+      method: 'GET',
       header: { 'content-type': 'application/json' },
       success: function (res) {
         wx.redirectTo({

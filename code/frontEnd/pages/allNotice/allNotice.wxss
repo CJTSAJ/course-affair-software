@@ -1,0 +1,39 @@
+.notice{
+  overflow: hidden;
+  width: 700rpx;
+  height: 300rpx;
+  background-color: white;
+  margin-top: 50rpx;
+  margin-left: 25rpx;
+}
+
+.title{
+  border-bottom: 1rpx solid #D3D3D3;
+  margin-left: 10rpx;
+}
+
+.content text{
+  font-size: 20rpx;
+  color: gray;
+  margin-left: 10rpx;
+}
+
+.addNotice{
+  position:fixed; 
+  bottom:10rpx;
+}
+
+.addNotice button{
+  color: white;
+  background-color: black;
+  width: 750rpx;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.nickName{
+  margin-left: 180rpx;
+}

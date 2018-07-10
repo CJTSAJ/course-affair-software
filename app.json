@@ -39,7 +39,7 @@
   },
   "window": {
     "navigationBarTitleText": "课程事务管理",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTextStyle": "white"
   }
 }

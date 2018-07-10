@@ -9,11 +9,13 @@
 
 .title{
   border-bottom: 1rpx solid #D3D3D3;
+  margin-left: 10rpx;
 }
 
 .content text{
   font-size: 20rpx;
   color: gray;
+  margin-left: 10rpx;
 }
 
 .addNotice{
@@ -30,4 +32,8 @@
   width: 0;
   height: 0;
   color: transparent;
+}
+
+.nickName{
+  margin-left: 180rpx;
 }

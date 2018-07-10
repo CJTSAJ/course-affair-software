@@ -26,7 +26,7 @@
 
   <modal hidden="{{!showModal}}" title="请输入验证码" confirm-text="提交" cancel-text="重置" bindcancel="cancel" bindconfirm="confirm"> 
     <input type='number' placeholder="签到码" auto-focus/>
-</modal>
+  </modal>
 </view>
 
   

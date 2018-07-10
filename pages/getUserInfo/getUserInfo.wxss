@@ -8,4 +8,6 @@
 
 .userinfo button{
   width: 500rpx;
+  background-color: black;
+  color: white;
 }

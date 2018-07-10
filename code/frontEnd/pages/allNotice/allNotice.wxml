@@ -1,0 +1,19 @@
+<view class='container'>
+  <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
+  <navigator wx:for="{{allContent}}" wx:for-index="key" wx:for-item="value" url="/pages/notice/notice?content={{value[0]}}&time={{value[1]}}">
+  <view class='notice'>
+    <view class='title'>
+      <text class='time'>{{value[1]}}</text>
+      <text class='nickName'>{{userInfo.nickName}}</text>
+    </view>
+    <view class='content'>
+      <text>{{value[0]}}</text>
+    </view>
+  </view>
+  </navigator>
+  </scroll-view>
+
+  <view class='addNotice'>
+    <button bindtap='toEdit'>发布公告</button>
+  </view>
+</view>

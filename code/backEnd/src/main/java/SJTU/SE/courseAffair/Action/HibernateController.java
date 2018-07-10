@@ -1,0 +1,98 @@
+package SJTU.SE.courseAffair.Action;
+
+
+import SJTU.SE.courseAffair.Dao.NotificationRepository;
+import SJTU.SE.courseAffair.Entity.NotificationEntity;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.io.IOException;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@RestController
+@RequestMapping("/hibernate")
+@EnableAutoConfiguration
+public class HibernateController {
+
+
+    @Autowired
+    private NotificationRepository userRepository;
+
+
+    @RequestMapping("getAll")
+    @ResponseBody
+    public List<NotificationEntity> getAll(){
+        return userRepository.getAllBy();
+    }
+
+    @RequestMapping("getById")
+    @ResponseBody
+    public NotificationEntity getById(int Id){
+        return userRepository.findByNotificationId(Id);
+    }
+    
+    @RequestMapping(value = "getNotice", method = RequestMethod.POST)
+    public JSONArray getAll(@RequestBody String opengid){
+    	System.out.println(opengid);
+    	Map<String, Object> modelMap = new HashMap<String, Object>();
+    	List<NotificationEntity> list = userRepository.findByNotificationGroupId(opengid);
+    	
+    	ArrayList<JSONArray> Json = new ArrayList<JSONArray>();
+    	for( int i = 0 ; i < list.size() ; i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。
+    		NotificationEntity temp = list.get(i);
+    		
+    		System.out.println(temp);
+    	    ArrayList<String> arrayList = new ArrayList<String>();
+    	    arrayList.add(temp.getNotificationContent());
+    	    DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+    	    arrayList.add(sdf.format(temp.getNotificationDate()));
+    	    Json.add(JSONArray.fromObject(arrayList));
+    	}
+    	JSONArray result = JSONArray.fromObject(Json.toArray());
+    	System.out.println(list.get(0).getNotificationContent());
+        return result;
+    }
+    @RequestMapping(value = "addNotice", method = RequestMethod.GET)
+    public void save(String openid, String content, HttpServletResponse response,Model model)
+    		throws IOException{
+    	response.setContentType("text/html;charset=utf-8");          
+        /* 设置响应头允许ajax跨域访问 */  
+        response.setHeader("Access-Control-Allow-Origin", "*");  
+        /* 星号表示所有的异域请求都可以接受， */  
+        response.setHeader("Access-Control-Allow-Methods", "GET,POST");
+    	/*String openid = request.getParameter("openid");
+    	String content = request.getParameter("content");*/
+    	System.out.println("addNotice");
+    	System.out.println(content);
+    	System.out.println(openid);
+        Timestamp time= new Timestamp(System.currentTimeMillis());
+        NotificationEntity notificationEntity= new NotificationEntity();
+        notificationEntity.setNotificationContent(content);
+        notificationEntity.setNotificationDate(time);
+        notificationEntity.setNotificationGroupId(openid);
+        notificationEntity.setNotificationPublisherId(openid);
+        userRepository.save(notificationEntity);
+    }
+
+}

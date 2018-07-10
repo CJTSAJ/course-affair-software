@@ -1,0 +1,45 @@
+{
+  "pages": [
+    "pages/getUserInfo/getUserInfo",
+    "pages/home/home",
+    "pages/allHomework/allHomework",
+    "pages/notice/notice",
+    "pages/homework/homework",
+    "pages/find/find",
+    "pages/person/person",
+    "pages/about/about",
+    "pages/weekly/weekly",
+    "pages/locationTest/locationTest",
+    "pages/shareToGroup/shareToGroup",
+    "pages/addNotice/addNotice",
+    "pages/allNotice/allNotice",
+    "pages/releaseHomework/releaseHomework"
+  ],
+  "tabBar": {
+    "list": [
+      {
+        "text": "主页",
+        "pagePath": "pages/home/home",
+        "iconPath": "images/icons/home.png",
+        "selectedIconPath": "images/icons/homeSelect.png"
+      },
+      {
+        "text": "",
+        "pagePath": "pages/about/about",
+        "iconPath": "images/icons/add.png",
+        "selectedIconPath": "images/icons/addSelect.png"
+      },
+      {
+        "text": "发现",
+        "pagePath": "pages/find/find",
+        "iconPath": "images/icons/find.png",
+        "selectedIconPath": "images/icons/findSelect.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarTitleText": "课程事务管理",
+    "navigationBarBackgroundColor": "#000000",
+    "navigationBarTextStyle": "white"
+  }
+}

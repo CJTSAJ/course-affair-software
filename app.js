@@ -7,7 +7,7 @@ App({
   },
   onLaunch: function(options){
     var self = this;
-    console.log(options.scene)
+    console.log("场景值" + options.scene)
     wx.login({
       success: function (res) {
         if (res.code) {

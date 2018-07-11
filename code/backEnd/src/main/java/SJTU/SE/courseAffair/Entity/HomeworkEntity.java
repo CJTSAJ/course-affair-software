@@ -24,7 +24,7 @@ public class HomeworkEntity {
     }
 
     @Basic
-    @Column(name = "homework_GroupID", nullable = true, length = 28)
+    @Column(name = "homework_GroupID", nullable = true, length = 29)
     public String getHomeworkGroupId() {
         return homeworkGroupId;
     }

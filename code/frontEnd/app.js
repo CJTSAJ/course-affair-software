@@ -42,36 +42,37 @@ App({
               } else {
                 console.info("获取用户session_key失败");
               }
+              if (options.scene == 1044) {
+                console.log("成功从群进入")
+                console.log(options.shareTicket)
+                wx.getShareInfo({
+                  shareTicket: options.shareTicket,
+                  complete(res) {
+                    console.log(res)
+                    wx.request({
+                      url: 'http://localhost:8080/decode/decodeGid',
+                      data: {
+                        encryptedData: res.encryptedData,
+                        iv: res.iv,
+                        session_key: self.globalData.sessionKey
+                      },
+                      method: 'GET',
+                      header: { 'content-type': 'application/json' },
+                      success: function (res) {
+                        console.log(res.data.openGId);
+                        self.globalData.openGId = res.data.openGId;
+                      }
+                    })
+                  }
+                })
+              }
             },
             fail: function (error) {
               console.info("获取用户信息失败");
               console.info(error);
             }
           })
-          if (options.scene == 1044) {
-            console.log("成功从群进入")
-            console.log(options.shareTicket)
-            wx.getShareInfo({
-              shareTicket: options.shareTicket,
-              complete(res) {
-                console.log(res)
-                wx.request({
-                  url: 'http://localhost:8080/decode/decodeGid',
-                  data: {
-                    encryptedData: res.encryptedData,
-                    iv: res.iv,
-                    session_key: self.globalData.sessionKey
-                  },
-                  method: 'GET',
-                  header: { 'content-type': 'application/json' },
-                  success: function (res) {
-                    console.log(res.data.openGId);
-                    self.globalData.openGId = res.data.openGId;
-                  }
-                })
-              }
-            })
-          }
+          
         }
       }
     });

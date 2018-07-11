@@ -22,7 +22,7 @@ public class HwGradeEntity {
     }
 
     @Id
-    @Column(name = "student_GroupID", nullable = false, length = 28)
+    @Column(name = "student_GroupID", nullable = false, length = 29)
     public String getStudentGroupId() {
         return studentGroupId;
     }

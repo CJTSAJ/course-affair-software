@@ -1,0 +1,7 @@
+<!--pages/getUserInfo.wxml-->
+<view class="container">
+  <view class="userinfo">
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfoFun">信息授权</button>
+  </view>
+  
+</view>

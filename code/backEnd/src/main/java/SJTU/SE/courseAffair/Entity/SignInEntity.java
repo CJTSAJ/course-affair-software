@@ -19,7 +19,7 @@ public class SignInEntity {
     }
 
     @Basic
-    @Column(name = "sign_In_GroupID", nullable = true, length = 28)
+    @Column(name = "sign_In_GroupID", nullable = true, length = 29)
     public String getSignInGroupId() {
         return signInGroupId;
     }

@@ -1,9 +1,13 @@
 package SJTU.SE.courseAffair.Action;
 
+import SJTU.SE.courseAffair.Dao.FormRepository;
 import SJTU.SE.courseAffair.Dao.HomeworkRepository;
 import SJTU.SE.courseAffair.Dao.HwGradeRepository;
+import SJTU.SE.courseAffair.Dao.StudentRepository;
+import SJTU.SE.courseAffair.Entity.FormEntity;
 import SJTU.SE.courseAffair.Entity.HomeworkEntity;
 import SJTU.SE.courseAffair.Entity.HwGradeEntity;
+import SJTU.SE.courseAffair.Entity.StudentEntity;
 import SJTU.SE.courseAffair.service.TimeUtil;
 import SJTU.SE.courseAffair.service.Group;
 import SJTU.SE.courseAffair.service.HttpRequest;
@@ -39,6 +43,10 @@ public class HomeworkController {
     private TimeUtil timeUtil;
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private FormRepository formRepository;
+    @Autowired
+    private StudentRepository studentRepository;
 
     @CrossOrigin
     @RequestMapping(value="/getHomework",method=RequestMethod.POST)
@@ -79,6 +87,16 @@ public class HomeworkController {
         String deadline=data.getString("deadline");
         String openid=data.getString("openid");
         Group.openGId  = openGId;
+        List<StudentEntity> students = studentRepository.findByStudentGroupId(openGId);
+        for(int i = 0;i<students.size();i++){
+            String sId = students.get(i).getStudentId();
+            List<FormEntity> forms = formRepository.findBySId(sId);
+            if(forms.size()>0) {
+                Group.send.add(forms.get(0));
+                formRepository.delete(forms.get(0));
+            }
+        }
+
         Timestamp time= new Timestamp(System.currentTimeMillis());
         HomeworkEntity homework = new HomeworkEntity();
         homework.setHomeworkContent(content);

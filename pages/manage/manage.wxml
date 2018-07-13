@@ -1,0 +1,7 @@
+<!--pages/manage/manage.wxml-->
+<view class='mange'>
+  <view class='managerSetting' bindtap='toManagerSetting'>
+    <text>设置管理员</text>
+    <image src='/images/icons/rightArrow.png'></image>
+  </view>
+</view>

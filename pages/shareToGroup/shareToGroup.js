@@ -77,9 +77,24 @@ Page({
           success(res) {
             console.log(res.encryptedData)
             console.log(res.iv)
+            console.log(app.globalData.sessionKey)
             that.setData({
               encryptedData: res.encryptedData,
               iv: res.iv
+            })
+            wx.request({
+              url: 'http://localhost:8080/decode/decodeGid',
+              data: {
+                encryptedData: res.encryptedData,
+                iv: res.iv,
+                session_key: app.globalData.sessionKey
+              },
+              method: 'GET',
+              header: { 'content-type': 'application/json' },
+              success: function (res) {
+                console.log(res.data.openGId);
+                app.globalData.openGId = res.data.openGId;
+              }
             })
             //后台解密，获取 openGId
           }

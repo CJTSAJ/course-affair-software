@@ -3,11 +3,13 @@ App({
     openId: null,
     userInfo: null,
     longitude: null,
-    latitude: null
+    latitude: null,
+    sessionKey: null,
+    openGId: null
   },
-  onLaunch: function(options){
+  onLaunch: function (options) {
     var self = this;
-    console.log("场景值" + options.scene)
+    console.log(options.scene)
     wx.login({
       success: function (res) {
         if (res.code) {
@@ -26,19 +28,50 @@ App({
             header: { 'content-type': 'application/json' },
             success: function (openIdRes) {
               console.log("登录成功返回的openId：" + openIdRes.data.openid);
-              self.globalData.openId = openIdRes.data.openid;
+              console.log("登录成功返回的session_key：" + openIdRes.data.session_key);
               // 判断openId是否获取成功
               if (openIdRes.data.openid != null & openIdRes.data.openid != undefined) {
-                console.log("授权成功")
+                console.log("授权成功");
+                self.globalData.openId = openIdRes.data.openid;
               } else {
                 console.info("获取用户openId失败");
               }
+              if (openIdRes.data.session_key != null & openIdRes.data.session_key != undefined) {
+                console.log("授权成功");
+                self.globalData.sessionKey = openIdRes.data.session_key;
+              } else {
+                console.info("获取用户session_key失败");
+              }
             },
             fail: function (error) {
-              console.info("获取用户openId失败");
+              console.info("获取用户信息失败");
               console.info(error);
             }
           })
+          if (options.scene == 1044) {
+            console.log("成功从群进入")
+            console.log(options.shareTicket)
+            wx.getShareInfo({
+              shareTicket: options.shareTicket,
+              complete(res) {
+                console.log(res)
+                wx.request({
+                  url: 'http://localhost:8080/decode/decodeGid',
+                  data: {
+                    encryptedData: res.encryptedData,
+                    iv: res.iv,
+                    session_key: self.globalData.sessionKey
+                  },
+                  method: 'GET',
+                  header: { 'content-type': 'application/json' },
+                  success: function (res) {
+                    console.log(res.data.openGId);
+                    self.globalData.openGId = res.data.openGId;
+                  }
+                })
+              }
+            })
+          }
         }
       }
     });
@@ -65,22 +98,15 @@ App({
       }
     });
   },
-  onShow: function(options){
-    console.log(options.scene)
-    if(options.scene==1044){
-      console.log("成功从群进入")
-      console.log(options.shareTicket)
-      wx.getShareInfo({
-        shareTicket: options.shareTicket,
-        complete(res) {
-          console.log(res)
-        }
-      })
+
+  onShow: function (options) {
+    if (options.scene == 1044) {
+      console.log("onShow执行")
       wx.redirectTo({
         url: '/pages/getUserInfo/getUserInfo'
       })
     }
-    else{
+    else {
       wx.redirectTo({
         url: '/pages/shareToGroup/shareToGroup'
       })

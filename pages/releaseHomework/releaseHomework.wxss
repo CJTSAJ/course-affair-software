@@ -13,6 +13,7 @@ page {
 .item picker{
   display: inline-block;
   color: gray;
+  margin-left: 50rpx;
 }
 
 .item text{
@@ -40,4 +41,8 @@ textarea{
   background-color:#D3D3D3;
   margin-left: 50rpx;
   margin-right: 20rpx;
+}
+
+textarea{
+  margin-top: 30rpx;
 }

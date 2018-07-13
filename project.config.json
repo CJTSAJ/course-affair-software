@@ -24,13 +24,30 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "groupId",
+					"pathName": "pages/home/home",
+					"query": "",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群4",
+						"shareName": "Pu-1OslUPHzWsQicH60h_YRI8g-tLTmVt9m6-jMKsPQ@cr4dev",
+						"shareKey": "dw6-jY6hTHFSs-xGme1JqLnOHkNb-uxAVH2OhLL8SX-xak7EbfQFuIVbI7wxp2Xw0jvnRJ3omSjmyHwiE3JL2w~~"
+					}
+				}
+			]
 		}
 	}
 }

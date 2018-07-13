@@ -1,7 +1,32 @@
 <!--pages/getUserInfo.wxml-->
-<view class="container">
+<view class>
+  <view class='identity'>
+    <view class='setting'>
+      <text>设置您的身份信息</text>
+    </view>
+    <view class='chooseIdentity'>
+      <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio" >
+          <radio value="学生">学生</radio>
+        </label>
+        <label class="radio">
+          <radio value="老师">老师</radio>
+        </label>
+      </radio-group>
+    </view>
+    <view class='detail'>
+      <view class='name' style='display:{{nameShow}}'>
+        <text>姓名：</text>
+        <input placeholder='请输入姓名' bindinput='getName'></input>
+      </view>
+      <view class='studentID' style='display:{{idShow}}'>
+        <text>学号：</text>
+        <input placeholder='请输入学号' bindinput='getID'></input>
+      </view>
+    </view>
+  </view>
   <view class="userinfo">
-    <button open-type="getUserInfo" bindgetuserinfo="getUserInfoFun">信息授权</button>
+    <button open-type="getUserInfo" bindgetuserinfo="getUserInfoFun">确定</button>
   </view>
   
 </view>

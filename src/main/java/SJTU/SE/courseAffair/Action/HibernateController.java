@@ -8,27 +8,18 @@ import net.sf.json.JSONObject;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/hibernate")
@@ -37,27 +28,32 @@ public class HibernateController {
 
 
     @Autowired
-    private NotificationRepository userRepository;
+    private NotificationRepository notificationRepository;
 
 
     @RequestMapping("getAll")
     @ResponseBody
     public List<NotificationEntity> getAll(){
-        return userRepository.getAllBy();
+        return notificationRepository.getAllBy();
     }
 
     @RequestMapping("getById")
     @ResponseBody
     public NotificationEntity getById(int Id){
-        return userRepository.findByNotificationId(Id);
+        return notificationRepository.findByNotificationId(Id);
     }
     
+    @CrossOrigin
     @RequestMapping(value = "getNotice", method = RequestMethod.POST)
     public JSONArray getAll(@RequestBody String opengid){
     	System.out.println(opengid);
-    	Map<String, Object> modelMap = new HashMap<String, Object>();
-    	List<NotificationEntity> list = userRepository.findByNotificationGroupId(opengid);
+    	//Map<String, Object> modelMap = new HashMap<String, Object>();
+    	List<NotificationEntity> list = notificationRepository.findByNotificationGroupId(opengid);
     	
+    	if(list.size()==0) {
+    		System.out.println("notice为空");
+    		return null;
+    	}
     	ArrayList<JSONArray> Json = new ArrayList<JSONArray>();
     	for( int i = 0 ; i < list.size() ; i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。
     		NotificationEntity temp = list.get(i);
@@ -73,16 +69,28 @@ public class HibernateController {
     	System.out.println(list.get(0).getNotificationContent());
         return result;
     }
-    @RequestMapping(value = "addNotice", method = RequestMethod.GET)
+    
+    @CrossOrigin
+    @RequestMapping(value="/addNotice",method = RequestMethod.POST)
+    public void save(@RequestBody JSONObject data){
+        String openid=data.getString("openid");
+        String content=data.getString("content");
+        String openGId=data.getString("openGId");
+        System.out.println("openid" + openid + "content" + content + "openGId" + openGId);
+        Timestamp time= new Timestamp(System.currentTimeMillis());
+        NotificationEntity notificationEntity= new NotificationEntity();
+        notificationEntity.setNotificationContent(content);
+        notificationEntity.setNotificationDate(time);
+        notificationEntity.setNotificationGroupId(openGId);
+        notificationEntity.setNotificationPublisherId(openid);
+        notificationRepository.save(notificationEntity);
+    }
+    /*@RequestMapping(value = "addNotice", method = RequestMethod.GET)
     public void save(String openid, String content, HttpServletResponse response,Model model)
     		throws IOException{
     	response.setContentType("text/html;charset=utf-8");          
-        /* 设置响应头允许ajax跨域访问 */  
         response.setHeader("Access-Control-Allow-Origin", "*");  
-        /* 星号表示所有的异域请求都可以接受， */  
         response.setHeader("Access-Control-Allow-Methods", "GET,POST");
-    	/*String openid = request.getParameter("openid");
-    	String content = request.getParameter("content");*/
     	System.out.println("addNotice");
     	System.out.println(content);
     	System.out.println(openid);
@@ -93,6 +101,6 @@ public class HibernateController {
         notificationEntity.setNotificationGroupId(openid);
         notificationEntity.setNotificationPublisherId(openid);
         userRepository.save(notificationEntity);
-    }
+    }*/
 
 }

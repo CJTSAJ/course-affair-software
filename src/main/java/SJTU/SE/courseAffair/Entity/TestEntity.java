@@ -20,7 +20,7 @@ public class TestEntity {
     }
 
     @Basic
-    @Column(name = "test_GroupID", nullable = true, length = 28)
+    @Column(name = "test_GroupID", nullable = true, length = 29)
     public String getTestGroupId() {
         return testGroupId;
     }

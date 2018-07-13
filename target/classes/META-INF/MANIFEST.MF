@@ -4,8 +4,7 @@ Implementation-Version: 1.0-SNAPSHOT
 Built-By: CJTSAJ
 Implementation-Vendor-Id: SJTU.SE
 Build-Jdk: 1.8.0_131
-Implementation-URL: http://projects.spring.io/spring-boot/courseAffair
- /
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/courseAffair
 Created-By: Maven Integration for Eclipse
-Implementation-Vendor: Pivotal Software, Inc.
 

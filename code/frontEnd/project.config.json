@@ -12,8 +12,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.0.8",
-	"appid": "wxfb56f7506a576cf3",
-	"projectname": "test1",
+	"appid": "touristappid",
+	"projectname": "test",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

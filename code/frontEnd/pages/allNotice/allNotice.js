@@ -21,17 +21,18 @@ Page({
       userInfo: app.globalData.userInfo
     })
     var self = this;
-    var openGId = app.globalData.openGId;
-    console.log("openGid:" + openGId);
+    var opengid = app.globalData.openGId;
+    console.log("openid:" + opengid);
     var openidData = {
-      'opengid': openGId
+      'opengid': opengid
     }
     wx.request({
       url: 'http://127.0.0.1:8080/hibernate/getNotice',
-      data: openGId,
+      data: opengid,
       method: 'POST',
       header: { 'content-type': 'application/json' },
       success: function (res) {
+        console.log("success:" + res.data);
         console.log("content::" + res.data[0])
         self.setData({
           
@@ -39,6 +40,7 @@ Page({
         })
       },
       fail: function (error) {
+        console.log("error:" + error);
       }
     })
   }

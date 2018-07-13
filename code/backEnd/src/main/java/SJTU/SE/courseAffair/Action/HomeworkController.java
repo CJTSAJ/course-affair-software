@@ -46,6 +46,12 @@ public class HomeworkController {
         String gid = data.getString("openGId");
         List<HomeworkEntity> list = homeworkRepository.findByHomeworkGroupId(gid);
 
+        /*错误判断：如果没有homework*/
+        if(list.size() == 0) {
+            System.out.println("homework为空");
+            return null;
+            }
+
         ArrayList<JSONArray> Json = new ArrayList<JSONArray>();
         for( int i = 0 ; i < list.size() ; i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。
             HomeworkEntity temp = list.get(i);
@@ -54,8 +60,10 @@ public class HomeworkController {
             ArrayList<String> arrayList = new ArrayList<String>();
             arrayList.add(temp.getHomeworkContent());
             DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+            DateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
             arrayList.add(sdf.format(temp.getHwdate()));
-            arrayList.add(sdf.format(temp.getDeadline()));
+            arrayList.add(sdf1.format(temp.getDeadline()));
+            arrayList.add(Integer.toString(temp.getHomeworkId()));
             Json.add(JSONArray.fromObject(arrayList));
         }
         JSONArray result = JSONArray.fromObject(Json.toArray());
@@ -77,7 +85,7 @@ public class HomeworkController {
         homework.setHomeworkGroupId(openGId);
         homework.setHwdate(time);
         homework.setPublisherId(openid);
-        SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
         java.util.Date date = null;
         try {
             date = sf.parse(deadline);
@@ -90,13 +98,11 @@ public class HomeworkController {
         SimpleDateFormat sdf2= new SimpleDateFormat("dd");
         SimpleDateFormat sdf3 = new SimpleDateFormat("HH");
         SimpleDateFormat sdf4= new SimpleDateFormat("mm");
-        SimpleDateFormat sdf5= new SimpleDateFormat("ss");
         String year = sdf0.format(date);
         String month = sdf1.format(date);
         String day = sdf2.format(date);
         String hour = sdf3.format(date);
         String minute = sdf4.format(date);
-        String second = sdf5.format(date);
         Integer dint = Integer.parseInt(day);
         if(dint == 1) {
             int mint = Integer.parseInt(month);
@@ -116,7 +122,7 @@ public class HomeworkController {
         else {
             day = String.valueOf(dint-1);
         }
-        String conStr = second+" "+minute+" "+hour+" "+day+" "+month+" ?";
+        String conStr = "0 "+minute+" "+hour+" "+day+" "+month+" ?";
         timeUtil.startCron(conStr);
         Timestamp dateSQL = new Timestamp(date.getTime());
         homework.setDeadline(dateSQL);

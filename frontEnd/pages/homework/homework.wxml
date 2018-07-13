@@ -1,5 +1,0 @@
-<view>
-  <view class='content'>
-    <text>{{content0}}</text>
-  </view>
-</view>

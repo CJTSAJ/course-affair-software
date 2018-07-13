@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://localhost:3306/wx2</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <mapping class="wx.AnswerEntity"/>
+        <mapping class="wx.ChoiceEntity"/>
+        <mapping class="wx.CorrectAnswerEntity"/>
+        <mapping class="wx.FormEntity"/>
+        <mapping class="wx.HomeworkEntity"/>
+        <mapping class="wx.HwGradeEntity"/>
+        <mapping class="wx.NotificationEntity"/>
+        <mapping class="wx.QuestionEntity"/>
+        <mapping class="wx.SignInEntity"/>
+        <mapping class="wx.SignInRecordEntity"/>
+        <mapping class="wx.StudentEntity"/>
+        <mapping class="wx.TaEntity"/>
+        <mapping class="wx.TeacherEntity"/>
+        <mapping class="wx.TestEntity"/>
+        <mapping class="wx.VoteEntity"/>
+        <mapping class="wx.VoteChoiceEntity"/>
+        <mapping class="wx.VoteChooseEntity"/>
+        <!-- <property name="connection.username"/> -->
+        <!-- <property name="connection.password"/> -->
+
+        <!-- DB schema will be updated if needed -->
+        <!-- <property name="hbm2ddl.auto">update</property> -->
+    </session-factory>
+</hibernate-configuration>

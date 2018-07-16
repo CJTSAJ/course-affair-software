@@ -4,7 +4,6 @@
   background-color: white;
   margin-top: 50rpx;
   overflow: hidden;
-  margin-left: 25rpx;
 }
 
 .title{
@@ -25,21 +24,4 @@
 
 .look{
   color: blue;
-}
-
-.releaseHomework{
-  position: fixed;
-  bottom: 0rpx;
-}
-
-.releaseHomework button{
-  width: 750rpx;
-  background-color: black;
-  color: white;
-}
-
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
 }

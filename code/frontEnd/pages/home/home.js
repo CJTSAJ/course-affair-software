@@ -20,15 +20,5 @@ Page({
     wx.navigateTo({
       url: '/pages/notice/notice',
     })
-  },
-  confirm:function(){
-    this.setData({
-      showModal:true
-    })
-  },
-  cancel: function () {
-    this.setData({
-      showModal: false
-    })
   }
 })

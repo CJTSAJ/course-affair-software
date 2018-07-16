@@ -1,6 +1,3 @@
-page{
-  background-color: #eee;
-}
 .information{
   width: 700rpx;
   height: 300rpx;
@@ -27,16 +24,4 @@ page{
 .content text{
   font-size: 20rpx;
   color: gray;
-}
-
-.time{
-  margin-right: 10rpx;
-}
-
-.titleContent{
-  margin-left: 10rpx;
-}
-
-.radio{
-  margin-left: 100rpx;
 }

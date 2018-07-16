@@ -1,6 +1,5 @@
 Page({
   data: {
-    isTeacher: true,
     showModal: false,
     signCode: null
   },
@@ -58,11 +57,6 @@ Page({
       url: '/pages/allHomework/allHomework',
     })
   },
-  toManage:function(){
-    wx.navigateTo({
-      url: '/pages/manage/manage',
-    })
-  },
   modalinput: function () {
     this.setData({
       hiddenmodalput: !this.data.hiddenmodalput
@@ -79,8 +73,5 @@ Page({
     this.setData({
       showModal: false
     })
-  },
-  onShow: function(){
-    
   }
 })

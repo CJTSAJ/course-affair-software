@@ -27,7 +27,7 @@ Page({
       'opengid': opengid
     }
     wx.request({
-      url: 'http://127.0.0.1:8080/hibernate/getNotice',
+      url: 'http://207.148.114.118:8080/hibernateSpringDemo/hibernate/getNotice',
       data: opengid,
       method: 'POST',
       header: { 'content-type': 'application/json' },

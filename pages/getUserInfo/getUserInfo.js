@@ -13,9 +13,13 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onShow: function (options) {
-    
+    if(app.globalData.identity != 'noExist'){
+      wx.redirectTo({
+        url: '/pages/home/home',
+      })
+    }
   },
-  getUserInfoFun: function () {
+  confirm: function () {
     var that = this;
     if(this.data.nameShow == 'none'){
       wx.showModal({
@@ -36,34 +40,19 @@ Page({
       })
     }
     else{
-      wx.getUserInfo({
-        success: function (res) {
-          console.log("userInfo:" + res)
-          app.globalData.userInfo = res.userInfo
-          wx.showLoading({
-            title: '加载中',
-          })
-          wx.reLaunch({
-            url: '/pages/home/home'
-          })
-
-          //向后端发送数据
-          var isStudent = false;
-          if(that.data.idShow == ''){
-            isStudent = true
-          }
-          var data = {
-            openid: app.globalData.openId,
-            opengid: app.globalData.openGId,
-            name: that.data.name,
-            studentID: that.data.studentID,
-            isStudent: isStudent
-          }
-
-
-        },
-        fail: that.showPrePage
-      })
+      //向后端发送数据
+      var isStudent = false;
+      if (that.data.idShow == '') {
+        isStudent = true
+      }
+      var data = {
+        openid: app.globalData.openId,
+        opengid: app.globalData.openGId,
+        name: that.data.name,
+        studentID: that.data.studentID,
+        isStudent: isStudent
+      }
+      
     }
     
   },

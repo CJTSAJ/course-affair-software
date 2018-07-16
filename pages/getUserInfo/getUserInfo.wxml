@@ -26,7 +26,7 @@
     </view>
   </view>
   <view class="userinfo">
-    <button open-type="getUserInfo" bindgetuserinfo="getUserInfoFun">确定</button>
+    <button bindtap='confirm'>确定</button>
   </view>
   
 </view>

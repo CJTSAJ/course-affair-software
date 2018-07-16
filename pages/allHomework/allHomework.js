@@ -17,7 +17,7 @@ Page({
     console.log(homeworkID);
 
     wx.request({
-      url: 'http://localhost:8080/getHwGrade',
+      url: 'http://207.148.114.118:8080/hibernateSpringDemo/getHwGrade',
       data:{
         openid: app.globalData.openId,
         openGId: app.globalData.openGId,
@@ -51,7 +51,7 @@ Page({
   onShow: function(){
     var self = this;
     wx.request({
-      url: 'http://localhost:8080/getHomework',
+      url: 'http://207.148.114.118:8080/hibernateSpringDemo/getHomework',
       data:{
         openGId: app.globalData.openGId
       },

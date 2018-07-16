@@ -1,5 +1,6 @@
 App({
   globalData: {
+    identity: 'noExist',
     openId: null,
     userInfo: null,
     longitude: null,
@@ -10,6 +11,13 @@ App({
   onLaunch: function (options) {
     var self = this;
     console.log(options.scene)
+
+    if (options.scene != 1044) {
+      wx.reLaunch({
+        url: '/pages/shareToGroup/shareToGroup',
+      })
+    }
+    else{
     wx.login({
       success: function (res) {
         if (res.code) {
@@ -42,36 +50,58 @@ App({
               } else {
                 console.info("获取用户session_key失败");
               }
+              console.log("onlunch:成功从群进入")
+              console.log(options.shareTicket)
+              wx.getShareInfo({
+                shareTicket: options.shareTicket,
+                complete(res) {
+                  console.log(res)
+                  wx.request({
+                    url: 'http://207.148.114.118:8080/hibernateSpringDemo/decode/decodeGid',
+                    data: {
+                      encryptedData: res.encryptedData,
+                      iv: res.iv,
+                      session_key: self.globalData.sessionKey
+                    },
+                    method: 'GET',
+                    header: { 'content-type': 'application/json' },
+                    success: function (res) {
+                      console.log("返回的opengid:" + res.data.openGId);
+                      self.globalData.openGId = res.data.openGId;
+                      wx.request({
+                        url: 'http://localhost:8080/getIdentity',
+                        data: {
+                          openid: self.globalData.openId,
+                          opengid: res.data.openGId
+                        },
+                        method: 'POST',
+                        header: { 'content-type': 'application/json' },
+                        success: function (res) {
+                          var isExist = res.data.isExist;
+                          console.log("是否存在:" + isExist);
+                          if (isExist == "true") {
+                            self.globalData.identity = res.data.identity;
+                            wx.redirectTo({
+                              url: '/pages/home/home',
+                            })
+                          }
+                          else {
+                            wx.redirectTo({
+                              url: '/pages/authority/authority',
+                            })
+                          }
+                        }
+                      })
+                    }
+                  })
+                }
+              })
             },
             fail: function (error) {
               console.info("获取用户信息失败");
               console.info(error);
             }
           })
-          if (options.scene == 1044) {
-            console.log("成功从群进入")
-            console.log(options.shareTicket)
-            wx.getShareInfo({
-              shareTicket: options.shareTicket,
-              complete(res) {
-                console.log(res)
-                wx.request({
-                  url: 'http://localhost:8080/decode/decodeGid',
-                  data: {
-                    encryptedData: res.encryptedData,
-                    iv: res.iv,
-                    session_key: self.globalData.sessionKey
-                  },
-                  method: 'GET',
-                  header: { 'content-type': 'application/json' },
-                  success: function (res) {
-                    console.log(res.data.openGId);
-                    self.globalData.openGId = res.data.openGId;
-                  }
-                })
-              }
-            })
-          }
         }
       }
     });
@@ -95,13 +125,21 @@ App({
             }
           })
         }
+        /*else{
+          wx.redirectTo({
+            url: '/pages/authority/authority'
+          })
+        }*/
       }
     });
+    }
   },
 
   onShow: function (options) {
-    if (options.scene == 1044) {
+    /*if (options.scene == 1044) {
       console.log("onShow执行")
+      console.log(this.globalData.openId)
+      
       wx.redirectTo({
         url: '/pages/getUserInfo/getUserInfo'
       })
@@ -110,6 +148,6 @@ App({
       wx.redirectTo({
         url: '/pages/shareToGroup/shareToGroup'
       })
-    }
+    }*/
   }
 })

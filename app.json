@@ -15,7 +15,8 @@
     "pages/locationTest/locationTest",
     "pages/shareToGroup/shareToGroup",
     "pages/addNotice/addNotice",
-    "pages/allNotice/allNotice"
+    "pages/allNotice/allNotice",
+    "pages/authority/authority"
   ],
   "tabBar": {
     "list": [

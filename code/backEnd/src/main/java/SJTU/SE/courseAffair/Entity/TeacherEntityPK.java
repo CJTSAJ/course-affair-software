@@ -18,7 +18,7 @@ public class TeacherEntityPK implements Serializable {
         this.teacherId = teacherId;
     }
 
-    @Column(name = "teacherGroupID", nullable = false, length = 28)
+    @Column(name = "teacherGroupID", nullable = false, length = 29)
     @Id
     public String getTeacherGroupId() {
         return teacherGroupId;

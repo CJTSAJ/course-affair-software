@@ -47,9 +47,9 @@ public class TimeUtil {
             System.out.println("DynamicTask.MyRunnable.run()，" + new Date());
             for(int i = 0; i < Group.send.size();i++) {
                 FormEntity temp = Group.send.get(i);
-                String urlString = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=11_Fx9WO_Bax7_I1vMYFpb7swu3WPPbDnbQMcJPGR6fufJGhnTwvTFqVicn8r6BjIaXKYvh1AB4IWApFEDWVS46aFKaBTMf9mGSDBuZRjBIymVkun6YzsZSbazwo-r1ZDKduZpjSkoj3vpBPYLTUYZhACAIMN";
+                String urlString = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=11_Q76XvHT-hGCcNqa8vuN3T-Yh59tgzn-KddpXCwBmGDU6JZaqapGrHsfmn1VyqNgECBmXdxxR304d-ewsjILQTGNkV6pMT4qap4TeNTvPcnw51QE9wErhYv01nHYSTXdAAAMNR";
                 JSONObject request = new JSONObject();
-                request.put("touser", temp.getSId());
+                request.put("touser", temp.getStuId());
                 request.put("template_id", "qkiK5Sh8u47NoKnlcqvBgMqzJ1p-2QsETyGgCxGhbc8");
                 request.put("form_id", temp.getFormId());
                 JSONObject data = new JSONObject();

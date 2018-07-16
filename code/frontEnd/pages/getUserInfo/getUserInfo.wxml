@@ -1,5 +1,6 @@
 <!--pages/getUserInfo.wxml-->
 <view class>
+<form reportsubmit='true' bindsubmit="formSubmit">
   <view class='identity'>
     <view class='setting'>
       <text>设置您的身份信息</text>
@@ -28,5 +29,5 @@
   <view class="userinfo">
     <button open-type="getUserInfo" bindgetuserinfo="getUserInfoFun">确定</button>
   </view>
-  
+  </form>
 </view>

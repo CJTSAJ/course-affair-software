@@ -90,7 +90,7 @@ public class HomeworkController {
         List<StudentEntity> students = studentRepository.findByStudentGroupId(openGId);
         for(int i = 0;i<students.size();i++){
             String sId = students.get(i).getStudentId();
-            List<FormEntity> forms = formRepository.findBySId(sId);
+            List<FormEntity> forms = formRepository.findByStuId(sId);
             if(forms.size()>0) {
                 Group.send.add(forms.get(0));
                 formRepository.delete(forms.get(0));

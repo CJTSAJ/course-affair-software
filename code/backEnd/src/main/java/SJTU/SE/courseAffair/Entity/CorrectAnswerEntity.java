@@ -3,7 +3,7 @@ package SJTU.SE.courseAffair.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Correct_Answer", schema = "course_affair_DB")
+@Table(name = "correctanswer", schema = "course_affair_db")
 @IdClass(CorrectAnswerEntityPK.class)
 public class CorrectAnswerEntity {
     private int testId;
@@ -31,7 +31,7 @@ public class CorrectAnswerEntity {
     }
 
     @Basic
-    @Column(name = "correct_Ans", nullable = true, length = 8)
+    @Column(name = "correctAns", nullable = true, length = 8)
     public String getCorrectAns() {
         return correctAns;
     }

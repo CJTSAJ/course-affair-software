@@ -2,18 +2,50 @@ const app = getApp()
 // pages/getUserInfo.js
 Page({
   data: {
-    name: '',
-    studentID: '',
+    name: '刘泽宇',
+    studentID: '516030910108',
     nameShow: 'none',
     idShow: 'none',
     identity:null,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
+    formId:'',
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onShow: function (options) {
     
+  },
+  formSubmit:function(e){
+    var formId = e.detail.fromId;
+    console.log("form发生提交，formId为：" + formId);
+    this.setData({
+      formId: formId
+    })
+    //this.data.formId = formId;
+    console.log("存储form，formId为："+this.data.formId);
+    var that = this;
+    wx.request({
+      url: 'http://localhost:8080/login',
+      data :{
+        openid: app.globalData.openId,
+        opengid: app.globalData.openGId,
+        name: that.data.name,
+        studentID: that.data.studentID,
+        isStudent: isStudent,
+        form:that.data.formId
+      },
+      method: 'POST',
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        console.log("存储信息成功");
+      },
+      fail: function (error) {
+        console.log("存储信息失败");
+
+      }
+    })
+
   },
   getUserInfoFun: function () {
     var that = this;

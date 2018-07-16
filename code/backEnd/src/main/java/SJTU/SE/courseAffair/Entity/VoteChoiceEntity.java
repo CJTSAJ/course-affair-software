@@ -3,7 +3,7 @@ package SJTU.SE.courseAffair.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Vote_Choice", schema = "course_affair_DB")
+@Table(name = "votechoice", schema = "course_affair_db")
 @IdClass(VoteChoiceEntityPK.class)
 public class VoteChoiceEntity {
     private int voteId;
@@ -21,7 +21,7 @@ public class VoteChoiceEntity {
     }
 
     @Id
-    @Column(name = "vote_Choice_No", nullable = false, length = 1)
+    @Column(name = "voteChoiceNo", nullable = false, length = 1)
     public String getVoteChoiceNo() {
         return voteChoiceNo;
     }
@@ -31,7 +31,7 @@ public class VoteChoiceEntity {
     }
 
     @Basic
-    @Column(name = "vote_Choice_Content", nullable = true, length = 1024)
+    @Column(name = "voteChoiceContent", nullable = true, length = 1024)
     public String getVoteChoiceContent() {
         return voteChoiceContent;
     }

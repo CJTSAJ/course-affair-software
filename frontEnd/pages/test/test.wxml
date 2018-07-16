@@ -1,0 +1,15 @@
+<view class='container'>
+  <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
+  <navigator wx:for="{{allContent}}" wx:for-index="key" wx:for-item="value" url="/pages/oneTest/oneTest?content={{value}}&state={{state[key]}}&endTime={{endTimeList[key]}}">
+  <view class='test'>
+    <view class='content'>
+      <text>{{value}}</text>
+      <text class = "time" wx:if = "{{state[key] == 0}}">测试还未开始</text>
+      <text class = "time" wx:elif = "{{state[key] == 2}}">测试已经结束</text>
+      <text class = "time" wx:else>{{countDownList[key].hou}} 时 {{countDownList[key].min}} 分 {{countDownList[key].sec}} 秒 </text>
+    </view>
+  </view>
+  </navigator>
+  </scroll-view>
+
+</view>

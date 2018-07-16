@@ -1,0 +1,7 @@
+<view class='container'>
+  <view class='information'>
+    <view class='content'>
+      <text>{{content}}</text>
+    </view>
+  </view>
+</view>

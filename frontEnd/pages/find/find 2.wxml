@@ -1,0 +1,32 @@
+<view class='find'>
+  <view class='nav left'>
+    <image src='/images/icons/file.png'></image>
+    <text>文件</text>
+  </view>
+  <view class='nav right' bindtap='toPerson'>
+    <image src='/images/icons/person.png'></image>
+    <text>我的</text>
+  </view>
+  <view class='nav left' bindtap='toNotice'>
+    <image src='/images/icons/notice.png'></image>
+    <text>公告</text>
+  </view>
+  <view class='nav right' bindtap='sign'>
+    <image src='/images/icons/sign.png'></image>
+    <text>签到</text>
+  </view>
+  <view class='nav left' bindtap='toTest'>
+    <image src='/images/icons/test.png'></image>
+    <text>测验</text>
+  </view>
+  <view class='nav right' bindtap='toHomework'>
+    <image src='/images/icons/grade.png'></image>
+    <text>作业</text>
+  </view>
+
+  <modal hidden="{{!showModal}}" title="请输入验证码" confirm-text="提交" cancel-text="重置" bindcancel="cancel" bindconfirm="confirm"> 
+    <input type='number' placeholder="签到码" auto-focus/>
+  </modal>
+</view>
+
+  

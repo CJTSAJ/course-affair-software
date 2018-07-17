@@ -9,11 +9,16 @@
 
 .title{
   border-bottom: 1rpx solid #D3D3D3;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .content text{
   font-size: 20rpx;
   color: gray;
+  margin-left: 10rpx;
 }
 
 .addNotice{

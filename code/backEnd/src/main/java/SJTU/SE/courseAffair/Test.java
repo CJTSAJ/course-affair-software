@@ -8,11 +8,13 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
 @EnableJpaRepositories
 @ComponentScan(basePackages = "SJTU")
+@EnableScheduling
 public class Test {
     @Autowired
     private RestTemplateBuilder builder;

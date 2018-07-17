@@ -12,12 +12,12 @@ App({
     var self = this;
     console.log(options.scene)
 
-    if (options.scene != 1044) {
+    /*if (options.scene != 1044) {
       wx.reLaunch({
         url: '/pages/shareToGroup/shareToGroup',
       })
-    }
-    else{
+    }*/
+    //else{
       wx.login({
         success: function (res) {
           if (res.code) {
@@ -57,7 +57,7 @@ App({
                   complete(res) {
                     console.log(res)
                     wx.request({
-                      url: 'http://207.148.114.118:8080/hibernateSpringDemo/decode/decodeGid',
+                      url: 'http://localhost:8080/decode/decodeGid',
                       data: {
                         encryptedData: res.encryptedData,
                         iv: res.iv,
@@ -68,7 +68,11 @@ App({
                       success: function (res) {
                         console.log("返回的opengid:" + res.data.openGId);
                         self.globalData.openGId = res.data.openGId;
-                        wx.request({
+                        wx.reLaunch({
+                          url: '/pages/releaseHomework/releaseHomework'
+                          //url: '/pages/getUserInfo/getUserInfo'
+                        })
+                        /*wx.request({
                           url: 'http://localhost:8080/getIdentity',
                           data: {
                             openid: self.globalData.openId,
@@ -91,7 +95,7 @@ App({
                               })
                             }
                           }
-                        })
+                        })*/
                       }
                     })
                   }
@@ -132,22 +136,23 @@ App({
           }*/
         }
       });
-    }
+    //}
   },
 
   onShow: function (options) {
-    /*if (options.scene == 1044) {
+    if (options.scene == 1044) {
       console.log("onShow执行")
       console.log(this.globalData.openId)
-   
+      
       wx.redirectTo({
-        url: '/pages/getUserInfo/getUserInfo'
+        url: '/pages/releaseHomework/releaseHomework'
+        //url: '/pages/getUserInfo/getUserInfo'
       })
     }
     else {
       wx.redirectTo({
         url: '/pages/shareToGroup/shareToGroup'
       })
-    }*/
+    }
   }
 })

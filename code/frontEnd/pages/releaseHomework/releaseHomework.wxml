@@ -1,6 +1,6 @@
 <!--pages/releaseHomework/releaseHomework.wxml-->
 <view>
-  <textarea placeholder='内容' bindinput='getContent'>
+  <textarea placeholder='内容' bindinput='getContent' maxlength='1000'>
 
   </textarea>
   <view class = "item">

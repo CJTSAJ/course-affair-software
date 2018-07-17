@@ -2,3 +2,9 @@
 .shareToGroup{
   margin-top: 375rpx;
 }
+
+.shareToGroup button{
+  width: 500rpx;
+  background-color: black;
+  color: white;
+}

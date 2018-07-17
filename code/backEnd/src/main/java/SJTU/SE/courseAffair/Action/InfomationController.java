@@ -25,24 +25,27 @@ public class InfomationController {
     public void saveInfo(@RequestBody JSONObject data) {
         String openid = data.getString("openid");
         System.out.println("存储学生信息");
-        System.out.println("openid:"+openid);
+        System.out.println("openid:" + openid);
         String opengid = data.getString("opengid");
-        System.out.println("opengid:"+opengid);
+        System.out.println("opengid:" + opengid);
         String name = data.getString("name");
-        System.out.println("name:"+name);
+        System.out.println("name:" + name);
         String studentID = data.getString("studentID");
-        System.out.println("studentID:"+studentID);
+        System.out.println("studentID:" + studentID);
         String formid = data.getString("formId");
-        System.out.println("formid:"+formid);
+        System.out.println("formid:" + formid);
         StudentEntity stu = new StudentEntity();
         stu.setStudentId(openid);
         stu.setStudentGroupId(opengid);
         stu.setSname(name);
         stu.setSno(studentID);
         studentRepository.save(stu);
-        FormEntity form = new FormEntity();
-        form.setStuId(openid);
-        form.setFormId(formid);
-        formRepository.save(form);
+        if (!formid.contains("mock")) {
+            FormEntity form = new FormEntity();
+            form.setStuId(openid);
+
+            form.setFormId(formid);
+            formRepository.save(form);
+        }
     }
 }

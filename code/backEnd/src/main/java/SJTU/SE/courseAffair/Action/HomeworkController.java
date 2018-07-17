@@ -88,22 +88,36 @@ public class HomeworkController {
         String openid=data.getString("openid");
         Group.openGId  = openGId;
         List<StudentEntity> students = studentRepository.findByStudentGroupId(openGId);
+        //System.out.println("student表里有"+students.size()+"条数据");
         for(int i = 0;i<students.size();i++){
             String sId = students.get(i).getStudentId();
+            //System.out.println("要发给openid:"+students.get(i).getStudentId());
+            //System.out.println("form表里有"+formRepository.count()+"条数据");
             List<FormEntity> forms = formRepository.findByStuId(sId);
+            //List<FormEntity> forms = formRepository.findAll();
+            //System.out.println("form表里有"+forms.size()+"条数据");
             if(forms.size()>0) {
-                Group.send.add(forms.get(0));
-                formRepository.delete(forms.get(0));
+                FormEntity temp = forms.get(0);
+                //System.out .println("输出form: stuId:"+temp.getStuId()+" formId:"+temp.getFormId());
+                //temp.setStuId(openid);
+                Group.send.add(temp);
+                formRepository.delete(temp);
             }
+            /*FormEntity tem = new FormEntity();
+            tem.setStuId(openid);
+            tem.setFormId("81333494665d63114a9523ad0b219f4a");
+            Group.send.add(tem);*/
         }
 
         Timestamp time= new Timestamp(System.currentTimeMillis());
+        int homeworkTotal = homeworkRepository.findAll().size();
         HomeworkEntity homework = new HomeworkEntity();
+        homework.setHomeworkId(homeworkTotal);
         homework.setHomeworkContent(content);
         homework.setHomeworkGroupId(openGId);
         homework.setHwdate(time);
         homework.setPublisherId(openid);
-        SimpleDateFormat sf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+        SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         java.util.Date date = null;
         try {
             date = sf.parse(deadline);
@@ -144,6 +158,7 @@ public class HomeworkController {
         timeUtil.startCron(conStr);
         Timestamp dateSQL = new Timestamp(date.getTime());
         homework.setDeadline(dateSQL);
+        Group.homework = homework;
         homeworkRepository.save(homework);
 
         }
@@ -163,7 +178,7 @@ public class HomeworkController {
 
     @RequestMapping(value="/test")
     public String test() {
-        String urlString = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=11_IsdVX3ncQe7z2OrRxc7jAqE8KhXvQeuelbvCeDa2-UWXhEOD43i4x5euDym1EEWpynnSGmoeFJ_okl2BaM3Xiv1qF_iNmqc4FUPFLkfrihc4wOaah0ct1qDDieCUJTC1oaVCTmaINwWK3F62NWNeAEAGPG";
+        String urlString = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token=11_3pabtrm6kLOcqCdwLKyVSe_fDJTpCcko485KjOtvIc8P8M4-WhTHsbeUZKrHjiyaq7fPGwtGRyrodT-gLrPIlweIEKWkhJo7Y2zCAEVTi0ucuoRUevTQalLCp5abEoslqMbMFxIdQ8mJTiIVXHFiAFAQAY";
         JSONObject request = new JSONObject();
         request.put("offset", 0);
         request.put("count", 20);

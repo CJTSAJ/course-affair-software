@@ -1,11 +1,55 @@
 /* pages/getUserInfo.wxss */
+page{
+  background-color: #eee
+}
 .userinfo {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 375rpx;
+  margin-top: 100rpx;
 }
 
 .userinfo button{
   width: 500rpx;
+  background-color: black;
+  color: white;
+}
+
+.name{
+  height: 100rpx;
+  line-height: 100rpx;
+  margin-top:30rpx;
+  background-color: white;
+}
+
+.studentID{
+  height: 100rpx;
+  line-height: 100rpx;
+  margin-top:30rpx;
+  background-color: white;
+}
+
+.detail text{
+  margin-left: 30rpx;
+}
+
+.detail input{
+  display: inline-block;
+  margin-top: 20rpx;
+  vertical-align: middle;
+  padding-bottom: 25rpx;
+}
+
+.radio{
+  margin-left: 150rpx;
+}
+
+.chooseIdentity{
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+}
+
+.setting{
+  margin-left: 20rpx;
+  margin-top: 40rpx;
 }

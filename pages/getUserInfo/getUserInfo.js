@@ -2,6 +2,7 @@ const app = getApp()
 // pages/getUserInfo.js
 Page({
   data: {
+    openid:'',
     name: '',
     studentID: '',
     nameShow: 'none',
@@ -18,6 +19,9 @@ Page({
         url: '/pages/home/home',
       })
     }
+    this.setData({
+      openid: app.globalData.openId
+    })
   },
   confirm: function () {
     var that = this;
@@ -40,6 +44,10 @@ Page({
       })
     }
     else{
+      console.log("confirm")
+      wx.reLaunch({
+        url: '/pages/home/home',
+      })
       //向后端发送数据
       var isStudent = false;
       if (that.data.idShow == '') {

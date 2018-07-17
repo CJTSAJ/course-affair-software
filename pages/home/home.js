@@ -30,5 +30,10 @@ Page({
     this.setData({
       showModal: false
     })
+  },
+  toSetting:function(){
+    wx.redirectTo({
+      url: '/pages/managerSetting/mangerSetting',
+    })
   }
 })

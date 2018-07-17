@@ -8,7 +8,9 @@ Page({
   data: {
   
   },
-
+  onShow:function(){
+    this.authority()
+  },
   authority:function(){
     wx.getUserInfo({
       success: function (res) {

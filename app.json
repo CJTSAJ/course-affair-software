@@ -1,7 +1,6 @@
 {
   "pages": [
     "pages/releaseHomework/releaseHomework",
-    "pages/managerSetting/mangerSetting",
     "pages/manage/manage",
     "pages/find/find",
     "pages/getUserInfo/getUserInfo",
@@ -16,7 +15,8 @@
     "pages/shareToGroup/shareToGroup",
     "pages/addNotice/addNotice",
     "pages/allNotice/allNotice",
-    "pages/authority/authority"
+    "pages/authority/authority",
+    "pages/managerSetting/mangerSetting"
   ],
   "tabBar": {
     "list": [

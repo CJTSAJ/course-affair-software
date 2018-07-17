@@ -25,6 +25,7 @@
       </view>
     </view>
   </view>
+  <view><text>{{openid}}</text></view>
   <view class="userinfo">
     <button bindtap='confirm'>确定</button>
   </view>

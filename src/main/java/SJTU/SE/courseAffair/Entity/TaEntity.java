@@ -9,6 +9,7 @@ public class TaEntity {
     private String taid;
     private String taGroupId;
     private String taName;
+    private String taNo;
 
     @Id
     @Column(name = "TAID", nullable = false, length = 28)
@@ -39,7 +40,17 @@ public class TaEntity {
     public void setTaName(String taName) {
     	this.taName = taName;
     }
-
+    
+    @Basic
+    @Column(name = "Ta_No", nullable = true, length = 20)
+    public String getTaNo() {
+    	return taNo;
+    }
+    
+    public void setTaNo(String taNo) {
+    	this.taNo = taNo;
+    }
+    
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

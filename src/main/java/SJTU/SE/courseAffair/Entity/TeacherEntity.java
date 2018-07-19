@@ -31,7 +31,7 @@ public class TeacherEntity {
     }
     
     @Basic
-    @Column(name = "TAName", nullable = true, length = 20)
+    @Column(name = "Teacher_Name", nullable = true, length = 20)
     public String getTeacherName() {
     	return teacherName;
     }

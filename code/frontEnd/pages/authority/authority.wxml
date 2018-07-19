@@ -1,0 +1,6 @@
+<!--pages/authority/authority.wxml-->
+<view>
+  <view>
+    <button open-type='getUserInfo' bindgetuserinfo='authority'>授权</button>
+  </view>
+</view>

@@ -1,3 +1,5 @@
+const app = getApp()
+
 // pages/releaseHomework/releaseHomework.js
 Page({
 
@@ -5,67 +7,80 @@ Page({
    * 页面的初始数据
    */
   data: {
-    dateValue: "请选择作业截止日期"
+    dateValue: "年/月/日",
+    timeValue: "时/分",
+    homeworkContent: ""
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
   datePickerBindchange: function (e){
     this.setData({
       dateValue: e.detail.value
+    })
+  },
+  timePickerBindchange:function(e){
+    this.setData({
+      timeValue: e.detail.value
+    })
+  },
+
+  /*textarea输入响应事件*/
+  getContent:function(e){
+    this.setData({
+      homeworkContent: e.detail.value
+    })
+  },
+
+  /*发布作业按钮响应事件*/
+  release: function(){
+    if (this.data.homeworkContent == ""){
+      wx.showModal({
+        title: '提示',
+        content: '内容不能为空',
+      })
+    }
+    else if(this.data.dateValue == "年月日" || this.data.timeValue == "时/分"){
+      wx.showModal({
+        title: '提示',
+        content: '请选择截止日期',
+      })
+    }
+    else{
+      var self = this;
+      wx.showModal({
+        title: '提示',
+        content: '您确定要发布本次作业？',
+        success:function(res){
+          if(res.confirm){
+            self.confirmRelease(self);
+          }
+        }
+      })
+      
+    }
+  },
+  confirmRelease:function(self){
+    var deadline = this.data.dateValue + " " + this.data.timeValue;
+    console.log(deadline);
+    console.log(app.globalData.openGId);
+    wx.request({
+      url: 'http://localhost:8080/addHomework',
+      data: {
+        content: self.data.homeworkContent,
+        openid: app.globalData.openId,
+        openGId: app.globalData.openGId,
+        deadline: deadline
+      },
+      method: 'POST',
+      header: { 'content-type': 'application/json' },
+      success: function (res) {
+        console.log("add homework successfully");
+        wx.navigateBack({
+          delta: 1
+        })
+      },
+      fail: function (error) {
+
+      }
     })
   }
 })

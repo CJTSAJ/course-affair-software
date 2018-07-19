@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "Notification", schema = "course_affair_DB")
+@Table(name = "notification", schema = "course_affair_db")
 public class NotificationEntity {
     private int notificationId;
     private String notificationGroupId;
@@ -14,7 +14,6 @@ public class NotificationEntity {
 
     @Id
     @Column(name = "notificationID", nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getNotificationId() {
         return notificationId;
     }
@@ -24,7 +23,7 @@ public class NotificationEntity {
     }
 
     @Basic
-    @Column(name = "notification_GroupID", nullable = true, length = 28)
+    @Column(name = "notificationGroupID", nullable = true, length = 29)
     public String getNotificationGroupId() {
         return notificationGroupId;
     }
@@ -34,7 +33,7 @@ public class NotificationEntity {
     }
 
     @Basic
-    @Column(name = "notification_Content", nullable = true, length = 1024)
+    @Column(name = "notificationContent", nullable = true, length = 1024)
     public String getNotificationContent() {
         return notificationContent;
     }
@@ -44,7 +43,7 @@ public class NotificationEntity {
     }
 
     @Basic
-    @Column(name = "notification_Date", nullable = true)
+    @Column(name = "notificationDate", nullable = true)
     public Timestamp getNotificationDate() {
         return notificationDate;
     }
@@ -54,7 +53,7 @@ public class NotificationEntity {
     }
 
     @Basic
-    @Column(name = "notification_PublisherID", nullable = true, length = 28)
+    @Column(name = "notificationPublisherID", nullable = true, length = 28)
     public String getNotificationPublisherId() {
         return notificationPublisherId;
     }

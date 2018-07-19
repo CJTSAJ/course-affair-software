@@ -19,7 +19,7 @@ public class SignInRecordEntityPK implements Serializable {
         this.studentId = studentId;
     }
 
-    @Column(name = "studentGroupID", nullable = false, length = 28)
+    @Column(name = "studentGroupID", nullable = false, length = 29)
     @Id
     public String getStudentGroupId() {
         return studentGroupId;

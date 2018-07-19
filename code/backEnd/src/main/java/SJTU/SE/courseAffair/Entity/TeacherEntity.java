@@ -3,11 +3,12 @@ package SJTU.SE.courseAffair.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Teacher", schema = "course_affair_DB")
+@Table(name = "teacher", schema = "course_affair_db")
 @IdClass(TeacherEntityPK.class)
 public class TeacherEntity {
     private String teacherId;
     private String teacherGroupId;
+    private String teacherName;
 
     @Id
     @Column(name = "teacherID", nullable = false, length = 28)
@@ -20,13 +21,23 @@ public class TeacherEntity {
     }
 
     @Id
-    @Column(name = "teacher_GroupID", nullable = false, length = 28)
+    @Column(name = "teacherGroupID", nullable = false, length = 29)
     public String getTeacherGroupId() {
         return teacherGroupId;
     }
 
     public void setTeacherGroupId(String teacherGroupId) {
         this.teacherGroupId = teacherGroupId;
+    }
+
+    @Basic
+    @Column(name = "teacherName", nullable = false, length = 100)
+    public String getTeacherName() {
+        return teacherName;
+    }
+
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 
     @Override
@@ -39,6 +50,7 @@ public class TeacherEntity {
         if (teacherId != null ? !teacherId.equals(that.teacherId) : that.teacherId != null) return false;
         if (teacherGroupId != null ? !teacherGroupId.equals(that.teacherGroupId) : that.teacherGroupId != null)
             return false;
+        if (teacherName != null ? !teacherName.equals(that.teacherName) : that.teacherName != null) return false;
 
         return true;
     }
@@ -47,6 +59,7 @@ public class TeacherEntity {
     public int hashCode() {
         int result = teacherId != null ? teacherId.hashCode() : 0;
         result = 31 * result + (teacherGroupId != null ? teacherGroupId.hashCode() : 0);
+        result = 31 * result + (teacherName != null ? teacherName.hashCode() : 0);
         return result;
     }
 }

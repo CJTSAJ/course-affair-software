@@ -57,6 +57,7 @@ public class AesCbcUtil {
             // 初始化
             Security.addProvider(new BouncyCastleProvider());
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS7Padding","BC");
+            //Cipher cipher = Cipher.getInstance("AES/ECB/ZeroBytePadding");
             SecretKeySpec spec = new SecretKeySpec(keyByte, "AES");
             AlgorithmParameters parameters = AlgorithmParameters.getInstance("AES");
             parameters.init(new IvParameterSpec(ivByte));

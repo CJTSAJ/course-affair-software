@@ -3,7 +3,7 @@ package SJTU.SE.courseAffair.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Sign_In_Record", schema = "course_affair_DB")
+@Table(name = "signinrecord", schema = "course_affair_db")
 @IdClass(SignInRecordEntityPK.class)
 public class SignInRecordEntity {
     private String studentId;
@@ -22,7 +22,7 @@ public class SignInRecordEntity {
     }
 
     @Id
-    @Column(name = "student_GroupID", nullable = false, length = 28)
+    @Column(name = "studentGroupID", nullable = false, length = 29)
     public String getStudentGroupId() {
         return studentGroupId;
     }
@@ -32,7 +32,7 @@ public class SignInRecordEntity {
     }
 
     @Id
-    @Column(name = "sign_InID", nullable = false)
+    @Column(name = "signInID", nullable = false)
     public int getSignInId() {
         return signInId;
     }

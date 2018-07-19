@@ -17,14 +17,5 @@
       <text>{{content1}}</text>
     </view>
   </view>
-  <modal hidden="{{showModal}}" title="您的身份" confirm-text="确定" bindconfirm="confirm" bindcancel="cancel">
-    <radio-group class="radio-group" bindchange="radioChange">
-      <label class="radio">
-        <radio value="学生" bindtap='radio' data-id="0">学生</radio>
-      </label>
-      <label class="radio">
-        <radio value="老师" bindtap='radio' data-id="1">老师</radio>
-      </label>
-    </radio-group>
-  </modal>
+  
 </view>

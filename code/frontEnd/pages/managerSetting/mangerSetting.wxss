@@ -1,0 +1,41 @@
+/* pages/managerSetting/mangerSetting.wxss */
+
+page{
+  background-color: #eee;
+}
+
+.members{
+  margin-top: 20rpx;
+  border-top: 1rpx solid #9D9D9D;
+}
+
+.members checkbox{
+  padding-left: 30rpx;
+  height: 120rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #9D9D9D;
+  background-color: white;
+  display: block;
+}
+
+.members text{
+  margin-left: 30rpx;
+}
+
+.confirm button{
+  margin-left: 25rpx;
+  width: 700rpx;
+  background-color: #32CD32;
+  position: fixed;
+  bottom: 10rpx;
+}
+
+scroll-view{
+  height: 1100rpx;
+}
+
+::-webkit-scrollbar {
+  width: 0rpx;
+  height: 0rpx;
+  color: transparent;
+}

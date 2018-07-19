@@ -3,13 +3,13 @@ package SJTU.SE.courseAffair.Entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Sign_In", schema = "course_affair_DB")
+@Table(name = "signin", schema = "course_affair_db")
 public class SignInEntity {
     private int signInId;
     private String signInGroupId;
 
     @Id
-    @Column(name = "sign_InID", nullable = false)
+    @Column(name = "signInID", nullable = false)
     public int getSignInId() {
         return signInId;
     }
@@ -19,7 +19,7 @@ public class SignInEntity {
     }
 
     @Basic
-    @Column(name = "sign_In_GroupID", nullable = true, length = 28)
+    @Column(name = "signInGroupID", nullable = true, length = 29)
     public String getSignInGroupId() {
         return signInGroupId;
     }

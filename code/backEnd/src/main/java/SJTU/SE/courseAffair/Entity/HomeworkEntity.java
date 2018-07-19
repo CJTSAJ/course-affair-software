@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "Homework", schema = "course_affair_DB")
+@Table(name = "homework", schema = "course_affair_db")
 public class HomeworkEntity {
     private int homeworkId;
     private String homeworkGroupId;
@@ -24,7 +24,7 @@ public class HomeworkEntity {
     }
 
     @Basic
-    @Column(name = "homework_GroupID", nullable = true, length = 28)
+    @Column(name = "homeworkGroupID", nullable = true, length = 29)
     public String getHomeworkGroupId() {
         return homeworkGroupId;
     }
@@ -34,7 +34,7 @@ public class HomeworkEntity {
     }
 
     @Basic
-    @Column(name = "homework_Content", nullable = true, length = 1024)
+    @Column(name = "homeworkContent", nullable = true, length = 1024)
     public String getHomeworkContent() {
         return homeworkContent;
     }

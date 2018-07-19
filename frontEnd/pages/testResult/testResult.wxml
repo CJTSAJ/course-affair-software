@@ -1,4 +1,4 @@
-<!--pages/oneTest/oneTest.wxml-->
+<!--pages/testResullt/testResult.wxml-->
 <view class='container'>
   <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
     <view class = "title">

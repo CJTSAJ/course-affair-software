@@ -1,0 +1,13 @@
+<!--pages/oneQuestion/oneQuestion.wxml-->
+<view class='container'>
+  <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
+  <view class="questionContent">
+    <text>{{content}}</text>
+  </view>
+  <view class="choices" wx:for="{{choiceContent}}" wx:for-index="key" wx:for-item="value">
+    <button class="choose" id='{{value.choiceNo}}' bindtap='choose'>
+      {{value.choiceLetter}} : {{value.choiceCo}}
+    </button>
+  </view>
+  </scroll-view>
+</view>

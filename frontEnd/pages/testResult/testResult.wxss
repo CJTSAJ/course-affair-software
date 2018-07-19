@@ -1,4 +1,4 @@
-/* pages/oneTest/oneTest.wxss */
+/* pages/testResult/testResult.wxss */
 
 .title{
   margin-top: 50rpx;

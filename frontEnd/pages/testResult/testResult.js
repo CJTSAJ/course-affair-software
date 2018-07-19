@@ -1,4 +1,4 @@
-// pages/oneTest/oneTest.js
+// pages/testResult/testResult.js
 const app = getApp()
 Page({
 

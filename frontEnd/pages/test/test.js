@@ -11,14 +11,10 @@ Page({
     state: [],
     countDownList: [],
     startTimeList: [],
-    endTimeList: []
+    endTimeList: [],
+    testId:[]
   },
 
-  toOneTest: function(){
-    wx.navigateTo({
-      url: '/pages/oneTest/oneTest',
-    })
-  },
 
   onLoad:function() {
     this.setData({
@@ -35,15 +31,18 @@ Page({
         let startTime = [];
         let endTime = [];
         let content = [];
+        let id = [];
         for(var i in res.data){
           content.push(res.data[i][0]);
           startTime.push(res.data[i][1]);
           endTime.push(res.data[i][2]);
+          id.push(res.data[i][3]);
         }
         self.setData({
           allContent: content,
           startTimeList: startTime,
-          endTimeList: endTime
+          endTimeList: endTime,
+          testId: id
         });
         self.countDown();      
       },

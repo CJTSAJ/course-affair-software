@@ -14,6 +14,12 @@ Page({
       url: '/pages/test/test',
     })
   },
+
+  toEditTest:function(){
+    wx.navigateTo({
+      url: '/pages/editTest/editTest',
+    })
+  },
   
   sign:function(){
     this.setData({

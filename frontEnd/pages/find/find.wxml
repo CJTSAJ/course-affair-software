@@ -19,6 +19,10 @@
     <image src='/images/icons/test.png'></image>
     <text>测验</text>
   </view>
+  <view class='nav left' bindtap='toEditTest'>
+    <image src='/images/icons/test.png'></image>
+    <text>编辑测验</text>
+  </view>
   <view class='nav right' bindtap='toHomework'>
     <image src='/images/icons/grade.png'></image>
     <text>作业</text>

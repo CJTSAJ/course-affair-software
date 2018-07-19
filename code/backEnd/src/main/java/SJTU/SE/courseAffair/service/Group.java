@@ -11,4 +11,8 @@ public class Group {
     public static String accessToken;
     public static List<FormEntity> send = new ArrayList<FormEntity>();
     public static HomeworkEntity homework = new HomeworkEntity();
+    /*Robust version*/
+    public static List<HomeworkEntity> homeworkList = new ArrayList<HomeworkEntity>();
+    public static List<List<FormEntity>> sends = new ArrayList<List<FormEntity>>();
+    /*Robust version end*/
 }

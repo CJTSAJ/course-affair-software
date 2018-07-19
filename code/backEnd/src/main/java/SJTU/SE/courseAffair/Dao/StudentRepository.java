@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface StudentRepository extends JpaRepository<StudentEntity, StudentEntityPK> {
     List<StudentEntity> findByStudentGroupId(String studentGroupId);
+    List<StudentEntity> findByStudentIdAndStudentGroupId(String studentId, String studentGroupId);
 }

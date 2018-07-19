@@ -48,12 +48,19 @@ public class TimeUtil {
             System.out.println("DynamicTask.MyRunnable.run()，" + new Date());
             System.out.println("要给"+Group.send.size()+"个人发消息");
             HomeworkEntity homework = Group.homework;
+            /*Robust version*/
+            HomeworkEntity htmp = Group.homeworkList.get(0);
             DateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-            String deadline = sdf1.format(homework.getDeadline());
-            String content = homework.getHomeworkContent();
-            for(int i = Group.send.size()-1; i > -1;i--) {
+            String deadline = sdf1.format(htmp.getDeadline());
+            String content = htmp.getHomeworkContent();
+            /*Robust version*/
+            for(int i = Group.sends.get(0).size()-1; i > -1;i--) {
+            //}
+            //for(int i = Group.send.size()-1; i > -1;i--) {
                 System.out.println("要给"+Group.send.size()+"个人发消息");
-                FormEntity temp = Group.send.get(i);
+                //FormEntity temp = Group.send.get(i);
+                /*Robust version*/
+                FormEntity temp = Group.sends.get(0).get(i);
                 String urlString = "https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token="+Group.accessToken;//access_token=11_N0kx4EuXLCizdGkce4j2Bqq5V-j7iINJrlftGkH-O5lk-y7nKo6nS7EY4FbstpciFyk6kyWsKkQJxn9VLhoq2toEpOecXJJ_PqqKRFvSGwvyq05ZHyhm4r9miBZa4ybklB-pvYdD1uyahiomOBTbAAAUHZ";
                 JSONObject request = new JSONObject();
                 request.put("touser", temp.getStuId());
@@ -88,9 +95,14 @@ public class TimeUtil {
                     System.out.println("Trying fail.");
                     // nono... bad credentials
                 }
-                Group.send.remove(i);
-                System.out.println("Group里还有"+Group.send.size()+"个FormEntity");
+                //Group.send.remove(i);
+                /*Robust version*/
+                Group.sends.get(0).remove(i);
+                //System.out.println("Group里还有"+Group.send.size()+"个FormEntity");
             }
+            /*Robust version*/
+            Group.sends.remove(0);
+            Group.homeworkList.remove(0);
 
         }
     }

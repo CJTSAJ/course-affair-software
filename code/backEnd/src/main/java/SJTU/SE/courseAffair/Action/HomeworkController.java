@@ -31,6 +31,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -47,6 +48,7 @@ public class HomeworkController {
     private FormRepository formRepository;
     @Autowired
     private StudentRepository studentRepository;
+
 
     @CrossOrigin
     @RequestMapping(value="/getHomework",method=RequestMethod.POST)
@@ -89,6 +91,7 @@ public class HomeworkController {
         Group.openGId  = openGId;
         List<StudentEntity> students = studentRepository.findByStudentGroupId(openGId);
         //System.out.println("student表里有"+students.size()+"条数据");
+        List<FormEntity> ftemp = new ArrayList<FormEntity>();
         for(int i = 0;i<students.size();i++){
             String sId = students.get(i).getStudentId();
             //System.out.println("要发给openid:"+students.get(i).getStudentId());
@@ -101,6 +104,7 @@ public class HomeworkController {
                 //System.out .println("输出form: stuId:"+temp.getStuId()+" formId:"+temp.getFormId());
                 //temp.setStuId(openid);
                 Group.send.add(temp);
+                ftemp.add(temp);
                 formRepository.delete(temp);
             }
             /*FormEntity tem = new FormEntity();
@@ -118,13 +122,43 @@ public class HomeworkController {
         homework.setHwdate(time);
         homework.setPublisherId(openid);
         SimpleDateFormat sf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        java.util.Date date = null;
+        Date date = null;
         try {
             date = sf.parse(deadline);
             }
             catch (ParseException e) {
             e.printStackTrace();
             }
+        /*Robust version*/
+        if (Group.homeworkList.size()>0) {
+            int j;
+            for (j = 0;j<Group.homeworkList.size();j++) {
+                String dtmpStr = sf.format(Group.homeworkList.get(j).getDeadline());
+                Date dtmp = null;
+                try {
+                    dtmp = sf.parse(dtmpStr);
+                }
+                catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                if (dtmp.getTime()>date.getTime()) {
+                    Group.homeworkList.add(j,homework);
+                    break;
+                }
+            }
+            if(j == Group.homeworkList.size()) {
+                Group.homeworkList.add(homework);
+                Group.sends.add(ftemp);
+            }
+            else {
+                Group.sends.add(j,ftemp);
+            }
+        }
+        else {
+            Group.homeworkList.add(homework);
+            Group.sends.add(ftemp);
+        }
+        /*Robust version end*/
         SimpleDateFormat sdf0 = new SimpleDateFormat("yyyy");
         SimpleDateFormat sdf1 = new SimpleDateFormat("MM");
         SimpleDateFormat sdf2= new SimpleDateFormat("dd");
@@ -204,6 +238,19 @@ public class HomeworkController {
             // nono... bad credentials
         }
         return null;
+    }
+
+    @RequestMapping(value="/homeworkTest")
+    public void htest() {
+        String openid = studentRepository.findAll().get(0).getStudentId();
+        FormEntity tem = new FormEntity();
+        tem.setStuId(openid);
+        tem.setFormId("55e1efa14474ff5baa074e3418f65643");
+        formRepository.save(tem);
+        FormEntity tem1 = new FormEntity();
+        tem1.setStuId(openid);
+        tem1.setFormId("0678dd85a9de035614ba137674b5c86c");
+        formRepository.save(tem1);
     }
 
 

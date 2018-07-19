@@ -20,7 +20,7 @@ public class HttpRequest {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Scheduled(initialDelay = 5000,fixedRate = 7200000)
+    @Scheduled(initialDelay = 2000,fixedRate = 7200000)
     public void getAccessToken(){
         String urlString = "https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wxfb56f7506a576cf3&secret=5e961359ec8cd3648d6f9de665a4b698";
         HttpHeaders headers = new HttpHeaders();

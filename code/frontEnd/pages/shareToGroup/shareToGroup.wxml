@@ -1,4 +1,6 @@
 <!--pages/shareToGroup/shareToGroup.wxml-->
-<view class='shareToGroup'>
-  <button open-type='share'>分享到群</button>
+<view class='container'>
+  <image src='/images/icons/blank.png'></image>
+  <text>小程序只能从群打开</text>
+  <button open-type='share'>分享到群聊</button>
 </view>

@@ -4,7 +4,8 @@ Page({
     allContent: [],
     time0:"2018-6-10 19:17",
     time1: "2018-6-10 20:08",
-    userInfo: null
+    userInfo: null,
+    isTeacher: false
   },
   toDetail:function(){
     wx.navigateTo({
@@ -20,25 +21,28 @@ Page({
     this.setData({
       userInfo: app.globalData.userInfo
     })
-    var self = this;
-    var openid = app.globalData.openId;
-    console.log("openid:" + openid);
-    var openidData = {
-      'opengid': openid
+    if(app.globalData.identity == "teacher"){
+      this.setData({
+        isTeacher: true
+      })
     }
+    var self = this;
+    var opengid = app.globalData.openGId;
+    console.log("openid:" + opengid);
     wx.request({
-      url: 'http://127.0.0.1:8080/hibernate/getNotice',
-      data: openid,
+      url: 'http://207.148.114.118:8080/courseAffair/hibernate/getNotice',
+      data: opengid,
       method: 'POST',
       header: { 'content-type': 'application/json' },
       success: function (res) {
+        console.log("success:" + res.data);
         console.log("content::" + res.data[0])
         self.setData({
-          
           allContent: res.data
         })
       },
       fail: function (error) {
+        console.log("error:" + error);
       }
     })
   }

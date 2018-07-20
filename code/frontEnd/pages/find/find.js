@@ -1,6 +1,7 @@
+const app = getApp()
 Page({
   data: {
-    showModal: false,
+    isTeacher: false,
     signCode: null
   },
   toPerson:function(){
@@ -8,7 +9,38 @@ Page({
       url: '/pages/person/person',
     })
   },
-  sign:function(){
+  
+  toNotice:function(){
+    wx.navigateTo({
+      url: '/pages/allNotice/allNotice',
+    })
+  },
+  toHomework:function(){
+    wx.navigateTo({
+      url: '/pages/allHomework/allHomework',
+    })
+  },
+  toManage:function(){
+    wx.navigateTo({
+      url: '/pages/manage/manage',
+    })
+  },
+
+  toSign:function(){
+    wx.navigateTo({
+      url: '/pages/sign/sign',
+    })
+  },
+  
+  onShow: function(){
+    
+    if(app.globalData.identity == "teacher"){
+      this.setData({
+        isTeacher: true
+      })
+    }
+  }
+  /*sign:function(){
     this.setData({
       showModal: true
     })
@@ -18,15 +50,16 @@ Page({
       showModal: false
     })
   },
-  onCancel:function(){
-    this.hideModal();
+  //取消按钮
+  cancel: function () {
     this.setData({
-      signCode: 0
-    })
+      showModal: false
+    });
   },
-  inputChange:function(e){
+  //确认
+  confirm: function () {
     this.setData({
-      signCode: e.detail.value
+      showModal: false
     })
   },
   onConfirm:function(){
@@ -47,14 +80,15 @@ Page({
 
     })
   },
-  toNotice:function(){
-    wx.navigateTo({
-      url: '/pages/allNotice/allNotice',
+  onCancel:function(){
+    this.hideModal();
+    this.setData({
+      signCode: 0
     })
   },
-  toHomework:function(){
-    wx.navigateTo({
-      url: '/pages/allHomework/allHomework',
+  inputChange:function(e){
+    this.setData({
+      signCode: e.detail.value
     })
   },
   modalinput: function () {
@@ -62,16 +96,5 @@ Page({
       hiddenmodalput: !this.data.hiddenmodalput
     })
   },
-  //取消按钮  
-  cancel: function () {
-    this.setData({
-      showModal: false
-    });
-  },
-  //确认  
-  confirm: function () {
-    this.setData({
-      showModal: false
-    })
-  }
+  */
 })

@@ -1,20 +1,20 @@
 <view class='container'>
-  <view class='homework'>
-    <view class='title'>
-      <text class='time'>{{time0}}</text>
-      <text class='look' bindtap='getGrade' data-id="0">查看成绩</text>
+  <scroll-view scroll-y="true" style='position: fixed;height:100%'>
+  
+    <view class='homework' wx:for="{{allHomework}}" wx:for-index="key" wx:for-item="value">
+      <view class='title'>
+        <text class='time'>{{value[1]}}</text>
+        <text class='look' bindtap='getGrade' data-id="{{key}}">查看成绩</text>
+      </view>
+      <navigator url="/pages/homework/homework?content={{value[0]}}&time={{value[1]}}&deadline={{value[2]}}">
+        <view class='content' bindtap='toDetail'>
+          <text>{{value[0]}}</text>
+        </view>
+      </navigator>
     </view>
-    <view class='content' bindtap='toDetail'>
-      <text>{{content0}}</text>
-    </view>
-  </view>
-  <view class='homework'>
-    <view class='title'>
-      <text class='time'>{{time1}}</text>
-      <text class='look' bindtap='getGrade' data-id="1">查看成绩</text>
-    </view>
-    <view class='content'>
-      <text>{{content1}}</text>
-    </view>
+  </scroll-view>
+  
+  <view class='releaseHomework' style='display: {{isTeacher?"":"none"}}'>
+    <button bindtap='releaseHomework'>发布作业</button>
   </view>
 </view>

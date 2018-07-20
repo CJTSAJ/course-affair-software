@@ -9,7 +9,7 @@ public class SignInRecordEntity {
     private String studentId;
     private String studentGroupId;
     private int signInId;
-    private Byte present;
+    //private Byte present;
 
     @Id
     @Column(name = "studentID", nullable = false, length = 28)
@@ -22,7 +22,7 @@ public class SignInRecordEntity {
     }
 
     @Id
-    @Column(name = "student_GroupID", nullable = false, length = 28)
+    @Column(name = "student_GroupID", nullable = false, length = 29)
     public String getStudentGroupId() {
         return studentGroupId;
     }
@@ -41,7 +41,7 @@ public class SignInRecordEntity {
         this.signInId = signInId;
     }
 
-    @Basic
+    /*@Basic
     @Column(name = "present", nullable = true)
     public Byte getPresent() {
         return present;
@@ -49,7 +49,7 @@ public class SignInRecordEntity {
 
     public void setPresent(Byte present) {
         this.present = present;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
@@ -62,7 +62,7 @@ public class SignInRecordEntity {
         if (studentId != null ? !studentId.equals(that.studentId) : that.studentId != null) return false;
         if (studentGroupId != null ? !studentGroupId.equals(that.studentGroupId) : that.studentGroupId != null)
             return false;
-        if (present != null ? !present.equals(that.present) : that.present != null) return false;
+        //if (present != null ? !present.equals(that.present) : that.present != null) return false;
 
         return true;
     }
@@ -72,7 +72,7 @@ public class SignInRecordEntity {
         int result = studentId != null ? studentId.hashCode() : 0;
         result = 31 * result + (studentGroupId != null ? studentGroupId.hashCode() : 0);
         result = 31 * result + signInId;
-        result = 31 * result + (present != null ? present.hashCode() : 0);
+        //result = 31 * result + (present != null ? present.hashCode() : 0);
         return result;
     }
 }

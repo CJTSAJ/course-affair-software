@@ -10,61 +10,6 @@ Page({
     openid: null
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
-  },
   cancel:function(){
     wx.showModal({
       title: '提示',
@@ -90,24 +35,27 @@ Page({
   },
   confirm:function(){
     var id = app.globalData.openId;
+    var openGId = app.globalData.openGId;
     var content = this.data.content;
     console.log(id)
     console.log(content)
+    console.log(openGId)
     var tempData = {
       openid: id,
       content: content
     }
     wx.request({
-      url: 'http://127.0.0.1:8080/hibernate/addNotice',
+      url: 'http://207.148.114.118:8080/courseAffair/hibernate/addNotice',
       data: {
         openid: id,
-        content: content
+        content: content,
+        openGId: openGId
       },
-      method: 'GET',
+      method: 'POST',
       header: { 'content-type': 'application/json' },
       success: function (res) {
-        wx.redirectTo({
-          url: '/pages/allNotice/allNotice',
+        wx.navigateBack({
+          delta: 1
         })
       },
       fail: function (error) {

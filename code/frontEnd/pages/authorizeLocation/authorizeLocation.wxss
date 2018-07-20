@@ -1,0 +1,20 @@
+/* pages/authorizeLocation/authorizeLocation.wxss */
+button{
+  margin-top: 150rpx;
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #ffe95c;
+  width: 600rpx;
+  font-weight: 900;
+}
+
+image{
+  margin-top: 150rpx;
+  height: 250rpx;
+  width: 250rpx;
+}
+
+text{
+  color: #cdcdcd;
+  font-size: 30rpx;
+}

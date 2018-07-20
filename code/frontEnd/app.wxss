@@ -1,6 +1,5 @@
 .container{
-  background-color: #eee;
-  height: 100vh;
+  
   display: flex;
   flex-direction: column;
   align-items: center;

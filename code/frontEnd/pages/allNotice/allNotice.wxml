@@ -1,10 +1,10 @@
 <view class='container'>
-  <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
+  <scroll-view class="help-info" scroll-y="true" style="position: fixed;height:100%">
   <navigator wx:for="{{allContent}}" wx:for-index="key" wx:for-item="value" url="/pages/notice/notice?content={{value[0]}}&time={{value[1]}}">
   <view class='notice'>
     <view class='title'>
       <text class='time'>{{value[1]}}</text>
-      <text class='nickName'>{{userInfo.nickName}}</text>
+      <text class='nickName'>{{value[2]}}</text>
     </view>
     <view class='content'>
       <text>{{value[0]}}</text>
@@ -13,7 +13,7 @@
   </navigator>
   </scroll-view>
 
-  <view class='addNotice'>
+  <view class='addNotice' style='display: {{isTeacher?"":"none"}}'>
     <button bindtap='toEdit'>发布公告</button>
   </view>
 </view>

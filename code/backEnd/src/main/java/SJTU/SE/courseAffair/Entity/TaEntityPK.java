@@ -18,7 +18,7 @@ public class TaEntityPK implements Serializable {
         this.taid = taid;
     }
 
-    @Column(name = "TAGroupID", nullable = false, length = 28)
+    @Column(name = "TAGroupID", nullable = false, length = 29)
     @Id
     public String getTaGroupId() {
         return taGroupId;

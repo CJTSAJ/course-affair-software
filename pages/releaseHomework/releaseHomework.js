@@ -63,7 +63,7 @@ Page({
     console.log(deadline);
     console.log(app.globalData.openGId);
     wx.request({
-      url: 'http://207.148.114.118:8080/hibernateSpringDemo/addHomework',
+      url: 'http://207.148.114.118:8080/courseAffair/addHomework',
       data: {
         content: self.data.homeworkContent,
         openid: app.globalData.openId,

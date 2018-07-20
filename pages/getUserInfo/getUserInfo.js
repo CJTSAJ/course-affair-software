@@ -2,7 +2,7 @@ const app = getApp()
 // pages/getUserInfo.js
 Page({
   data: {
-    openid:'',
+    formId: '',
     name: '',
     studentID: '',
     nameShow: 'none',
@@ -11,6 +11,8 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
+    formId:'',
+    openid: app.globalData.openId,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onShow: function (options) {
@@ -19,12 +21,14 @@ Page({
         url: '/pages/home/home',
       })
     }
-    this.setData({
-      openid: app.globalData.openId
-    })
   },
-  confirm: function () {
+  formSubmit: function (e) {
+    var formId = e.detail.formId;
     var that = this;
+
+    this.setData({
+      formId: formId
+    })
     if(this.data.nameShow == 'none'){
       wx.showModal({
         title: '提示',
@@ -45,21 +49,63 @@ Page({
     }
     else{
       console.log("confirm")
-      wx.reLaunch({
-        url: '/pages/home/home',
-      })
+      
       //向后端发送数据
       var isStudent = false;
       if (that.data.idShow == '') {
         isStudent = true
       }
-      var data = {
+
+      if(isStudent == true){
+        wx.request({
+          url: 'http://207.148.114.118:8080/courseAffair/login',
+          data: {
+            openid: app.globalData.openId,
+            opengid: app.globalData.openGId,
+            name: that.data.name,
+            studentID: that.data.studentID,
+            isStudent: isStudent,
+            formId: that.data.formId
+          },
+          method: 'POST',
+          header: { 'content-type': 'application/json' },
+          success: function (res) {
+            console.log("存储信息成功")
+            app.globalData.identity = "student";
+          },
+          fail: function (error) {
+            console.log("存储信息失败")
+
+          }
+        })
+        
+      }else{
+        //存老师信息
+        wx.request({
+          url: 'http://207.148.114.118:8080/courseAffair/registerTeacher',
+          data:{
+            openid: app.globalData.openId,
+            opengid: app.globalData.openGId,
+            name: that.data.name
+          },
+          method: 'POST',
+          header: { 'content-type': 'application/json' },
+          success:function(res){
+            app.globalData.identity = "teacher";
+          }
+        })
+      }
+
+      wx.reLaunch({
+        url: '/pages/home/home',
+      })
+      /*var data = {
         openid: app.globalData.openId,
         opengid: app.globalData.openGId,
         name: that.data.name,
         studentID: that.data.studentID,
         isStudent: isStudent
-      }
+      }*/
       
     }
     

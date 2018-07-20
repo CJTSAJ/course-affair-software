@@ -6,8 +6,8 @@ page{
 
 .managerSetting{
   margin-top: 50rpx;
-  height: 80rpx;
-  line-height: 70rpx; 
+  height: 120rpx;
+  line-height: 120rpx; 
   background-color: white;
 }
 

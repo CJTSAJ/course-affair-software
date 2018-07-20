@@ -1,0 +1,60 @@
+/* pages/allManager/allManager.wxss */
+.teachers{
+  height: 120rpx;
+  background-color: white;
+  line-height: 120rpx;
+  border-bottom: 1rpx solid #9D9D9D;
+}
+
+.teachers text{
+  margin-left: 40rpx;
+}
+
+.managers{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 120rpx;
+  line-height: 120rpx;
+  border-bottom: 1rpx solid #9D9D9D;
+  background-color: white;
+}
+.allTeachers{
+  border-top: 1rpx solid #9D9D9D;
+}
+
+.allMangers{
+  border-top: 1rpx solid #9D9D9D;
+  border-bottom: 1rpx solid #9D9D9D;
+}
+
+.taName{
+  margin-left: 40rpx;
+}
+
+.deleteTa{
+  height: 60rpx;
+  line-height: 60rpx;
+  background-color: red;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 40rpx;
+}
+
+.addManager{
+  background-color: white;
+  height: 120rpx;
+  line-height: 120rpx;
+}
+
+.addManager image{
+  margin-left: 40rpx;
+  width: 50rpx;
+  height: 50rpx;
+  vertical-align: middle;
+}
+
+.addManager text{
+  margin-left: 40rpx;
+}

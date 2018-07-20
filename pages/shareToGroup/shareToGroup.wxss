@@ -3,8 +3,22 @@
   margin-top: 375rpx;
 }
 
-.shareToGroup button{
-  width: 500rpx;
-  background-color: black;
-  color: white;
+image{
+  margin-top: 150rpx;
+  height: 300rpx;
+  width: 300rpx;
+}
+
+button{
+  margin-top: 150rpx;
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #ffe95c;
+  width: 600rpx;
+  font-weight: 900;
+}
+
+text{
+  color: #cdcdcd;
+  font-size: 30rpx;
 }

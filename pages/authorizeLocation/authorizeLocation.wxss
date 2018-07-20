@@ -1,4 +1,4 @@
-/* pages/authority/authority.wxss */
+/* pages/authorizeLocation/authorizeLocation.wxss */
 button{
   margin-top: 150rpx;
   color: black;

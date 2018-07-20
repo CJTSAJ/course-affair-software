@@ -3,7 +3,8 @@ Page({
   data:{
     allHomework: [],
     grade0: "此作业成绩尚未发布",
-    grade1: "95"
+    grade1: "95",
+    isTeacher: false
   },
   toDetail(){
     wx.navigateTo({
@@ -17,7 +18,7 @@ Page({
     console.log(homeworkID);
 
     wx.request({
-      url: 'http://207.148.114.118:8080/hibernateSpringDemo/getHwGrade',
+      url: 'http://207.148.114.118:8080/courseAffair/getHwGrade',
       data:{
         openid: app.globalData.openId,
         openGId: app.globalData.openGId,
@@ -49,9 +50,15 @@ Page({
     })
   },
   onShow: function(){
+    if(app.globalData.identity == "teacher"){
+      this.setData({
+        isTeacher: true
+      })
+    }
+
     var self = this;
     wx.request({
-      url: 'http://207.148.114.118:8080/hibernateSpringDemo/getHomework',
+      url: 'http://207.148.114.118:8080/courseAffair/getHomework',
       data:{
         openGId: app.globalData.openGId
       },

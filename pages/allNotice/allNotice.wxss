@@ -1,24 +1,39 @@
 .notice{
   overflow: hidden;
-  width: 700rpx;
+  width: 700rpx;  
   height: 300rpx;
   background-color: white;
-  margin-top: 50rpx;
   margin-left: 25rpx;
+  margin-top: 50rpx;
+  border-bottom-right-radius:2em;
+  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+}
+
+.help-info{
+  padding-bottom: 50rpx;
 }
 
 .title{
-  border-bottom: 1rpx solid #D3D3D3;
+  background-color: #ffe95c;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  padding: 10rpx 20rpx;
 }
 
+.title text{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+}
+
+.content{
+  margin-left: 10rpx;
+  padding: 15rpx 35rpx;
+}
 .content text{
   font-size: 20rpx;
-  color: gray;
-  margin-left: 10rpx;
+  color: #555555;
 }
 
 .addNotice{
@@ -27,9 +42,11 @@
 }
 
 .addNotice button{
-  color: white;
-  background-color: black;
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #ffe95c;
   width: 750rpx;
+  font-weight: 900;
 }
 ::-webkit-scrollbar {
   width: 0;

@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/home/home",
+    "pages/allManager/allManager",
     "pages/releaseHomework/releaseHomework",
     "pages/manage/manage",
     "pages/find/find",
     "pages/getUserInfo/getUserInfo",
-    "pages/home/home",
     "pages/allHomework/allHomework",
     "pages/notice/notice",
     "pages/homework/homework",
@@ -16,33 +17,39 @@
     "pages/addNotice/addNotice",
     "pages/allNotice/allNotice",
     "pages/authority/authority",
-    "pages/managerSetting/mangerSetting"
+    "pages/managerSetting/mangerSetting",
+    "pages/authorizeLocation/authorizeLocation",
+    "pages/sign/sign"
   ],
   "tabBar": {
+    "backgroundColor": "white",
+    "borderStyle": "#cdcdcd",
+    "color": "#8a8a8a",
+    "selectedColor": "#2c2c2c",
     "list": [
       {
         "text": "主页",
         "pagePath": "pages/home/home",
         "iconPath": "images/icons/home.png",
-        "selectedIconPath": "images/icons/homeSelect.png"
+        "selectedIconPath": "images/icons/homeS.png"
       },
       {
         "text": "",
         "pagePath": "pages/about/about",
-        "iconPath": "images/icons/add.png",
-        "selectedIconPath": "images/icons/addSelect.png"
+        "iconPath": "images/icons/upload.png",
+        "selectedIconPath": "images/icons/uploadS.png"
       },
       {
         "text": "发现",
         "pagePath": "pages/find/find",
         "iconPath": "images/icons/find.png",
-        "selectedIconPath": "images/icons/findSelect.png"
+        "selectedIconPath": "images/icons/findS.png"
       }
     ]
   },
   "window": {
     "navigationBarTitleText": "课程事务管理",
-    "navigationBarBackgroundColor": "#000000",
-    "navigationBarTextStyle": "white"
+    "navigationBarBackgroundColor": "#ffe95c",
+    "navigationBarTextStyle": "black"
   }
 }

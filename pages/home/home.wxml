@@ -17,6 +17,5 @@
       <text>{{content1}}</text>
     </view>
   </view>
-  <button bindtap='toSetting'>设置</button>
   
 </view>

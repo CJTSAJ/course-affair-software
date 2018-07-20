@@ -11,7 +11,7 @@
     <image src='/images/icons/notice.png'></image>
     <text>公告</text>
   </view>
-  <view class='nav right' bindtap='sign'>
+  <view class='nav right' bindtap='toSign'>
     <image src='/images/icons/sign.png'></image>
     <text>签到</text>
   </view>
@@ -27,10 +27,6 @@
     <image src='/images/icons/manage.png'></image>
     <text>管理</text>
   </view>
-
-  <modal hidden="{{!showModal}}" title="请输入验证码" confirm-text="提交" cancel-text="重置" bindcancel="cancel" bindconfirm="confirm"> 
-    <input type='number' placeholder="签到码" auto-focus/>
-  </modal>
 </view>
 
   

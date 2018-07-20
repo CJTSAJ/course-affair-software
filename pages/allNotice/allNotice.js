@@ -4,7 +4,8 @@ Page({
     allContent: [],
     time0:"2018-6-10 19:17",
     time1: "2018-6-10 20:08",
-    userInfo: null
+    userInfo: null,
+    isTeacher: false
   },
   toDetail:function(){
     wx.navigateTo({
@@ -12,7 +13,7 @@ Page({
     })
   },
   toEdit:function(){
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/addNotice/addNotice',
     })
   },
@@ -20,14 +21,16 @@ Page({
     this.setData({
       userInfo: app.globalData.userInfo
     })
+    if(app.globalData.identity == "teacher"){
+      this.setData({
+        isTeacher: true
+      })
+    }
     var self = this;
     var opengid = app.globalData.openGId;
     console.log("openid:" + opengid);
-    var openidData = {
-      'opengid': opengid
-    }
     wx.request({
-      url: 'http://207.148.114.118:8080/hibernateSpringDemo/hibernate/getNotice',
+      url: 'http://207.148.114.118:8080/courseAffair/hibernate/getNotice',
       data: opengid,
       method: 'POST',
       header: { 'content-type': 'application/json' },
@@ -35,7 +38,6 @@ Page({
         console.log("success:" + res.data);
         console.log("content::" + res.data[0])
         self.setData({
-          
           allContent: res.data
         })
       },

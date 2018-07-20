@@ -1,6 +1,8 @@
 <!--pages/authority/authority.wxml-->
 <view>
-  <view>
+  <view class='container'>
+    <image src='/images/icons/authority.png'></image>
+    <text>该功能授权后才能正常使用</text>
     <button open-type='getUserInfo' bindgetuserinfo='authority'>授权</button>
   </view>
 </view>

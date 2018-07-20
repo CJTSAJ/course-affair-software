@@ -1,3 +1,4 @@
+
 const app = getApp()
 // pages/managerSetting/mangerSetting.js
 Page({
@@ -9,19 +10,17 @@ Page({
     allMember: ['小明', '李华', '小红', '小明', '李华', '小红', '小明', '李华', '小红', '小明', '李华', '小红', '小明', '李华', '小红', '小明', '李华', '小红', '小明', '李华', '小红', '小明', '李华', '小红'],
     selectedMember: []
   },
-
   onShow:function(){
     /*向后端获取该群内所有学生名单*/
     var self = this;
      wx.request({
-       url: 'http://localhost:8080/getStudentByGid',
+       url: 'http://207.148.114.118:8080/courseAffair/getStudentByGid',
        data:{
          opengid: app.globalData.openGId
        },
        method: 'POST',
        header: { 'content-type': 'application/json' },
        success:function(res){
-         console.log(res.data[0]);
          self.setData({
            allMember: res.data
          })
@@ -40,15 +39,17 @@ Page({
     console.log(openidArray);
     
     wx.request({
-      url: 'http://localhost:8080/addManager',
+      url: 'http://207.148.114.118:8080/courseAffair/addManager',
       data: {
         opengid: app.globalData.openGId,
         openidArray: openidArray
       },
       method: 'POST',
       header: { 'content-type': 'application/json' },
-      success:function(){
-
+      success:function(res){
+        wx.navigateBack({
+          delta: 1
+        })
       }
     })
   },

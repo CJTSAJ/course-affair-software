@@ -1,7 +1,4 @@
 /* pages/getUserInfo.wxss */
-page{
-  background-color: #eee
-}
 .userinfo {
   display: flex;
   flex-direction: column;
@@ -10,9 +7,12 @@ page{
 }
 
 .userinfo button{
-  width: 500rpx;
-  background-color: black;
-  color: white;
+  margin-top: 150rpx;
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #ffe95c;
+  width: 600rpx;
+  font-weight: 900;
 }
 
 .name{
@@ -52,4 +52,10 @@ page{
 .setting{
   margin-left: 20rpx;
   margin-top: 40rpx;
+}
+
+.border{
+  width: 690rpx;
+  margin-left: 30rpx;
+  border-bottom: 1rpx solid #cdcdcd;
 }

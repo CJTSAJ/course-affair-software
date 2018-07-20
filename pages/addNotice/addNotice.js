@@ -45,7 +45,7 @@ Page({
       content: content
     }
     wx.request({
-      url: 'http://127.0.0.1:8080/hibernate/addNotice',
+      url: 'http://207.148.114.118:8080/courseAffair/hibernate/addNotice',
       data: {
         openid: id,
         content: content,

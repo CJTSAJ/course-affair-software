@@ -1,0 +1,6 @@
+<!--pages/authorizeLocation/authorizeLocation.wxml-->
+<view class='container'>
+  <image src='/images/icons/authority.png'></image>
+  <text>小程序授权后才能正常使用哦</text>
+  <button open-type="openSetting" bindopensetting="handler">打开授权</button>
+</view>

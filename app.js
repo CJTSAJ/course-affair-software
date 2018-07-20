@@ -51,7 +51,7 @@ App({
                   complete(res) {
                     console.log(res)
                     wx.request({
-                      url: 'http://207.148.114.118:8080/hibernateSpringDemo/decode/decodeGid',
+                      url: 'http://207.148.114.118:8080/courseAffair/decode/decodeGid',
                       data: {
                         encryptedData: res.encryptedData,
                         iv: res.iv,
@@ -63,7 +63,7 @@ App({
                         console.log("返回的opengid:" + res.data.openGId);
                         self.globalData.openGId = res.data.openGId;
                         wx.request({
-                          url: 'http://207.148.114.118:8080/hibernateSpringDemo/getIdentity',
+                          url: 'http://207.148.114.118:8080/courseAffair/getIdentity',
                           data: {
                             openid: self.globalData.openId,
                             opengid: res.data.openGId
@@ -75,7 +75,7 @@ App({
                             console.log("是否存在:" + isExist);
                             if (isExist == "true") {
                               self.globalData.identity = res.data.identity;
-                              wx.redirectTo({
+                              wx.reLaunch({
                                 url: '/pages/home/home',
                               })
                             }
@@ -100,7 +100,6 @@ App({
         }
       }
     });
-
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -120,28 +119,18 @@ App({
             }
           })
         }
-        /*else{
-          wx.redirectTo({
-            url: '/pages/authority/authority'
-          })
-        }*/
       }
     });
   },
 
   onShow: function (options) {
-    console.log("onshow场景值:" + options.scene);
     if (options.scene != 1044) {
       wx.redirectTo({
         url: '/pages/shareToGroup/shareToGroup',
       })
     }
     else{
-      /*等待异步请求*/
       var self = this;
-      /*while (self.globalData.openId == null || self.globalData.sessionKey == null) {
-        continue;
-      }*/
       if(self.globalData.openId != null){
         console.log("self.globalData.openId != null");
         console.log(options.shareTicket)
@@ -149,8 +138,9 @@ App({
           shareTicket: options.shareTicket,
           complete(res) {
             console.log(res)
+            
             wx.request({
-              url: 'http://207.148.114.118:8080/hibernateSpringDemo/decode/decodeGid',
+              url: 'http://207.148.114.118:8080/courseAffair/decode/decodeGid',
               data: {
                 encryptedData: res.encryptedData,
                 iv: res.iv,
@@ -162,7 +152,7 @@ App({
                 console.log("返回的opengid:" + res.data.openGId);
                 self.globalData.openGId = res.data.openGId;
                 wx.request({
-                  url: 'http://207.148.114.118:8080/hibernateSpringDemo/getIdentity',
+                  url: 'http://207.148.114.118:8080/courseAffair/getIdentity',
                   data: {
                     openid: self.globalData.openId,
                     opengid: res.data.openGId
@@ -171,15 +161,16 @@ App({
                   header: { 'content-type': 'application/json' },
                   success: function (res) {
                     var isExist = res.data.isExist;
+                    console.log("hhh" + res.data)
                     console.log("是否存在:" + isExist);
                     if (isExist == "true") {
                       self.globalData.identity = res.data.identity;
-                      wx.redirectTo({
+                      wx.reLaunch({
                         url: '/pages/home/home',
                       })
                     }
                     else {
-                      wx.redirectTo({
+                      wx.reLaunch({
                         url: '/pages/authority/authority',
                       })
                     }
@@ -191,19 +182,6 @@ App({
         })
       }
     }
-    /*if (options.scene == 1044) {
-      console.log("onShow执行")
-      console.log(this.globalData.openId)
-      
-      wx.redirectTo({
-        url: '/pages/getUserInfo/getUserInfo'
-      })
-    }
-    else {
-      wx.redirectTo({
-        url: '/pages/shareToGroup/shareToGroup'
-      })
-    }*/
   },
   getGoupid:function(){
 

@@ -1,5 +1,5 @@
 <view class='container'>
-  <scroll-view scroll-y="true" style='height:1150rpx'>
+  <scroll-view scroll-y="true" style='position: fixed;height:100%'>
   
     <view class='homework' wx:for="{{allHomework}}" wx:for-index="key" wx:for-item="value">
       <view class='title'>
@@ -14,7 +14,7 @@
     </view>
   </scroll-view>
   
-  <view class='releaseHomework'>
+  <view class='releaseHomework' style='display: {{isTeacher?"":"none"}}'>
     <button bindtap='releaseHomework'>发布作业</button>
   </view>
 </view>

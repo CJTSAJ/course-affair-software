@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import SJTU.SE.courseAffair.Dao.FormRepository;
 import SJTU.SE.courseAffair.Dao.StudentRepository;
+import SJTU.SE.courseAffair.Dao.TeacherRepository;
+import SJTU.SE.courseAffair.Entity.FormEntity;
 import SJTU.SE.courseAffair.Entity.StudentEntity;
+import SJTU.SE.courseAffair.Entity.TeacherEntity;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -22,6 +25,8 @@ public class InformationController {
     private StudentRepository studentRepository;
     @Autowired
     private FormRepository formRepository;
+    @Autowired
+    private TeacherRepository teacherRepository;
     @CrossOrigin
     @RequestMapping(value="/getStudentByGid",method=RequestMethod.POST)
     public JSONArray getStudentByGid(@RequestBody JSONObject data) {
@@ -38,5 +43,42 @@ public class InformationController {
     	}
     	
     	return josnArray;
+    }
+    
+    @CrossOrigin
+    @RequestMapping(value="/login",method=RequestMethod.POST)
+    public void saveInfo(@RequestBody JSONObject data) {
+        String openid = data.getString("openid");
+        String opengid = data.getString("opengid");
+        String name = data.getString("name");
+        String studentID = data.getString("studentID");
+        String formid = data.getString("formId");
+        StudentEntity stu = new StudentEntity();
+        stu.setStudentId(openid);
+        stu.setStudentGroupId(opengid);
+        stu.setSname(name);
+        stu.setSno(studentID);
+        studentRepository.save(stu);
+        if (!formid.contains("mock")) {
+            FormEntity form = new FormEntity();
+            form.setStuId(openid);
+
+            form.setFormId(formid);
+            formRepository.save(form);
+        }
+    }
+    
+    @CrossOrigin
+    @RequestMapping(value="/registerTeacher",method=RequestMethod.POST)
+    public void registerTeacher(@RequestBody JSONObject data) {
+    	String openid = data.getString("openid");
+    	String opengid = data.getString("opengid");
+    	String name = data.getString("name");
+    	
+    	TeacherEntity teacher = new TeacherEntity();
+    	teacher.setTeacherGroupId(opengid);
+    	teacher.setTeacherId(openid);
+    	teacher.setTeacherName(name);
+    	teacherRepository.save(teacher);
     }
 }

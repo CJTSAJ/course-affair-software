@@ -16,6 +16,11 @@
     </parent>
     <dependencies>
     	<dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
+    	<dependency>
     		<groupId>myself-lib</groupId>
     		<artifactId>json-lib</artifactId>
     		<version>1.0.0</version>
@@ -81,7 +86,7 @@
     </dependencies>
 
     <build>
-        <finalName>hibernateSpringDemo</finalName>
+        <finalName>courseAffair</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

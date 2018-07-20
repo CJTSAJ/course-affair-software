@@ -41,7 +41,7 @@ public class IdentityController {
 		List<StudentEntity> student = studentRepository.findByStudentIdAndStudentGroupId(openid, opengid);
 		List<TaEntity> ta = taRepository.findByTaidAndTaGroupId(openid, opengid);
 		List<TeacherEntity> teacher = teacherRepository.findByTeacherIdAndTeacherGroupId(openid, opengid);
-		
+		System.out.println("teacher" + teacher.size());
 		JSONObject json = new JSONObject();
 		if(student.size() == 1) {
 			json.put("isExist", "true");

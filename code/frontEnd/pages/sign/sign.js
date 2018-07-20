@@ -92,11 +92,14 @@ Page({
             wx.showToast({
               title: '成功',
               icon: 'success',
+              duration: 2000,
               mask: false,
               success: function () {
-                wx.navigateBack({
-                  delta: 1
-                })
+                setTimeout(function () {
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                },2000)
               }
             })
           }

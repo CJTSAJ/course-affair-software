@@ -12,7 +12,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.0.8",
-	"appid": "wxfb56f7506a576cf3",
+	"appid": "touristappid",
 	"projectname": "test",
 	"isGameTourist": false,
 	"condition": {
@@ -33,18 +33,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": -1,
 			"list": [
 				{
-					"id": 0,
-					"name": "groupId",
-					"pathName": "pages/home/home",
+					"id": -1,
+					"name": "groupid",
+					"pathName": "pages/shareToGroup/shareToGroup",
 					"query": "",
 					"scene": "1044",
 					"shareInfo": {
-						"groupName": "测试模拟群4",
-						"shareName": "Pu-1OslUPHzWsQicH60h_YRI8g-tLTmVt9m6-jMKsPQ@cr4dev",
-						"shareKey": "dw6-jY6hTHFSs-xGme1JqLnOHkNb-uxAVH2OhLL8SX-xak7EbfQFuIVbI7wxp2Xw0jvnRJ3omSjmyHwiE3JL2w~~"
+						"groupName": "测试模拟群1",
+						"shareName": "VX4YobO0kAvZrvoHCwdza0D1xX7clY0c_iJKEXJeat8@cr4dev",
+						"shareKey": "tRPn1cSqwKRoSaww61dFB6FmOwLqbuwK9JMQT_pXXjIhYdvHEG6Jsrk7B6oFBbmiebseLY-laBbPBwRyfVXICw~~"
 					}
 				}
 			]

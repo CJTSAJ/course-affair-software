@@ -1,3 +1,4 @@
+
 const app = getApp()
 // pages/managerSetting/mangerSetting.js
 Page({
@@ -9,7 +10,6 @@ Page({
     allMember: ['小明', '李华', '小红', '小明', '李华', '小红', '小明', '李华', '小红', '小明', '李华', '小红', '小明', '李华', '小红', '小明', '李华', '小红', '小明', '李华', '小红', '小明', '李华', '小红'],
     selectedMember: []
   },
-
   onShow:function(){
     /*向后端获取该群内所有学生名单*/
     var self = this;

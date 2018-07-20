@@ -30,10 +30,10 @@ Page({
     this.setData({
       showModal: false
     })
-  },
+  }/*,
   onShow:function(){
     wx.redirectTo({
       url: '/pages/authorizeLocation/authorizeLocation',
     })
-  }
+  }*/
 })

@@ -11,6 +11,8 @@ Page({
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
+    formId:'',
+    openid: app.globalData.openId,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   onShow: function (options) {

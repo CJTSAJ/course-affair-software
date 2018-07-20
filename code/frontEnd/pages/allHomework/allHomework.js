@@ -4,7 +4,7 @@ Page({
     allHomework: [],
     grade0: "此作业成绩尚未发布",
     grade1: "95",
-    isTeacher: true
+    isTeacher: false
   },
   toDetail(){
     wx.navigateTo({

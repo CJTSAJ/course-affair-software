@@ -91,6 +91,11 @@ Page({
       signCode: e.detail.value
     })
   },
+  toManage:function(){
+    wx.navigateTo({
+      url: '/pages/manage/manage',
+    })
+  },
   modalinput: function () {
     this.setData({
       hiddenmodalput: !this.data.hiddenmodalput

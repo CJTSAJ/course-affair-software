@@ -8,7 +8,7 @@ App({
     sessionKey: null,
     openGId: null
   },
-  /*onLaunch: function (options) {
+  onLaunch: function (options) {
     var self = this;
     console.log(options.scene)
     wx.login({
@@ -100,7 +100,6 @@ App({
         }
       }
     });
-
     // 获取用户信息
     wx.getSetting({
       success: res => {
@@ -183,7 +182,7 @@ App({
         })
       }
     }
-  },*/
+  },
   getGoupid:function(){
 
   }

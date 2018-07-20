@@ -1,7 +1,5 @@
 /* pages/sign/sign.wxss */
-page{
-  background-color: #FFFFF0;
-}
+
 .content{
   display: flex;
   justify-content: space-around;
@@ -26,7 +24,7 @@ page{
   margin-top: 200rpx;
   color: black;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  background-color: #FFFF37;
+  background-color: #ffe95c;
   width: 600rpx;
   font-weight: 900;
 }

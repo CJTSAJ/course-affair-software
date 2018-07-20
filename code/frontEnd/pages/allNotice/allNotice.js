@@ -13,7 +13,7 @@ Page({
     })
   },
   toEdit:function(){
-    wx.redirectTo({
+    wx.navigateTo({
       url: '/pages/addNotice/addNotice',
     })
   },

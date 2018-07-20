@@ -64,7 +64,6 @@ textarea{
   background-color: #FFF68F;
   box-shadow:8rpx 8rpx 20rpx 3rpx #ABABAB;
 }
-
 .release::after{
   border:none;
 }

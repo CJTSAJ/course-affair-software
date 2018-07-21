@@ -15,6 +15,7 @@ public class HomeworkEntity {
 
     @Id
     @Column(name = "HomeworkID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getHomeworkId() {
         return homeworkId;
     }
@@ -24,7 +25,7 @@ public class HomeworkEntity {
     }
 
     @Basic
-    @Column(name = "homework_GroupID", nullable = true, length = 28)
+    @Column(name = "homework_GroupID", nullable = true, length = 29)
     public String getHomeworkGroupId() {
         return homeworkGroupId;
     }

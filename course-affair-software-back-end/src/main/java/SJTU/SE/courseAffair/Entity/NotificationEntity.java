@@ -14,7 +14,7 @@ public class NotificationEntity {
 
     @Id
     @Column(name = "notificationID", nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public int getNotificationId() {
         return notificationId;
     }
@@ -24,7 +24,7 @@ public class NotificationEntity {
     }
 
     @Basic
-    @Column(name = "notification_GroupID", nullable = true, length = 28)
+    @Column(name = "notification_GroupID", nullable = true, length = 29)
     public String getNotificationGroupId() {
         return notificationGroupId;
     }

@@ -20,7 +20,7 @@ public class VoteEntity {
     }
 
     @Basic
-    @Column(name = "vote_GroupID", nullable = true, length = 28)
+    @Column(name = "vote_GroupID", nullable = true, length = 29)
     public String getVoteGroupId() {
         return voteGroupId;
     }

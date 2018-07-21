@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class CorrectAnswerEntity {
     private int testId;
     private int questionId;
-    private String correctAns;
+    private int correctAns;
 
     @Id
     @Column(name = "testID", nullable = false)
@@ -31,12 +31,12 @@ public class CorrectAnswerEntity {
     }
 
     @Basic
-    @Column(name = "correct_Ans", nullable = true, length = 8)
-    public String getCorrectAns() {
+    @Column(name = "correct_Ans", nullable = false)
+    public int getCorrectAns() {
         return correctAns;
     }
 
-    public void setCorrectAns(String correctAns) {
+    public void setCorrectAns(int correctAns) {
         this.correctAns = correctAns;
     }
 
@@ -49,7 +49,7 @@ public class CorrectAnswerEntity {
 
         if (testId != that.testId) return false;
         if (questionId != that.questionId) return false;
-        if (correctAns != null ? !correctAns.equals(that.correctAns) : that.correctAns != null) return false;
+        if (correctAns != that.correctAns) return false;
 
         return true;
     }
@@ -58,7 +58,7 @@ public class CorrectAnswerEntity {
     public int hashCode() {
         int result = testId;
         result = 31 * result + questionId;
-        result = 31 * result + (correctAns != null ? correctAns.hashCode() : 0);
+        result = 31 * result + correctAns;
         return result;
     }
 }

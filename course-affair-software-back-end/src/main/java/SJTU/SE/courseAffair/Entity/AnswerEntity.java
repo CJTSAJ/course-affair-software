@@ -10,7 +10,8 @@ public class AnswerEntity {
     private String studentGroupId;
     private int testId;
     private int questionId;
-    private String answer;
+    private int answer;
+    private boolean ifRight;
 
     @Id
     @Column(name = "studentID", nullable = false, length = 28)
@@ -23,7 +24,7 @@ public class AnswerEntity {
     }
 
     @Id
-    @Column(name = "student_GroupID", nullable = false, length = 28)
+    @Column(name = "student_GroupID", nullable = false, length = 29)
     public String getStudentGroupId() {
         return studentGroupId;
     }
@@ -53,14 +54,20 @@ public class AnswerEntity {
     }
 
     @Basic
-    @Column(name = "answer", nullable = true, length = 8)
-    public String getAnswer() {
+    @Column(name = "answer", nullable = true)
+    public int getAnswer() {
         return answer;
     }
 
-    public void setAnswer(String answer) {
+    public void setAnswer(int answer) {
         this.answer = answer;
     }
+
+    @Basic
+    @Column(name = "ifRight", nullable = true)
+    public boolean getIfRight() {return ifRight;}
+
+    public void setIfRight(boolean ifRight) {this.ifRight = ifRight;}
 
     @Override
     public boolean equals(Object o) {
@@ -74,7 +81,8 @@ public class AnswerEntity {
         if (studentId != null ? !studentId.equals(that.studentId) : that.studentId != null) return false;
         if (studentGroupId != null ? !studentGroupId.equals(that.studentGroupId) : that.studentGroupId != null)
             return false;
-        if (answer != null ? !answer.equals(that.answer) : that.answer != null) return false;
+        if (answer != that.answer) return false;
+        if (ifRight != that.ifRight) return false;
 
         return true;
     }
@@ -85,7 +93,8 @@ public class AnswerEntity {
         result = 31 * result + (studentGroupId != null ? studentGroupId.hashCode() : 0);
         result = 31 * result + testId;
         result = 31 * result + questionId;
-        result = 31 * result + (answer != null ? answer.hashCode() : 0);
+        result = 31 * result + answer;
+        result = 31 * result + (ifRight ? 1 : 0);
         return result;
     }
 }

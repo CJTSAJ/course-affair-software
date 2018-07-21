@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class TaEntity {
     private String taid;
     private String taGroupId;
+    private String taName;
 
     @Id
     @Column(name = "TAID", nullable = false, length = 28)
@@ -20,13 +21,23 @@ public class TaEntity {
     }
 
     @Id
-    @Column(name = "TAGroupID", nullable = false, length = 28)
+    @Column(name = "TAGroupID", nullable = false, length = 29)
     public String getTaGroupId() {
         return taGroupId;
     }
 
     public void setTaGroupId(String taGroupId) {
         this.taGroupId = taGroupId;
+    }
+    
+    @Basic
+    @Column(name = "TAName", nullable = true, length = 20)
+    public String getTaName() {
+    	return taName;
+    }
+    
+    public void setTaName(String taName) {
+    	this.taName = taName;
     }
 
     @Override

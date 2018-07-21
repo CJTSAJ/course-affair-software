@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class TeacherEntity {
     private String teacherId;
     private String teacherGroupId;
+    private String teacherName;
 
     @Id
     @Column(name = "teacherID", nullable = false, length = 28)
@@ -20,13 +21,23 @@ public class TeacherEntity {
     }
 
     @Id
-    @Column(name = "teacher_GroupID", nullable = false, length = 28)
+    @Column(name = "teacher_GroupID", nullable = false, length = 29)
     public String getTeacherGroupId() {
         return teacherGroupId;
     }
 
     public void setTeacherGroupId(String teacherGroupId) {
         this.teacherGroupId = teacherGroupId;
+    }
+    
+    @Basic
+    @Column(name = "TAName", nullable = true, length = 20)
+    public String getTeacherName() {
+    	return teacherName;
+    }
+    
+    public void setTeacherName(String teacherName) {
+    	this.teacherName = teacherName;
     }
 
     @Override

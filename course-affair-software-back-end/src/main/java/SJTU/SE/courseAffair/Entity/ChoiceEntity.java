@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class ChoiceEntity {
     private int testId;
     private int questionId;
-    private String choiceNo;
+    private int choiceNo;
     private String choiceContent;
 
     @Id
@@ -32,12 +32,12 @@ public class ChoiceEntity {
     }
 
     @Id
-    @Column(name = "choice_No", nullable = false, length = 1)
-    public String getChoiceNo() {
+    @Column(name = "choice_No", nullable = false )
+    public int getChoiceNo() {
         return choiceNo;
     }
 
-    public void setChoiceNo(String choiceNo) {
+    public void setChoiceNo(int choiceNo) {
         this.choiceNo = choiceNo;
     }
 
@@ -60,7 +60,7 @@ public class ChoiceEntity {
 
         if (testId != that.testId) return false;
         if (questionId != that.questionId) return false;
-        if (choiceNo != null ? !choiceNo.equals(that.choiceNo) : that.choiceNo != null) return false;
+        if (choiceNo != that.choiceNo) return false;
         if (choiceContent != null ? !choiceContent.equals(that.choiceContent) : that.choiceContent != null)
             return false;
 
@@ -71,7 +71,7 @@ public class ChoiceEntity {
     public int hashCode() {
         int result = testId;
         result = 31 * result + questionId;
-        result = 31 * result + (choiceNo != null ? choiceNo.hashCode() : 0);
+        result = 31 * result + choiceNo;
         result = 31 * result + (choiceContent != null ? choiceContent.hashCode() : 0);
         return result;
     }

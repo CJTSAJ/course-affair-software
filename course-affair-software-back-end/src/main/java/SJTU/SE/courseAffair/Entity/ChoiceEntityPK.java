@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class ChoiceEntityPK implements Serializable {
     private int testId;
     private int questionId;
-    private String choiceNo;
+    private int choiceNo;
 
     @Column(name = "testID", nullable = false)
     @Id
@@ -29,13 +29,13 @@ public class ChoiceEntityPK implements Serializable {
         this.questionId = questionId;
     }
 
-    @Column(name = "choiceNo", nullable = false, length = 1)
+    @Column(name = "choiceNo", nullable = false)
     @Id
-    public String getChoiceNo() {
+    public int getChoiceNo() {
         return choiceNo;
     }
 
-    public void setChoiceNo(String choiceNo) {
+    public void setChoiceNo(int choiceNo) {
         this.choiceNo = choiceNo;
     }
 
@@ -48,7 +48,7 @@ public class ChoiceEntityPK implements Serializable {
 
         if (testId != that.testId) return false;
         if (questionId != that.questionId) return false;
-        if (choiceNo != null ? !choiceNo.equals(that.choiceNo) : that.choiceNo != null) return false;
+        if (choiceNo != that.choiceNo) return false;
 
         return true;
     }
@@ -57,7 +57,7 @@ public class ChoiceEntityPK implements Serializable {
     public int hashCode() {
         int result = testId;
         result = 31 * result + questionId;
-        result = 31 * result + (choiceNo != null ? choiceNo.hashCode() : 0);
+        result = 31 * result + choiceNo;
         return result;
     }
 }

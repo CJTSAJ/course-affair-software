@@ -8,4 +8,5 @@ import java.util.List;
 public interface NotificationRepository extends JpaRepository<NotificationEntity, Integer> {
     public List<NotificationEntity> getAllBy();
     public NotificationEntity findByNotificationId(int Id);
+    public List<NotificationEntity> findByNotificationGroupId(String groupId);
 }

@@ -1,0 +1,24 @@
+page{
+  background-color: #FFFFF0;
+}
+
+.information{
+  background-color: white;
+  margin-top: 50rpx;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
+  overflow: hidden;
+  border-bottom-right-radius:2em;
+  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+}
+
+.content{
+  margin-top: 25rpx;
+  margin-left: 10rpx;
+  padding: 15rpx 35rpx;
+  margin-bottom: 50rpx;
+}
+.content text{
+  font-size: 35rpx;
+  color: #555555;
+}

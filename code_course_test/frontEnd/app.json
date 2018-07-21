@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/getUserInfo/getUserInfo",
+    "pages/home/home",
+    "pages/allHomework/allHomework",
+    "pages/notice/notice",
+    "pages/homework/homework",
+    "pages/find/find",
+    "pages/person/person",
+    "pages/about/about",
+    "pages/weekly/weekly",
+    "pages/locationTest/locationTest",
+    "pages/shareToGroup/shareToGroup",
+    "pages/addNotice/addNotice",
+    "pages/allNotice/allNotice",
+    "pages/releaseHomework/releaseHomework",
+    "pages/test/test",
+    "pages/oneTest/oneTest",
+    "pages/oneQuestion/oneQuestion",
+    "pages/testResult/testResult",
+    "pages/questionResult/questionResult",
+    "pages/editTest/editTest",
+    "pages/editQuestion/editQuestion"
+  ],
+  "tabBar": {
+    "backgroundColor": "#FFF8DC",
+    "borderStyle": "white",
+    "color": "#8a8a8a",
+    "selectedColor": "#2c2c2c",
+    "list": [
+      {
+        "text": "主页",
+        "pagePath": "pages/home/home",
+        "iconPath": "images/icons/homepage.png",
+        "selectedIconPath": "images/icons/homepageS.png"
+      },
+      {
+        "text": "上传",
+        "pagePath": "pages/about/about",
+        "iconPath": "images/icons/upload.png",
+        "selectedIconPath": "images/icons/uploadS.png"
+      },
+      {
+        "text": "更多",
+        "pagePath": "pages/find/find",
+        "iconPath": "images/icons/more.png",
+        "selectedIconPath": "images/icons/moreS.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarTitleText": "课程事务管理",
+    "navigationBarBackgroundColor": "#FFFFF0",
+    "navigationBarTextStyle": "black"
+  }
+}

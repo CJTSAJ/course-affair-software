@@ -1,0 +1,122 @@
+/* pages/testResult/testResult.wxss */
+
+.title{
+  margin-top: 50rpx;
+  margin-bottom: 30rpx;
+  margin-left: 25rpx;
+  padding-bottom: 25rpx;
+  width: 700rpx;
+  overflow: hidden;
+  background-color:  #FFF8DC;
+  border-bottom-right-radius:2em;
+  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+}
+
+.testName{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 900rpx;
+  font-size: xx-large;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.grade{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 900rpx;
+  font-size: large;
+  color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.question{
+  width: 650rpx;
+  background-color: white;
+  margin-left: 50rpx;
+  margin-top: 50rpx;
+  padding-bottom: 20rpx;
+  overflow: hidden;
+  border-bottom-right-radius:2em;
+  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+}
+
+.questionTitle{
+  background-color: #FFF8DC;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 20rpx;
+}
+
+.questionTitle text{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+}
+.questionTitleWrong{
+  background-color: #FFEC8B;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 20rpx;
+}
+
+.questionTitleWrong text{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+}
+
+
+.choose{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.correctAnswer{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  color: red;
+}
+
+.questionCon{
+  margin-left: 10rpx;
+  padding: 15rpx 35rpx;
+}
+.questionCon text{
+  font-size: 35rpx;
+  display: flex;
+  flex-direction: row;
+  color: #555555;
+}
+
+.tips{
+  font-size: small;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #D4D4D4;
+}
+
+.submit{
+  position:fixed; 
+  bottom:0;
+}
+
+.submit button{
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #FFF8DC;
+  width: 750rpx;
+  font-weight: 900;
+}
+
+.submit button::after{
+  border:none;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

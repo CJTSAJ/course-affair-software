@@ -108,7 +108,7 @@ Page({
       let ifNull = -1;
       console.log(isNaN(this.data.choiceContent[0]));
       for (var i in this.data.choiceContent) {
-        if (this.data.choiceContent[i].length == 0) {
+        if (this.data.choiceContent[i].length == 0 || isNaN(this.data.choiceContent[i])) {
           ifNull = i;
           break;
         }
@@ -130,12 +130,14 @@ Page({
       else {
         wx.showModal({
           content: '选项' + this.data.choiceHead[ifNull] + '为空',
+          showCancel: false
         })
       }
     }
     else{
       wx.showModal({
         content: '未确定正确选项',
+        showCancel: false
       })
     }
   }

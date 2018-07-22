@@ -100,6 +100,21 @@ Page({
     return this.data.questionsContent[key]
   },
 
+
+  submitConfirm: function () {
+    var self = this;
+    wx.showModal({
+      content: '确定提交答案(答案不可重复提交)？',
+      success: function (res) {
+        if (res.confirm) {
+          console.log('用户点击确定');
+          self.submit();
+        }
+      }
+    })
+  },
+
+
   submit:function(){
     var self = this;
     if(self.data.state == 1){

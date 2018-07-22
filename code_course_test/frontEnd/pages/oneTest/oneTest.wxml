@@ -24,7 +24,7 @@
   </scroll-view>
 
   <view class='submit'>
-    <button bindtap='submit'>提交答案</button>
+    <button bindtap='submitConfirm'>提交答案</button>
   </view>
 
 </view>

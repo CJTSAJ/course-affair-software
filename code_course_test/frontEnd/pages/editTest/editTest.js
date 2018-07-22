@@ -102,31 +102,60 @@ Page({
     this.setData({ time: e.detail.value });
   },
   
-  submit: function(e) {
-    wx.request({
-      url: 'http://127.0.0.1:8080/submitTestEdit',
-      data:{
-        openGid: app.globalData.openGId,
-        titleContent: this.data.titleContent,
-        startTime: this.data.startTime,
-        time: this.data.time + ":00",
-        questionContent: this.data.questionContent,
-        choiceContent: this.data.choiceContent,
-        correctAnswer: this.data.correctAnswer,
-      },
-      method: 'POST',
-      header: { 'content-type': 'application/json' },
+  submitConfirm: function(){
+    var self = this;
+    wx.showModal({
+      content: '确定提交此次编辑？',
       success: function(res){
-        console.log(res.data);
-        wx.showModal({
-          content: '测试上传成功',
-        })
-      },
-      fail: function (error) {
-        wx.showModal({
-          content: '测试上传失败',
-        })
+        if (res.confirm) {
+          console.log('用户点击确定');
+          self.submit();
+        }
       }
     })
+  },
+
+  submit: function() {
+    if (app.globalData.openGId.length != 29){
+      wx.showModal({
+        content: "缺少openGId",
+        showCancel: false
+      })
+    }
+    else if (this.data.titleContent == null){
+      wx.showModal({
+        content: "缺少测试标题",
+        showCancel: false
+      })
+    }
+    else{
+      wx.request({
+        url: 'http://127.0.0.1:8080/submitTestEdit',
+        data: {
+          openGid: app.globalData.openGId,
+          titleContent: this.data.titleContent,
+          startTime: this.data.startTime,
+          time: this.data.time + ":00",
+          questionContent: this.data.questionContent,
+          choiceContent: this.data.choiceContent,
+          correctAnswer: this.data.correctAnswer,
+        },
+        method: 'POST',
+        header: { 'content-type': 'application/json' },
+        success: function (res) {
+          console.log(res.data);
+          wx.showModal({
+            content: res.data,
+            showCancel: false
+          })
+        },
+        fail: function (error) {
+          wx.showModal({
+            content: '测试上传失败',
+            showCancel: false
+          })
+        }
+      })
+    }
   },
 })

@@ -13,6 +13,7 @@ import javax.xml.crypto.Data;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -50,6 +51,7 @@ public class TestController {
             arrayList.add(String.valueOf(temp.getTestId()));
             Json.add(JSONArray.fromObject(arrayList));
         }
+        Collections.reverse(Json);
         return JSONArray.fromObject(Json.toArray());
     }
 
@@ -149,6 +151,12 @@ public class TestController {
         String startTime = data.getString("startTime");
         String time = data.getString("time");
         String titleContent = data.getString("titleContent");
+        if(testGroupId == null){
+            return "缺少GroupId";
+        }
+        if(titleContent == null){
+            return "缺少标题";
+        }
 
         System.out.println(titleContent);
         System.out.println(startTime);
@@ -180,24 +188,47 @@ public class TestController {
             QuestionEntity questionEntity = new QuestionEntity();
             questionEntity.setTestId(testId);
             questionEntity.setPoint(100/questionContent.size());
+            System.out.println(questionContent.getString(i));
+            System.out.println(questionContent.getString(i).length());
+            if(questionContent.getString(i).length() == 0 || questionContent.getString(i).equals("null")){
+                testRepository.delete(testEntity);
+                return "第"+(i+1)+"个问题内容为空";
+            }
             questionEntity.setQuestionContent(questionContent.getString(i));
             questionEntity.setQuestionId(i);
-            questionRepository.save(questionEntity);
+            System.out.println(choiceContent.getString(i));
+            if(choiceContent.getString(i).equals("null")){
+                testRepository.delete(testEntity);
+                return "第"+(i+1)+"个问题缺少选项";
+            }
+            List<ChoiceEntity> choiceEntityList = new ArrayList<ChoiceEntity>();
             for(int j = 0; j < choiceContent.getJSONArray(i).size(); j++){
                 ChoiceEntity choiceEntity = new ChoiceEntity();
                 choiceEntity.setChoiceNo(j);
                 choiceEntity.setQuestionId(i);
                 choiceEntity.setTestId(testId);
+                if(choiceContent.getJSONArray(i).getString(j).equals("null")){
+                    testRepository.delete(testEntity);
+                    return "第"+(i+1)+"个问题存在选项内容为空";
+                }
                 choiceEntity.setChoiceContent(choiceContent.getJSONArray(i).getString(j));
-                choiceRepository.save(choiceEntity);
+                choiceEntityList.add(choiceEntity);
             }
             CorrectAnswerEntity correctAnswerEntity = new CorrectAnswerEntity();
             correctAnswerEntity.setTestId(testId);
             correctAnswerEntity.setQuestionId(i);
+            if(correctAnswer.getString(i).equals("-1")){
+                testRepository.delete(testEntity);
+                return "第"+(i+1)+"个问题未确定选项";
+            }
             correctAnswerEntity.setCorrectAns(Integer.parseInt(correctAnswer.getString(i)));
+            for(ChoiceEntity choiceEntityTemp : choiceEntityList){
+                choiceRepository.save(choiceEntityTemp);
+            }
+            questionRepository.save(questionEntity);
             correctAnswerRepository.save(correctAnswerEntity);
         }
-        return "success";
+        return "测试上传成功";
     }
 
     @CrossOrigin

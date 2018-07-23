@@ -1,17 +1,16 @@
 package SJTU.SE.courseAffair.Entity;
 
+
 import javax.persistence.*;
 
 @Entity
-@Table(name = "Answer", schema = "course_affair_DB")
-@IdClass(AnswerEntityPK.class)
-public class AnswerEntity {
+@Table(name = "Test_Grade", schema = "course_affair_DB")
+@IdClass(TestGradeEntityPK.class)
+public class TestGradeEntity {
     private String studentId;
     private String studentGroupId;
     private int testId;
-    private int questionId;
-    private int answer;
-    private boolean ifRight;
+    private int grade;
 
     @Id
     @Column(name = "studentID", nullable = false, length = 28)
@@ -22,6 +21,7 @@ public class AnswerEntity {
     public void setStudentId(String studentId) {
         this.studentId = studentId;
     }
+
 
     @Id
     @Column(name = "student_GroupID", nullable = false, length = 29)
@@ -43,58 +43,41 @@ public class AnswerEntity {
         this.testId = testId;
     }
 
-    @Id
-    @Column(name = "questionID", nullable = false)
-    public int getQuestionId() {
-        return questionId;
-    }
-
-    public void setQuestionId(int questionId) {
-        this.questionId = questionId;
-    }
-
     @Basic
-    @Column(name = "answer", nullable = true)
-    public int getAnswer() {
-        return answer;
+    @Column(name = "grade", nullable = true)
+    public int getGrade() {
+        return grade;
     }
 
-    public void setAnswer(int answer) {
-        this.answer = answer;
+    public void setGrade(int grade) {
+        this.grade = grade;
     }
-
-    @Basic
-    @Column(name = "ifRight", nullable = true)
-    public boolean getIfRight() {return ifRight;}
-
-    public void setIfRight(boolean ifRight) {this.ifRight = ifRight;}
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        AnswerEntity that = (AnswerEntity) o;
+        TestGradeEntity that = (TestGradeEntity) o;
 
         if (testId != that.testId) return false;
-        if (questionId != that.questionId) return false;
         if (studentId != null ? !studentId.equals(that.studentId) : that.studentId != null) return false;
         if (studentGroupId != null ? !studentGroupId.equals(that.studentGroupId) : that.studentGroupId != null)
             return false;
-        if (answer != that.answer) return false;
-        if (ifRight != that.ifRight) return false;
+        if (grade != that.grade) return false;
 
         return true;
     }
+
 
     @Override
     public int hashCode() {
         int result = studentId != null ? studentId.hashCode() : 0;
         result = 31 * result + (studentGroupId != null ? studentGroupId.hashCode() : 0);
         result = 31 * result + testId;
-        result = 31 * result + questionId;
-        result = 31 * result + answer;
-        result = 31 * result + (ifRight ? 1 : 0);
+        result = 31 * result + grade;
         return result;
     }
+
+
 }

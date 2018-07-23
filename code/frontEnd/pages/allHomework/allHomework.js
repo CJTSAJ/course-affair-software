@@ -50,7 +50,7 @@ Page({
     })
   },
   onShow: function(){
-    if(app.globalData.identity == "teacher"){
+    if(app.globalData.identity != "student"){
       this.setData({
         isTeacher: true
       })

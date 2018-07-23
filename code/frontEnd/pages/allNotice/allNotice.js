@@ -21,7 +21,7 @@ Page({
     this.setData({
       userInfo: app.globalData.userInfo
     })
-    if(app.globalData.identity == "teacher"){
+    if(app.globalData.identity != "student"){
       this.setData({
         isTeacher: true
       })

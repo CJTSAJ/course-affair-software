@@ -16,7 +16,7 @@
     <text>签到</text>
   </view>
   <view class='nav left'>
-    <image src='/images/icons/test.png'></image>
+    <image src='/images/icons/test.png' bindtap='toTest'></image>
     <text>测验</text>
   </view>
   <view class='nav right' bindtap='toHomework'>

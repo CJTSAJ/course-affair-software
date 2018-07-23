@@ -109,7 +109,7 @@ Page({
     console.log(signCode);
   },
   onShow:function(){
-    if(app.globalData.identity == "teacher"){
+    if(app.globalData.identity != "student"){
       this.setData({
         buttonText: "发起签到"
       })

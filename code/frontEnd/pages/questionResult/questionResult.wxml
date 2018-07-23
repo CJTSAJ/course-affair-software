@@ -1,0 +1,21 @@
+<!--pages/questionResult/questionResult.wxml-->
+<view class='container'>
+  <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
+  <view class="question">
+    <view class = 'questionTitle'>
+      <text>第{{questionId + 1}}题</text>
+      <text>
+        <text>我的选择：</text>
+        <text class = 'choose' wx:if="{{wrongChoose == -1}}">未作答</text>
+        <text class = 'choose' wx:else>{{studentChoose}}</text>
+      </text>
+    </view>
+    <view class="questionContent">{{content}}</view>
+  </view>
+  <view wx:for="{{choiceContent}}" wx:for-index="key" wx:for-item="value">
+    <button class="chooseCorrect"  wx:if="{{value.choiceNo == correctAnswer}}">{{value.choiceLetter}} : {{value.choiceCo}}</button>
+    <button class="chooseWrong" wx:elif="{{value.choiceNo == wrongChoose}}">{{value.choiceLetter}} : {{value.choiceCo}}</button>
+    <button class="chooseNormal" wx:else >{{value.choiceLetter}} : {{value.choiceCo}}</button>
+  </view>
+  </scroll-view>
+</view>

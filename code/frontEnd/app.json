@@ -19,7 +19,14 @@
     "pages/authority/authority",
     "pages/managerSetting/mangerSetting",
     "pages/authorizeLocation/authorizeLocation",
-    "pages/sign/sign"
+    "pages/sign/sign",
+    "pages/test/test",
+    "pages/testResult/testResult",
+    "pages/questionResult/questionResult",
+    "pages/oneTest/oneTest",
+    "pages/oneQuestion/oneQuestion",
+    "pages/editQuestion/editQuestion",
+    "pages/editTest/editTest"
   ],
   "tabBar": {
     "backgroundColor": "white",

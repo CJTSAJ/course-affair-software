@@ -31,6 +31,12 @@ Page({
       url: '/pages/sign/sign',
     })
   },
+
+  toTest:function(){
+    wx.navigateTo({
+      url: '/pages/test/test',
+    })
+  },
   
   onShow: function(){
     

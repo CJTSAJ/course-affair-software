@@ -31,7 +31,11 @@ Page({
     })
     wx.request({
       url: 'http://127.0.0.1:8080/getTestDetail',
-      data: parseInt(self.data.testId),
+      data: {
+        testId: parseInt(self.data.testId),
+        student_groupId: app.globalData.openGId,
+        studentId: app.globalData.openId,
+      },
       method: 'POST',
       header: { 'content-type': 'application/json' },
       success: function (res) {
@@ -44,8 +48,13 @@ Page({
           quesId.push(res.data[i][0]);
           quesPoint.push(res.data[i][1]);
           quesCon.push(res.data[i][2]);
-          answer.push("未作答");
-          answerSubmit.push(null);
+          answerSubmit.push(res.data[i][3]);
+          if(res.data[i][3] == "-1"){
+            answer.push("未作答")
+          }
+          else{
+            answer.push(String.fromCharCode(parseInt(res.data[i][3]) + 65))
+          }
         }
         self.setData({
           questionsId: quesId,

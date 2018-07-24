@@ -15,9 +15,10 @@
   font-weight: 900;
 }
 
+
 .name{
-  margin-left: 50rpx;
-  width: 650rpx;
+  margin-left: 30rpx;
+  width: 690rpx;
   height: 100rpx;
   line-height: 100rpx;
   margin-top:30rpx;
@@ -26,17 +27,14 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  white-space:nowrap;
 }
 
-.name text{
-  margin-left: 30rpx;
-  width: 150rpx;
-}
 
 
 .studentID{
-  margin-left: 50rpx;
-  width: 650rpx;
+  margin-left: 30rpx;
+  width: 690rpx;
   height: 100rpx;
   line-height: 100rpx;
   margin-top:30rpx;
@@ -45,13 +43,10 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  white-space:nowrap;
 }
 
 
-.studentID text{
-  margin-left: 30rpx;
-  width: 150rpx;
-}
 
 
 .radio{

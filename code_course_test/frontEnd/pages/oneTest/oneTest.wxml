@@ -1,30 +1,33 @@
 <!--pages/oneTest/oneTest.wxml-->
 <view class='container'>
-  <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
+  <scroll-view class="help-info" scroll-y="true" style="height:1180rpx">
+    <view class="mainArea">
     <view class = "title">
       <text class = 'testName'>{{content}}</text>
       <text class = 'time'>剩余时间: </text>
       <text class = 'time'>{{countDown.hou}} 时 {{countDown.min}} 分 {{countDown.sec}} 秒</text>
     </view>
-    <navigator wx:for="{{questionsContent}}" wx:for-index="key" wx:for-item="value" url="/pages/oneQuestion/oneQuestion?questionId={{questionsId[key]}}&testId={{testId}}&key={{key}}">
-    <view class = 'question'>
-      <view class = 'questionTitle'>
+    <view class="question" wx:for="{{questionContent}}" wx:for-index="key" wx:for-item="value">
+      <view class="questionTitle" >
         <text>第{{key + 1}}题</text>
-        <text>
-          <text>我的选择：</text>
-          <text class = 'choose'>{{studentChoose[key]}}</text>
-        </text>
       </view>
-      <view class = 'questionCon'>
-        <text>{{value}}...</text>
-      </view> 
-      <text class='tips'>请 点 击 进 行 选 择</text>
+      <view class="questionContent">
+        <text>{{value}}</text>
+      </view>
+      <view class="questionChoice" >
+        <radio-group  bindchange="radioChange" id="{{key}}">
+          <label wx:for="{{choiceContent[key]}}" wx:for-index="keyChoice" wx:for-item="valueChoice">
+            <view class="oneChoice" style="background-color:{{(keyChoice==correctAnswer[key]) ? 'greenyellow':''}}">
+              <radio checked="{{keyChoice==correctAnswer[key]}}" value="{{keyChoice}}"/>
+              <text>{{choiceLetter[keyChoice]}} : {{valueChoice}}</text>
+            </view>
+          </label>
+        </radio-group>
+      </view>
     </view>
-    </navigator>
+    </view>
+    <view class='submit'>
+      <button bindtap='submitConfirm'>提交答案</button>
+    </view>
   </scroll-view>
-
-  <view class='submit'>
-    <button bindtap='submitConfirm'>提交答案</button>
-  </view>
-
 </view>

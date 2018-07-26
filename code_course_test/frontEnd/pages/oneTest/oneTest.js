@@ -11,11 +11,12 @@ Page({
     content:null,
     testId:null,
     countDown: null,
-    questionsContent:[],
-    questionsId:[],
+    choiceLetter: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+    questionContent: ["hahahahaha", "hehehehehe"],
+    questionId:[0,1],
+    choiceContent:[["12","123","1234"],["1","2","3","4"]],
     point:[],
     studentChoose:[],
-    studentChooseSubmit:[]
   },
 
   /**

@@ -206,10 +206,6 @@ public class TestController {
             questionEntity.setQuestionContent(questionContent.getString(i));
             questionEntity.setQuestionId(i);
             System.out.println(choiceContent.getString(i));
-            if(choiceContent.getString(i).equals("null")){
-                testRepository.delete(testEntity);
-                return "第"+(i+1)+"个问题缺少选项";
-            }
             List<ChoiceEntity> choiceEntityList = new ArrayList<ChoiceEntity>();
             for(int j = 0; j < choiceContent.getJSONArray(i).size(); j++){
                 ChoiceEntity choiceEntity = new ChoiceEntity();
@@ -228,7 +224,7 @@ public class TestController {
             correctAnswerEntity.setQuestionId(i);
             if(correctAnswer.getString(i).equals("-1")){
                 testRepository.delete(testEntity);
-                return "第"+(i+1)+"个问题未确定选项";
+                return "第"+(i+1)+"个问题未确定正确选项";
             }
             correctAnswerEntity.setCorrectAns(Integer.parseInt(correctAnswer.getString(i)));
             for(ChoiceEntity choiceEntityTemp : choiceEntityList){

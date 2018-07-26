@@ -20,7 +20,10 @@
     "pages/testResult/testResult",
     "pages/questionResult/questionResult",
     "pages/editTest/editTest",
-    "pages/editQuestion/editQuestion"
+    "pages/vote/vote",
+    "pages/allVote/allVote",
+    "pages/addVote/addVote",
+    "pages/editQuestionContent/editQuestionContent"
   ],
   "tabBar": {
     "backgroundColor": "#FFF8DC",

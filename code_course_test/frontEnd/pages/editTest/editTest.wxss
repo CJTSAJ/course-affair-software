@@ -18,17 +18,16 @@
   margin-left: 90rpx;
 }
 
-.inputQuestionBar{
-  margin-top: 15rpx;
-  margin-left: 25rpx;
-}
-
 .titleInput{
   text-align:center; 
   vertical-align:middel;
   height: 100rpx;
   font-size: 50rpx;
   background-color: white;
+}
+
+.inputQuestion{
+  width: 600rpx;
 }
 
 .tui-picker-content{
@@ -53,17 +52,18 @@
 
 .question{
   width: 650rpx;
-  background-color: white;
   margin-left: 50rpx;
   margin-top: 50rpx;
   padding-bottom: 20rpx;
-  overflow: hidden;
   border-bottom-right-radius:2em;
   box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+  background-color: #FFF8DC;
+  min-height: 200rpx;
+  overflow: hidden;
 }
 
+
 .questionTitle{
-  background-color: #FFF8DC;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -77,6 +77,7 @@
 }
 
 .tips{
+  margin-top: 15rpx;
   font-size: small;
   display: flex;
   flex-direction: row;
@@ -84,13 +85,90 @@
   color: #D4D4D4;
 }
 
+.questionContent{
+  background-color: white;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  display: block;
+  white-space: pre-line;
+  word-break:break-all;
+}
+.questionContent text{
+  width: 600rpx;
+}
+
+.questionNull{
+  color: #cdcdcd;
+}
+
+.questionChoice{
+  margin-bottom: 20rpx;
+}
+
+.oneChoice{
+  border-bottom: 1rpx solid #cdcdcd;
+  display: flex;
+  height: 120rpx;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.choiceEdit {
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space:nowrap;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  -webkit-transform: translateX(200rpx);
+  transform: translateX(200rpx);
+  margin-right:0;
+  margin-left: -200rpx;
+}
+
+.delChoice {
+  background-color: orangered;
+  width: 200rpx;
+  height: 120rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  -webkit-transform: translateX(200rpx);
+  transform: translateX(200rpx);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  white-space:nowrap;
+}
+
+.touch-move-active .choiceEdit{
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.touch-move-active .delChoice {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+
+
 .addQuestion{
   margin-top: 15rpx;
   width: 650rpx;
   margin-left: 50rpx;
   border-bottom-right-radius:2em;
   box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
-  margin-bottom: 75rpx;
+  margin-bottom: 150rpx;
 }
 
 .addQuestion button{

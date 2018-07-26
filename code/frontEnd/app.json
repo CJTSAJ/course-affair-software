@@ -26,7 +26,8 @@
     "pages/oneTest/oneTest",
     "pages/oneQuestion/oneQuestion",
     "pages/editQuestion/editQuestion",
-    "pages/editTest/editTest"
+    "pages/editTest/editTest",
+    "pages/rollcall/rollcall"
   ],
   "tabBar": {
     "backgroundColor": "white",

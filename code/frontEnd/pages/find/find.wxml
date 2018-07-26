@@ -27,6 +27,10 @@
     <image src='/images/icons/manage.png'></image>
     <text>管理</text>
   </view>
+  <view class='nav right' bindtap='toRollcall' style='display: {{isTeacher?"":"none"}}'>
+    <image src='/images/icons/pick.png'></image>
+    <text>点名</text>
+  </view>
 </view>
 
   

@@ -9,7 +9,11 @@ Page({
       url: '/pages/person/person',
     })
   },
-  
+  toRollcall: function () {
+    wx.navigateTo({
+      url: '/pages/rollcall/rollcall',
+    })
+  },
   toNotice:function(){
     wx.navigateTo({
       url: '/pages/allNotice/allNotice',

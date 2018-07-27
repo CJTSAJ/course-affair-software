@@ -8,14 +8,11 @@ Page({
   data: {
     content:null,
     testId:null,
-    questionsContent:[],
-    questionsId:[],
-    point:[],
-    totalPoints: null,
+    choiceLetter: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+    question:[],
+    grade: null,
     studentChoose:[],
     correctAnswer:[],
-    studentChooseLetter:[],
-    correctAnswerLetter:[],
     ifRight:[]
   },
 
@@ -38,7 +35,7 @@ Page({
    */
   onLoad: function (options) {
     var self = this;
-    this.setData({
+    self.setData({
       content: options.content,
       testId: options.testId,
     })
@@ -52,36 +49,30 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/json' },
       success: function (res) {
-        let quesId = [];
-        let quesCon = [];
-        let quesPoint = [];
-        let answer = [];
-        let correct = [];
-        let right = [];
-        let total = [];
-        let answerLetter = [];
-        let correctLetter = [];
-        for (var i in res.data) {
-          quesId.push(res.data[i][0]);
-          quesPoint.push(res.data[i][1]);
-          quesCon.push(res.data[i][2]);
-          answer.push(res.data[i][3]);
+        let questionData=[];
+        let sc=[];
+        let ca=[];
+        let right=[];
+        for(var i in res.data){
+          let choiceData=[];
+          for(var j in res.data[i][7]){
+            let choiceArray={cId:res.data[i][7][j][0], cContent: res.data[i][7][j][1]};
+            choiceData.push(choiceArray);
+          }
+          let questionArray={qId:res.data[i][0], point:res.data[i][1], qContent: res.data[i][2], choice: choiceData};
+          questionData.push(questionArray);
+          sc.push(res.data[i][3]);
           right.push(self.ifRight(res.data[i][4]));
-          correct.push(res.data[i][5]);
-          answerLetter.push(String.fromCharCode(parseInt(res.data[i][3]) + 65));
-          correctLetter.push(String.fromCharCode(parseInt(res.data[i][5]) + 65));
+          ca.push(res.data[i][5]);
         }
         self.setData({
-          questionsId: quesId,
-          questionsContent: quesCon,
-          point: quesPoint,
-          studentChoose: answer,
-          totalPoints: res.data[i][6],
-          correctAnswer: correct,
+          question: questionData,
+          studentChoose: sc,
+          correctAnswer: ca,
           ifRight: right,
-          studentChooseLetter: answerLetter,
-          correctAnswerLetter: correctLetter
+          grade: res.data[i][6],
         })
+        console.log(self.data);
       },
       fail: function (error) {
       }

@@ -279,6 +279,15 @@ public class TestController {
             else{
                 arrayList.add("0");
             }
+            List<ChoiceEntity> listChoice = choiceRepository.findByTestIdAndQuestionId(testId,qId);
+            ArrayList<JSONArray> JsonChoice = new ArrayList<JSONArray>();
+            for(ChoiceEntity tempChoice:listChoice){
+                ArrayList<String> arrayListChoice = new ArrayList<String>();
+                arrayListChoice.add(String.valueOf(tempChoice.getChoiceNo()));
+                arrayListChoice.add(tempChoice.getChoiceContent());
+                JsonChoice.add(JSONArray.fromObject(arrayListChoice));
+            }
+            arrayList.add(String.valueOf(JsonChoice));
             Json.add(JSONArray.fromObject(arrayList));
         }
         return JSONArray.fromObject(Json.toArray());

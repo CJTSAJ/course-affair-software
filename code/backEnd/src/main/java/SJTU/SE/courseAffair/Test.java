@@ -17,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
 @EnableJpaRepositories
 @ComponentScan(basePackages = "SJTU")
 @EnableScheduling
-public class Test extends SpringBootServletInitializer{
+public class Test{
 	@Autowired
     private RestTemplateBuilder builder;
 
@@ -28,11 +28,7 @@ public class Test extends SpringBootServletInitializer{
     public static void main(String[] args) {
         SpringApplication.run(Test.class, args);
     }
-    
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(Test.class);
-    }
+
 }
 
 /**

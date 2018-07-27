@@ -80,6 +80,15 @@ public class TestController {
             else{
                 arrayList.add("-1");
             }
+            List<ChoiceEntity> listChoice = choiceRepository.findByTestIdAndQuestionId(testId, temp.getQuestionId());
+            ArrayList<JSONArray> JsonChoice = new ArrayList<JSONArray>();
+            for(ChoiceEntity tempChoice:listChoice){
+                ArrayList<String> arrayListChoice = new ArrayList<String>();
+                arrayListChoice.add(String.valueOf(tempChoice.getChoiceNo()));
+                arrayListChoice.add(tempChoice.getChoiceContent());
+                JsonChoice.add(JSONArray.fromObject(arrayListChoice));
+            }
+            arrayList.add(String.valueOf(JsonChoice));
             Json.add(JSONArray.fromObject(arrayList));
         }
         return JSONArray.fromObject(Json.toArray());

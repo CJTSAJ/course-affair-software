@@ -13,6 +13,7 @@
 }
 
 .testName{
+  margin-top: 25rpx;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 900rpx;
   font-size: xx-large;
@@ -112,7 +113,7 @@
 .submit button{
   color: black;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  background-color: #FFF8DC;
+  background-color: #FFF68F;
   width: 750rpx;
   font-weight: 900;
 }

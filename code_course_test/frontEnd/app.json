@@ -16,7 +16,6 @@
     "pages/releaseHomework/releaseHomework",
     "pages/test/test",
     "pages/oneTest/oneTest",
-    "pages/oneQuestion/oneQuestion",
     "pages/testResult/testResult",
     "pages/questionResult/questionResult",
     "pages/editTest/editTest",

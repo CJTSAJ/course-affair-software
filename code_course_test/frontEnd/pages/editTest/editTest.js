@@ -156,10 +156,9 @@ Page({
   },
 
   radioChange: function (e){
-    let correct = this.data.correctAnswer;
-    correct[parseInt(e.currentTarget.id)] = e.detail.value;
+    this.data.correctAnswer[parseInt(e.currentTarget.id)] = e.detail.value;
     this.setData({
-      correctAnswer: correct
+      correctAnswer: this.data.correctAnswer
     })
   },
 

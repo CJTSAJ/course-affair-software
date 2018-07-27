@@ -7,19 +7,19 @@
       <text class = 'time'>剩余时间: </text>
       <text class = 'time'>{{countDown.hou}} 时 {{countDown.min}} 分 {{countDown.sec}} 秒</text>
     </view>
-    <view class="question" wx:for="{{questionContent}}" wx:for-index="key" wx:for-item="value">
+    <view class="question" wx:for="{{question}}" wx:for-index="key" wx:for-item="value">
       <view class="questionTitle" >
         <text>第{{key + 1}}题</text>
       </view>
       <view class="questionContent">
-        <text>{{value}}</text>
+        <text>{{value.qContent}}</text>
       </view>
       <view class="questionChoice" >
         <radio-group  bindchange="radioChange" id="{{key}}">
-          <label wx:for="{{choiceContent[key]}}" wx:for-index="keyChoice" wx:for-item="valueChoice">
-            <view class="oneChoice" style="background-color:{{(keyChoice==correctAnswer[key]) ? 'greenyellow':''}}">
-              <radio checked="{{keyChoice==correctAnswer[key]}}" value="{{keyChoice}}"/>
-              <text>{{choiceLetter[keyChoice]}} : {{valueChoice}}</text>
+          <label wx:for="{{value.choice}}" wx:for-index="keyChoice" wx:for-item="valueChoice">
+            <view class="oneChoice" style="background-color:{{(keyChoice==studentChoose[key]) ? 'greenyellow':''}}">
+              <radio checked="{{keyChoice==studentChoose[key]}}" value="{{keyChoice}}"/>
+              <text>{{choiceLetter[keyChoice]}} : {{valueChoice.cContent}}</text>
             </view>
           </label>
         </radio-group>

@@ -1,0 +1,56 @@
+/* pages/addNotice/addNotice.wxss */
+.addNotice textarea{
+  margin-top: 50rpx; 
+  margin-left: 25rpx;
+  margin-right: 25rpx;
+  width: 660rpx;
+  height: 600rpx;
+  background-color: white;
+  border-bottom-right-radius:2em;
+  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+  padding: 20rpx;
+  font-size: large;
+  /*border: 1rpx solid black;
+  margin-left: 5rpx;
+  margin-right: 5rpx;
+  width: 740rpx;
+  height: 600rpx;*/
+}
+
+.bottomButton{
+  position:fixed; 
+  bottom:50rpx;
+}
+.cancel{
+  width: 315rpx;
+  display: inline-block;
+  background-color: #D3D3D3;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+  /*width: 315rpx;
+  display: inline-block;
+  background-color: #D3D3D3;
+  margin-left: 50rpx;
+  margin-right: 20rpx;*/
+}
+/*.confirm{
+  width: 315rpx;
+  display: inline-block;
+  background-color: #32CD32;
+}*/
+
+.cancel::after{
+  border:none;
+}
+
+.confirm{
+  width: 315rpx;
+  display: inline-block;
+  background-color: #FFF68F;
+  box-shadow:8rpx 8rpx 20rpx 3rpx #ABABAB;
+}
+
+.confirm::after{
+  border:none;
+}

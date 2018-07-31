@@ -1,0 +1,11 @@
+<view class='container'>
+  <view class='title'>
+    <view class='tx'>
+    <text>学号：{{studentId}}</text>
+    </view>
+    <view class='tx'>
+    <text>姓名：{{studentName}}</text>
+    </view>
+  </view>
+  <button class="btn-area" bindtap="pick">挑选学生</button>
+</view>

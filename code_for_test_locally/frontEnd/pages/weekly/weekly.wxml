@@ -1,0 +1,7 @@
+<view class='container'>
+  <text>本周推荐</text>
+  <image src="/images/jordan.jpeg" class='about-banner'></image>
+  <text>教父</text>
+  <text>HHH</text>
+  <text>HHH</text>
+</view>

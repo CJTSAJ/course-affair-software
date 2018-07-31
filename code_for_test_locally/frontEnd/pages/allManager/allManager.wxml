@@ -1,0 +1,24 @@
+<!--pages/allManager/allManager.wxml-->
+<view>
+  <view class='teacherBox'>
+    <text class='teacherText'>老师</text>
+    <view class='allTeachers'>
+      <view class='teachers' wx:for="{{allTeacher}}" wx:for-index="key" wx:for-item="value">
+        <text>{{value.teacherName}}</text>
+      </view>
+    </view>
+  </view>
+  <view class='managerBox'>
+    <text class='studentText'>{{"助教" + size + '/15'}}</text>
+    <view class='allMangers'>
+      <view class='managers' wx:for="{{allTa}}" wx:for-index="key" wx:for-item="value">
+        <view><text class='taName'>{{value.taName}}</text></view>
+        <view><button class='deleteTa'data-id="{{key}}" bindtap='deleteTa'>删除</button></view>
+      </view>
+      <view class='addManager' bindtap='addManger'>
+        <image src='/images/icons/addManager.png'></image>
+        <text>添加管理员</text>
+      </view>
+    </view>
+  </view>
+</view>

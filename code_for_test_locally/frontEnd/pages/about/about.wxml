@@ -1,0 +1,12 @@
+<view class='container'>
+  <image src="/images/jordan.jpeg" class='about-banner'></image>
+  <view class="info">
+    <text>Hello </text>
+    <navigator url='/pages/weekly/weekly' style='display:inline-block' hover-class='nav-hover'    class='nav-default'>world</navigator>
+    <text>!</text>
+  </view>
+  
+  <text>HHH</text>
+  <text>HHH</text>
+  <text>HHH</text>
+</view>

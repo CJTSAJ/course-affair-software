@@ -1,0 +1,53 @@
+{
+	"description": "项目配置文件。",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.8",
+	"appid": "wxfb56f7506a576cf3",
+	"projectname": "front_hehe",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 0,
+			"list": [
+				{
+					"id": -1,
+					"name": "groupid",
+					"pathName": "pages/shareToGroup/shareToGroup",
+					"query": "",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群1",
+						"shareName": "VX4YobO0kAvZrvoHCwdza0D1xX7clY0c_iJKEXJeat8@cr4dev",
+						"shareKey": "tRPn1cSqwKRoSaww61dFB6FmOwLqbuwK9JMQT_pXXjIhYdvHEG6Jsrk7B6oFBbmiebseLY-laBbPBwRyfVXICw~~"
+					}
+				}
+			]
+		}
+	}
+}

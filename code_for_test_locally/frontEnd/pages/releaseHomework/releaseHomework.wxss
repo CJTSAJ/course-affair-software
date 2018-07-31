@@ -1,0 +1,69 @@
+/* pages/releaseHomework/releaseHomework.wxss */
+page {
+  display: block;
+  min-height: 100%;
+}
+.item{
+  margin-top: 60rpx;
+  background-color: white;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #CDCDCD;
+  border-top: 1rpx solid #CDCDCD;
+}
+.item picker{
+  display: inline-block;
+  color: gray;
+  margin-left: 50rpx;
+}
+
+.item text{
+  margin-left: 30rpx;
+}
+
+textarea{
+  margin-top: 50rpx; 
+  margin-left: 25rpx;
+  margin-right: 25rpx;
+  width: 660rpx;
+  height: 600rpx;
+  background-color: white;
+  border-bottom-right-radius:2em;
+  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+  padding: 20rpx;
+  font-size: large;
+  /*width: 100%;
+  background-color: white;*/
+}
+
+.button{
+  margin-top: 60rpx;
+}
+
+.button button{
+  width: 315rpx;
+  display: inline-block;
+}
+
+.cancel{
+  width: 315rpx;
+  display: inline-block;
+  background-color: #D3D3D3;
+  margin-left: 40rpx;
+  margin-right: 40rpx;
+  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+}
+
+.cancel::after{
+  border:none;
+}
+
+.release{
+  width: 315rpx;
+  display: inline-block;
+  background-color: #FFF68F;
+  box-shadow:8rpx 8rpx 20rpx 3rpx #ABABAB;
+}
+.release::after{
+  border:none;
+}

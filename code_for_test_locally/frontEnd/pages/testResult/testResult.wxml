@@ -1,0 +1,40 @@
+<!--pages/testResullt/testResult.wxml-->
+<view class='container'>
+  <scroll-view class="help-info" scroll-y="true" style="height:1180rpx">
+    <view class = "mainArea">
+    <view class = "title">
+      <text class = 'testName'>{{content}}</text>
+      <text class = 'grade'>{{grade}}/100</text>
+    </view>
+    <view class="question" style="background-color:{{(!ifRight[key]) ? '#FFEC8B':'#FFF8DC'}}" wx:for="{{question}}" wx:for-index="key" wx:for-item="value">
+      <view class="questionTitle">
+        <text>第{{key + 1}}题</text>
+        <text wx:if="{{!ifRight[key]}}">错误</text>
+      </view>
+      <view class="questionContent">
+        <text>{{value.qContent}}</text>
+      </view>
+      <view class="questionChoice" wx:if="{{ifRight[key]}}">
+        <view wx:for="{{value.choice}}" wx:for-index="keyChoice" wx:for-item="valueChoice">
+          <view class="oneChoice" style="background-color:{{(keyChoice==correctAnswer[key]) ? 'greenyellow':''}}">
+            <text>{{choiceLetter[keyChoice]}} : {{valueChoice.cContent}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="questionChoice" wx:else>
+        <view wx:for="{{value.choice}}" wx:for-index="keyChoice" wx:for-item="valueChoice">
+          <view class="oneChoice" wx:if="{{keyChoice==correctAnswer[key]}}"   style="background-color: greenyellow">
+            <text>{{choiceLetter[keyChoice]}} : {{valueChoice.cContent}}</text>
+          </view>
+          <view class="oneChoice" wx:elif="{{keyChoice==studentChoose[key]}}"   style="background-color: red">
+            <text>{{choiceLetter[keyChoice]}} : {{valueChoice.cContent}}</text>
+          </view>
+          <view class="oneChoice" wx:else>
+            <text>{{choiceLetter[keyChoice]}} : {{valueChoice.cContent}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    </view>
+  </scroll-view>
+</view>

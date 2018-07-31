@@ -1,0 +1,61 @@
+/* pages/getUserInfo.wxss */
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 100rpx;
+}
+
+.userinfo button{
+  margin-top: 150rpx;
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #ffe95c;
+  width: 600rpx;
+  font-weight: 900;
+}
+
+.name{
+  height: 100rpx;
+  line-height: 100rpx;
+  margin-top:30rpx;
+  background-color: white;
+}
+
+.studentID{
+  height: 100rpx;
+  line-height: 100rpx;
+  margin-top:30rpx;
+  background-color: white;
+}
+
+.detail text{
+  margin-left: 30rpx;
+}
+
+.detail input{
+  display: inline-block;
+  margin-top: 20rpx;
+  vertical-align: middle;
+  padding-bottom: 25rpx;
+}
+
+.radio{
+  margin-left: 150rpx;
+}
+
+.chooseIdentity{
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+}
+
+.setting{
+  margin-left: 20rpx;
+  margin-top: 40rpx;
+}
+
+.border{
+  width: 690rpx;
+  margin-left: 30rpx;
+  border-bottom: 1rpx solid #cdcdcd;
+}

@@ -1,0 +1,21 @@
+<view class='container'>
+  <view class='information' bindtap='toDetail'>
+    <view class='title'>
+      <text class='titleContent'>{{informationData0}}</text>
+      <text class='time'>{{time0}}</text>
+    </view>
+    <view class='content'>
+      <text>{{content0}}</text>
+    </view>
+  </view>
+  <view class='information' bindtap='toDetail1'>
+    <view class='title'>
+      <text class='titleContent'>{{informationData1}}</text>
+      <text class='time'>{{time1}}</text>
+    </view>
+    <view class='content'>
+      <text>{{content1}}</text>
+    </view>
+  </view>
+  
+</view>

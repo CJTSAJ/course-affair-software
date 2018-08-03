@@ -4,13 +4,13 @@ Page({
   data: {
   
   },
-  onShow:function(){
+  onLoad:function(){
     this.authority()
   },
   authority:function(){
     wx.getUserInfo({
       success: function (res) {
-        app.globalData.userInfo = res.userInfo
+        app.globalData.userInfo = res.userInfo;
         wx.redirectTo({
           url: '/pages/getUserInfo/getUserInfo'
         })

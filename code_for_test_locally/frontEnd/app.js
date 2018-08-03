@@ -6,8 +6,9 @@ App({
     longitude: null,
     latitude: null,
     sessionKey: null,
-    openGId: null
+    openGId: null,
   },
+
   onLaunch: function (options) {
     var self = this;
     console.log(options.scene)
@@ -80,9 +81,16 @@ App({
                               })
                             }
                             else {
-                              wx.reLaunch({
-                                url: '/pages/authority/authority',
-                              })
+                              if (self.globalData.userInfo == null) {
+                                wx.reLaunch({
+                                  url: '/pages/authority/authority',
+                                })
+                              }
+                              else {
+                                wx.reLaunch({
+                                  url: '/pages/getUserInfo/getUserInfo',
+                                })
+                              } 
                             }
                           }
                         })
@@ -169,9 +177,16 @@ App({
                       })
                     }
                     else {
-                      wx.reLaunch({
-                        url: '/pages/authority/authority',
-                      })
+                      if(self.globalData.userInfo == null){
+                        wx.reLaunch({
+                          url: '/pages/authority/authority',
+                        })
+                      }
+                      else{
+                        wx.reLaunch({
+                          url: '/pages/getUserInfo/getUserInfo',
+                        })
+                      }
                     }
                   }
                 })

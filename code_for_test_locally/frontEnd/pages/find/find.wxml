@@ -31,11 +31,11 @@
     <image src='/images/icons/pick.png'></image>
     <text>点名</text>
   </view>
-  <view class='nav left' bindtap='toRollcall'>
+  <view class='nav left' bindtap='toVote'>
     <image src='/images/icons/vote.png'></image>
     <text>投票</text>
   </view>
-  <view class='nav right' bindtap='toRollcall' style='display: {{isTeacher?"":"none"}}'>
+  <view class='nav right' bindtap='toStatistics' style='display: {{isTeacher?"":"none"}}'>
     <image src='/images/icons/grade.png'></image>
     <text>统计</text>
   </view>

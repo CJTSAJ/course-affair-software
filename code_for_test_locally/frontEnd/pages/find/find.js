@@ -36,9 +36,21 @@ Page({
     })
   },
 
-  toTest:function(){
+  toVote: function () {
     wx.navigateTo({
-      url: '/pages/test/test',
+      url: '/pages/vote/vote',
+    })
+  },
+
+  toSign: function () {
+    wx.navigateTo({
+      url: '/pages/sign/sign',
+    })
+  },
+
+  toStatistics:function(){
+    wx.navigateTo({
+      url: '/pages/statistics/statistics',
     })
   },
   

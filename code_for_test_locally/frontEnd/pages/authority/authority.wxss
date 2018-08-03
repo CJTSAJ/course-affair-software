@@ -8,6 +8,10 @@ button{
   font-weight: 900;
 }
 
+button::after{
+  border: none;
+}
+
 image{
   margin-top: 150rpx;
   height: 250rpx;

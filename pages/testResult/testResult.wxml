@@ -1,0 +1,27 @@
+<!--pages/testResullt/testResult.wxml-->
+<view class='container'>
+  <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
+    <view class = "title">
+      <text class = 'testName'>{{content}}</text>
+      <text class = 'grade'>总分: {{totalPoints}}</text>
+    </view>
+    <navigator wx:for="{{questionsContent}}" wx:for-index="key" wx:for-item="value" url="/pages/questionResult/questionResult?questionId={{questionsId[key]}}&testId={{testId}}&key={{key}}&studentChoose={{studentChoose[key]}}&correctAnswer={{correctAnswer[key]}}">
+    <view class = 'question'>
+      <view class = 'questionTitle' wx:if = "{{ifRight[key] == 1}}">
+        <text>第{{key + 1}}题 正确</text>
+          <text class = 'choose'>正确答案: {{studentChooseLetter[key]}}</text>
+      </view>
+      <view class = 'questionTitleWrong' wx:else>
+        <text>第{{key + 1}}题 错误</text>
+          <text class = 'correctAnswer'>正确答案: {{correctAnswerLetter[key]}}</text>
+      </view>
+      <view class = 'questionCon'>
+        <text>{{value}}...</text>
+      </view> 
+      <text class='tips'>请 点 击 查 看 详 情</text>
+    </view>
+    </navigator>
+  </scroll-view>
+
+
+</view>

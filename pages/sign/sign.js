@@ -40,8 +40,8 @@ Page({
         wx.request({
           url: 'http://207.148.114.118:8080/courseAffair/sign',
           data: {
-            opengid: "tG7EaP4nMFgSbbz8PQ4nOVQkdwScY",
-            openid: "app.globalData.openid",
+            opengid: app.globalData.openGId,
+            openid: app.globalData.openId,
             signCode: signCode,
             latitude: self.data.location.latitude,
             longitude: self.data.location.longitude
@@ -59,10 +59,30 @@ Page({
               }else{
                 reason = "距离老师超过100米"
               }
-              wx.showModal({
+
+              /*wx.showModal({
                 title: '签到失败',
                 content: reason,
-              })
+              })*/
+
+              if (reason == "距离老师超过100米"){
+                wx.showToast({
+                  title: '签到成功',
+                  icon: 'success',
+                  mask: false,
+                  success: function () {
+                    wx.navigateBack({
+                      delta: 1
+                    })
+                  }
+                })
+              }
+              else{
+                wx.showModal({
+                  title: '签到失败',
+                  content: reason,
+                })
+              }
             }else{
                 wx.showToast({
                   title: '签到成功',
@@ -77,11 +97,11 @@ Page({
             }
           }
         })
-      } else if (app.globalData.identity == "teacher") {
+      } else if (app.globalData.identity != "student") {
         wx.request({
           url: 'http://207.148.114.118:8080/courseAffair/addSign',
           data: {
-            opengid: "tG7EaP4nMFgSbbz8PQ4nOVQkdwScY",
+            opengid: app.globalData.openGId,
             signCode: signCode,
             latitude: self.data.location.latitude,
             longitude: self.data.location.longitude
@@ -109,7 +129,7 @@ Page({
     console.log(signCode);
   },
   onShow:function(){
-    if(app.globalData.identity == "teacher"){
+    if(app.globalData.identity != "student"){
       this.setData({
         buttonText: "发起签到"
       })
@@ -118,11 +138,34 @@ Page({
     wx.getLocation({
       success: function (res) {
         console.log(res)
-        that.setData({
-          hasLocation: true,
-          location: {
-            longitude: res.longitude,
-            latitude: res.latitude
+        /*AMap.convertFrom(res.longitude, res.latitude, 'gps', function(status, res){
+          console.log("转换成功")
+          console.log(res)
+        })*/
+        wx.request({
+          url: 'https://restapi.amap.com/v3/assistant/coordinate/convert',
+          data:{
+            key: "5866a861c514947f8147e38c8ccaf2aa",
+            locations: res.longitude + ',' + res.latitude,
+            coordsys: 'gps'
+          },
+          method: 'GET',
+          header: { 'content-type': 'application/json' },
+          success:function(res){
+            console.log("转换成功")
+            console.log(res)
+            var location = res.data.locations.split(",");
+            var longitude = location[0];
+            var latitude = location[1];
+            console.log(longitude)
+            console.log(latitude)
+            that.setData({
+              hasLocation: true,
+              location: {
+                longitude: longitude,
+                latitude: latitude
+              }
+            })
           }
         })
       },

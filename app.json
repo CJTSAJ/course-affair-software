@@ -19,10 +19,18 @@
     "pages/authority/authority",
     "pages/managerSetting/mangerSetting",
     "pages/authorizeLocation/authorizeLocation",
-    "pages/sign/sign"
+    "pages/sign/sign",
+    "pages/test/test",
+    "pages/testResult/testResult",
+    "pages/questionResult/questionResult",
+    "pages/oneTest/oneTest",
+    "pages/oneQuestion/oneQuestion",
+    "pages/editQuestion/editQuestion",
+    "pages/editTest/editTest",
+    "pages/uploadFile/uploadFile"
   ],
   "tabBar": {
-    "backgroundColor": "white",
+    "backgroundColor": "#ffffff",
     "borderStyle": "#cdcdcd",
     "color": "#8a8a8a",
     "selectedColor": "#2c2c2c",

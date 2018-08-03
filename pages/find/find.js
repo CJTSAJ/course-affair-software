@@ -10,6 +10,11 @@ Page({
     })
   },
   
+  toFile:function(){
+    wx.navigateTo({
+      url: '/pages/uploadFile/uploadFile',
+    })
+  },
   toNotice:function(){
     wx.navigateTo({
       url: '/pages/allNotice/allNotice',
@@ -29,6 +34,12 @@ Page({
   toSign:function(){
     wx.navigateTo({
       url: '/pages/sign/sign',
+    })
+  },
+
+  toTest:function(){
+    wx.navigateTo({
+      url: '/pages/test/test',
     })
   },
   

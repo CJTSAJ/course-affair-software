@@ -1,5 +1,5 @@
 <view class='find'>
-  <view class='nav left'>
+  <view class='nav left' bindtap='toFile'>
     <image src='/images/icons/file.png'></image>
     <text>文件</text>
   </view>
@@ -16,7 +16,7 @@
     <text>签到</text>
   </view>
   <view class='nav left'>
-    <image src='/images/icons/test.png'></image>
+    <image src='/images/icons/test.png' bindtap='toTest'></image>
     <text>测验</text>
   </view>
   <view class='nav right' bindtap='toHomework'>

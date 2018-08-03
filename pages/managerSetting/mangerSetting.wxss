@@ -25,7 +25,7 @@ page{
 .confirm button{
   margin-left: 25rpx;
   width: 700rpx;
-  background-color: #32CD32;
+  background-color: #ffe95c;
   position: fixed;
   bottom: 10rpx;
 }

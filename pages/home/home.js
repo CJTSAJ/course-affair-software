@@ -33,7 +33,7 @@ Page({
   }/*,
   onShow:function(){
     wx.redirectTo({
-      url: '/pages/authorizeLocation/authorizeLocation',
+      url: '/pages/getUserInfo/getUserInfo',
     })
   }*/
 })

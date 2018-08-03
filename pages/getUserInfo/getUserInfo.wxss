@@ -22,6 +22,12 @@
   background-color: white;
 }
 
+.inLine{
+  display: flex;
+  flex-direction: row;
+  height: 100rpx;
+}
+
 .studentID{
   height: 100rpx;
   line-height: 100rpx;
@@ -34,10 +40,9 @@
 }
 
 .detail input{
-  display: inline-block;
-  margin-top: 20rpx;
+  margin-top: 25rpx;
   vertical-align: middle;
-  padding-bottom: 25rpx;
+  
 }
 
 .radio{

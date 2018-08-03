@@ -33,8 +33,6 @@ Page({
   deleteTa:function(e){
     var self = this;
     var index = e.target.dataset.id;
-
-    console.log(self.data.allTa[2].taGroupId);
     console.log(index);
     wx.showModal({
       title: '提示',
@@ -59,6 +57,7 @@ Page({
             method: 'POST',
             header: { 'content-type': 'application/json' },
             success:function(){
+              console.log("删除管理员成功")
             }
           })
         } else if (res.cancel) {

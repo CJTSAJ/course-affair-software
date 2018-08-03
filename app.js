@@ -8,7 +8,7 @@ App({
     sessionKey: null,
     openGId: null
   },
-  onLaunch: function (options) {
+  /*onLaunch: function (options) {
     var self = this;
     console.log(options.scene)
     wx.login({
@@ -124,6 +124,7 @@ App({
   },
 
   onShow: function (options) {
+    console.log("option" + options)
     if (options.scene != 1044) {
       wx.redirectTo({
         url: '/pages/shareToGroup/shareToGroup',
@@ -182,7 +183,7 @@ App({
         })
       }
     }
-  },
+  },*/
   getGoupid:function(){
 
   }

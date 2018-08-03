@@ -17,13 +17,17 @@
     </view>
     <view class='detail'>
       <view class='name' style='display:{{nameShow}}'>
-        <text>姓名：</text>
-        <input placeholder='请输入姓名' bindinput='getName'></input>
+        <view class='inLine'>
+          <view><text>姓名：</text></view>
+          <view><input placeholder='请输入姓名' bindinput='getName'></input></view>
+        </view>
         <view class='border'></view>
       </view>
       <view class='studentID' style='display:{{idShow}}'>
-        <text>学号：</text>
-        <input placeholder='请输入学号' bindinput='getID'></input>
+        <view class='inLine'>
+          <view><text>学号：</text></view>
+          <view><input placeholder='请输入学号' bindinput='getID'></input></view>
+        </view>
         <view class='border'></view>
       </view>
     </view>

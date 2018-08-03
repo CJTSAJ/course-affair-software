@@ -49,6 +49,10 @@
   font-weight: 900;
 }
 
+.releaseHomework button::after{
+  border: none;
+}
+
 ::-webkit-scrollbar {
   width: 0;
   height: 0;

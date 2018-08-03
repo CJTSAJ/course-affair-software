@@ -15,30 +15,43 @@
   font-weight: 900;
 }
 
+.userinfo button::after{
+  border: none;
+}
+
+
 .name{
+  margin-left: 30rpx;
+  width: 690rpx;
   height: 100rpx;
   line-height: 100rpx;
   margin-top:30rpx;
   background-color: white;
+  border-bottom: 1rpx solid #cdcdcd;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space:nowrap;
 }
+
+
 
 .studentID{
+  margin-left: 30rpx;
+  width: 690rpx;
   height: 100rpx;
   line-height: 100rpx;
   margin-top:30rpx;
   background-color: white;
+  border-bottom: 1rpx solid #cdcdcd;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space:nowrap;
 }
 
-.detail text{
-  margin-left: 30rpx;
-}
 
-.detail input{
-  display: inline-block;
-  margin-top: 20rpx;
-  vertical-align: middle;
-  padding-bottom: 25rpx;
-}
+
 
 .radio{
   margin-left: 150rpx;
@@ -52,10 +65,4 @@
 .setting{
   margin-left: 20rpx;
   margin-top: 40rpx;
-}
-
-.border{
-  width: 690rpx;
-  margin-left: 30rpx;
-  border-bottom: 1rpx solid #cdcdcd;
 }

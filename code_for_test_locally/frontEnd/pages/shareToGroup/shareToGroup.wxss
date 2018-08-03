@@ -18,6 +18,10 @@ button{
   font-weight: 900;
 }
 
+button::after{
+  
+}
+
 text{
   color: #cdcdcd;
   font-size: 30rpx;

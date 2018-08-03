@@ -1,8 +1,10 @@
-
+.find{
+  margin-top: 100rpx;
+}
 .nav{
-  margin-top: 160rpx;
   display: inline-block;
   width: 100rpx;
+  margin-bottom: 150rpx;
 }
 
 .left{

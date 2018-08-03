@@ -25,7 +25,11 @@
     "pages/oneTest/oneTest",
     "pages/editTest/editTest",
     "pages/rollcall/rollcall",
-    "pages/editQuestionContent/editQuestionContent"
+    "pages/editQuestionContent/editQuestionContent",
+    "pages/vote/vote",
+    "pages/editVote/editVote",
+    "pages/oneVote/oneVote",
+    "pages/statistics/statistics"
   ],
   "tabBar": {
     "backgroundColor": "white",

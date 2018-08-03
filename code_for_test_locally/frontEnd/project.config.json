@@ -36,15 +36,15 @@
 			"current": 0,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "groupid",
 					"pathName": "pages/shareToGroup/shareToGroup",
 					"query": "",
 					"scene": "1044",
 					"shareInfo": {
-						"groupName": "测试模拟群1",
-						"shareName": "VX4YobO0kAvZrvoHCwdza0D1xX7clY0c_iJKEXJeat8@cr4dev",
-						"shareKey": "tRPn1cSqwKRoSaww61dFB6FmOwLqbuwK9JMQT_pXXjIhYdvHEG6Jsrk7B6oFBbmiebseLY-laBbPBwRyfVXICw~~"
+						"groupName": "测试模拟群2",
+						"shareName": "AJf8u1s0AGv35TwTfqvDahNyt3aaKyVLXuzsLI_38ss@cr4dev",
+						"shareKey": "411jb0wA0bVj8v_wKNPlmRBn_NE4D-i_eNy7N2REhBy7ff4y9oeCzQ33GrLMTWiYGPHjSGupQuJG-yq_GtI2mw~~"
 					}
 				}
 			]

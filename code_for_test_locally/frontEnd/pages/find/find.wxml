@@ -20,7 +20,7 @@
     <text>测验</text>
   </view>
   <view class='nav right' bindtap='toHomework'>
-    <image src='/images/icons/grade.png'></image>
+    <image src='/images/icons/homework.png'></image>
     <text>作业</text>
   </view>
   <view class='nav left' bindtap='toManage' style='display: {{isTeacher?"":"none"}}'>
@@ -30,6 +30,14 @@
   <view class='nav right' bindtap='toRollcall' style='display: {{isTeacher?"":"none"}}'>
     <image src='/images/icons/pick.png'></image>
     <text>点名</text>
+  </view>
+  <view class='nav left' bindtap='toRollcall'>
+    <image src='/images/icons/vote.png'></image>
+    <text>投票</text>
+  </view>
+  <view class='nav right' bindtap='toRollcall' style='display: {{isTeacher?"":"none"}}'>
+    <image src='/images/icons/grade.png'></image>
+    <text>统计</text>
   </view>
 </view>
 

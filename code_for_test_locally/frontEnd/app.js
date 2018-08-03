@@ -80,7 +80,7 @@ App({
                               })
                             }
                             else {
-                              wx.redirectTo({
+                              wx.reLaunch({
                                 url: '/pages/authority/authority',
                               })
                             }
@@ -161,7 +161,6 @@ App({
                   header: { 'content-type': 'application/json' },
                   success: function (res) {
                     var isExist = res.data.isExist;
-                    console.log("hhh" + res.data)
                     console.log("是否存在:" + isExist);
                     if (isExist == "true") {
                       self.globalData.identity = res.data.identity;
@@ -183,7 +182,4 @@ App({
       }
     }
   },
-  getGoupid:function(){
-
-  }
 })

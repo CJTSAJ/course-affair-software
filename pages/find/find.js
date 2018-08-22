@@ -12,7 +12,7 @@ Page({
   
   toFile:function(){
     wx.navigateTo({
-      url: '/pages/uploadFile/uploadFile',
+      url: '/pages/allFile/allFile',
     })
   },
   toNotice:function(){

@@ -1,4 +1,54 @@
 <view class='container'>
+  <view>
+    <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
+            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
+        <block wx:for="{{images}}" wx:for-item="value">
+            <swiper-item class='swiper_img'>
+                <image src="{{value}}" class="slide-image"/>
+            </swiper-item>
+        </block>
+    </swiper>
+  </view>
+
+  <view class='allNav'>
+    <view class='firstLine'>
+    <view class='nav'>
+      <image src='/images/icons/file.png'></image>
+      <text>文件</text>
+    </view>
+    <view class='nav'>
+      <image src='/images/icons/sign.png'></image>
+      <text>签到</text>
+    </view>
+    <view class='nav'>
+      <image src='/images/icons/notice.png'></image>
+      <text>公告</text>
+    </view>
+    <view class='nav'>
+      <image src='/images/icons/test.png'></image>
+      <text>测验</text>
+    </view>
+  </view>
+    
+  <view class='firstLine'>
+    <view class='nav'>
+      <image src='/images/icons/homework.png'></image>
+      <text>作业</text>
+    </view>
+    <view class='nav'>
+      <image src='/images/icons/vote.png'></image>
+      <text>投票</text>
+    </view>
+    <view class='nav'>
+      <image src='/images/icons/random.png'></image>
+      <text>随机</text>
+    </view>
+    <view class='nav'>
+      <image src='/images/icons/manage.png'></image>
+      <text>管理</text>
+    </view>
+  </view>
+  </view>
   <view class='information' bindtap='toDetail'>
     <view class='title'>
       <text class='titleContent'>{{informationData0}}</text>

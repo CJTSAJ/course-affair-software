@@ -27,7 +27,8 @@
     "pages/oneQuestion/oneQuestion",
     "pages/editQuestion/editQuestion",
     "pages/editTest/editTest",
-    "pages/uploadFile/uploadFile"
+    "pages/uploadFile/uploadFile",
+    "pages/allFile/allFile"
   ],
   "tabBar": {
     "backgroundColor": "#ffffff",

@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.amap.api.location.CoordinateConverter;
+
 import SJTU.SE.courseAffair.Dao.SignInRecordRepository;
 import SJTU.SE.courseAffair.Dao.SignRepository;
 import SJTU.SE.courseAffair.Entity.SignInEntity;
@@ -92,6 +94,8 @@ public class signController {
 		String signCode = data.getString("signCode");
 		double latitude = data.getDouble("latitude");
 		double longitude = data.getDouble("longitude");
+		
+		//CoordinateConverter converter  = new CoordinateConverter();
 		
 		SignInEntity signIn = new SignInEntity();
 		signIn.setLatitude(latitude);

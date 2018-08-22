@@ -9,6 +9,7 @@ public class QuestionEntity {
     private int testId;
     private int questionId;
     private String questionContent;
+    private int point;
 
     @Id
     @Column(name = "testID", nullable = false)
@@ -40,6 +41,13 @@ public class QuestionEntity {
         this.questionContent = questionContent;
     }
 
+    @Basic
+    @Column(name = "point", nullable = true)
+    public int getPoint() { return point;}
+
+    public void setPoint(int point) { this.point = point; }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,6 +59,7 @@ public class QuestionEntity {
         if (questionId != that.questionId) return false;
         if (questionContent != null ? !questionContent.equals(that.questionContent) : that.questionContent != null)
             return false;
+        if(point != that.point) return false;
 
         return true;
     }
@@ -60,6 +69,7 @@ public class QuestionEntity {
         int result = testId;
         result = 31 * result + questionId;
         result = 31 * result + (questionContent != null ? questionContent.hashCode() : 0);
+        result = 31 * result + point;
         return result;
     }
 }

@@ -3,26 +3,15 @@
     <image src="{{userInfo.avatarUrl}}"></image>
     <text>{{userInfo.nickName}}</text>
   </view>
-  <view class='block'>
-    <text>姓名:</text>
-    <view class='done' hidden="{{!showName}}"> 
-      <text>{{name}}</text>
-      <image src='/images/icons/modify.png' bindtap='nameModify'></image>
+  <form bindsubmit='save'>
+    <view class='block'>
+      <text>姓名:</text>
+      <input class='input' value="{{name}}" name='username'></input>
     </view>
-    <view class='modify' hidden="{{showName}}">
-      <input class='input' value="{{name}}" bindinput='userNameInput'></input>
-      <image src='/images/icons/done.png' bindtap='nameDone'></image>
+    <view class='block' style='display: {{showID?"":"none"}}'>
+      <text>学号:</text>
+      <input class='input' value="{{studentID}}" name='studentid'></input>
     </view>
-  </view>
-  <view class='block'>
-    <text>学号:</text>
-    <view class='done' hidden="{{!showID}}">
-      <text>{{studentID}}</text>
-      <image src='/images/icons/modify.png' bindtap='idModify'></image>
-    </view>
-    <view class='modify' hidden="{{showID}}">
-      <input class='input' value="{{studentID}}" bindinput='userIdInput'></input>
-      <image src='/images/icons/done.png' bindtap='IdDone'></image>
-    </view>
-  </view>
+    <button form-type='submit' style='margin-top:100rpx;'>保存</button>
+  </form>
 </view>

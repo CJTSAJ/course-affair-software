@@ -1,9 +1,9 @@
 Page({
   data: {
-    time0: "",
-    content0: ""
+    time: "",
+    content: ""
   },
-  onShow: function (options) {
+  onLoad: function (options) {
     this.setData({
       time: options.time,
       content: options.content

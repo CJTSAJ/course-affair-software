@@ -8,7 +8,7 @@ App({
     sessionKey: null,
     openGId: null
   },
-  /*onLaunch: function (options) {
+  onLaunch: function (options) {
     var self = this;
     console.log(options.scene)
     wx.login({
@@ -183,6 +183,11 @@ App({
         })
       }
     }
+  },
+  /*onShow: function () {
+    wx.reLaunch({
+      url: '/pages/person/person',
+    })
   },*/
   getGoupid:function(){
 

@@ -14,5 +14,10 @@ Page({
     wx.navigateTo({
       url: '/pages/allManager/allManager',
     })
+  },
+  toAllStudent: function(){
+    wx.navigateTo({
+      url: '/pages/allStudent/allStudent',
+    })
   }
 })

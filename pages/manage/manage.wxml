@@ -1,7 +1,11 @@
 <!--pages/manage/manage.wxml-->
-<view class='mange'>
-  <view class='managerSetting' bindtap='toManagerSetting'>
+<view class='mange' style='margin-top: 50rpx;'>
+  <view class='block' bindtap='toManagerSetting' style='border-bottom: 1rpx solid #ebebeb'>
     <text>设置管理员</text>
+    <image src='/images/icons/rightArrow.png'></image>
+  </view>
+  <view class='block' bindtap='toAllStudent'>
+    <text>全体学生</text>
     <image src='/images/icons/rightArrow.png'></image>
   </view>
 </view>

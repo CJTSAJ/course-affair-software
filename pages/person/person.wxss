@@ -21,10 +21,10 @@
   display: flex;
   flex-direction: row;
   margin-top: 40rpx;
-  height: 100rpx;
   width: 650rpx;
   margin-left: 50rpx;
   border-bottom: 1rpx solid #D3D3D3;
+  padding-bottom: 20rpx;
 }
 
 .block input{
@@ -32,26 +32,11 @@
   margin-left: 20rpx;
 }
 
-.block image{
-  height: 50rpx;
-  width: 50rpx;
+button{
+  margin-left: 75rpx;
+  width: 600rpx;
+  background-color: #ffe95c;
 }
-
-.modify{
-  display: flex;
-  flex-direction: row;
-}
-
-.done{
-  display: flex;
-  flex-direction: row;
-  margin-left: 20rpx;
-}
-
-.done text{
-  width: 480rpx;
-}
-
 /*.border{
   width: 650rpx;
   margin-left: 50rpx;

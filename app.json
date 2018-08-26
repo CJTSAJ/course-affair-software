@@ -28,7 +28,9 @@
     "pages/editQuestion/editQuestion",
     "pages/editTest/editTest",
     "pages/uploadFile/uploadFile",
-    "pages/allFile/allFile"
+    "pages/allFile/allFile",
+    "pages/me/me",
+    "pages/allStudent/allStudent"
   ],
   "tabBar": {
     "backgroundColor": "#ffffff",
@@ -50,7 +52,7 @@
       },
       {
         "text": "发现",
-        "pagePath": "pages/find/find",
+        "pagePath": "pages/me/me",
         "iconPath": "images/icons/find.png",
         "selectedIconPath": "images/icons/findS.png"
       }

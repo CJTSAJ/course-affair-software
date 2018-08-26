@@ -1,7 +1,7 @@
 .allNav{
   padding-bottom: 25rpx;
   border-bottom: 1rpx solid #D3D3D3;
-  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+  box-shadow:0rpx 0rpx 15rpx 5rpx #ABABAB;
   margin-top: 20rpx;
 }
 

@@ -1,8 +1,8 @@
 <view class='container'>
   <view>
     <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
-            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" bindchange="swiperchange">
-        <block wx:for="{{images}}" wx:for-item="value">
+            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+     <block wx:for="{{images}}" wx:for-item="value">
             <swiper-item class='swiper_img'>
                 <image src="{{value}}" class="slide-image"/>
             </swiper-item>
@@ -43,29 +43,34 @@
       <image src='/images/icons/random.png'></image>
       <text>随机</text>
     </view>
-    <view class='nav'>
+    <view class='nav' bindtap='toManage'>
       <image src='/images/icons/manage.png'></image>
       <text>管理</text>
     </view>
   </view>
   </view>
-  <view class='information' bindtap='toDetail'>
-    <view class='title'>
-      <text class='titleContent'>{{informationData0}}</text>
-      <text class='time'>{{time0}}</text>
-    </view>
-    <view class='content'>
-      <text>{{content0}}</text>
-    </view>
+
+  <view style='margin-top: 30rpx;'>
+    <text style='font-weight: bold'>最新公告</text>
+    <navigator class='information' wx:for="{{recentNotification}}" wx:for-index="key" wx:for-item="value" url='/pages/homework/homework?time={{value.notificationDate}}&content={{value.notificationContent}}'>
+      <view class='title'>
+        <text class='time'>{{value.notificationDate}}</text>
+      </view>
+      <view class='content'>
+        <text>{{value.notificationContent}}</text>
+      </view>
+    </navigator>
   </view>
-  <view class='information' bindtap='toDetail1'>
-    <view class='title'>
-      <text class='titleContent'>{{informationData1}}</text>
-      <text class='time'>{{time1}}</text>
+
+  <view style='margin-top: 30rpx;'>
+    <text style='font-weight: bold'>最新作业</text>
+    <navigator url='/pages/homework/homework?time={{value.hwdate}}&content={{value.homeworkContent}}' class='information' wx:for="{{recentHomework}}" wx:for-index="key" wx:for-item="value">
+      <view class='title'>
+        <text class='time'>{{value.hwdate}}</text>
+      </view>
+      <view class='content'>
+        <text>{{value.homeworkContent}}</text>
+      </view>
+    </navigator>
     </view>
-    <view class='content'>
-      <text>{{content1}}</text>
-    </view>
-  </view>
-  
 </view>

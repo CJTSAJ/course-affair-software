@@ -20,4 +20,10 @@ public interface StudentRepository extends JpaRepository<StudentEntity, StudentE
 	@Query(value = "delete from student where student.studentid=?1 and student.student_groupid=?2", nativeQuery = true)
 	@Modifying
 	public void deleteByStudentIdAndStudentGroupId(String studentId, String studentGroupId);
+    
+    @Transactional
+	@Query(value = "update student set sno=?1, sname=?2 where studentid=?3 and student_groupid=?4", nativeQuery = true)
+	@Modifying
+	public void updatePerson(String sno, String sname, String studentid, String student_groupid);
+    
 }

@@ -127,4 +127,43 @@ public class IdentityController {
 		taRepository.deleteByTaidAndTaGroupId(openid, opengid);
 		
 	}
+	
+	@CrossOrigin
+    @RequestMapping(value="/modifyInformation",method=RequestMethod.POST)
+	public void modifyInformation(@RequestBody JSONObject data) {
+		String opengid = data.getString("opengid");
+		String openid = data.getString("openid");
+		String identity = data.getString("identity");
+		String name = data.getString("name");
+		if(identity.equals("student")) {
+			String sno = data.getString("sno");
+			studentRepository.updatePerson(sno, name, openid, opengid);
+		}else if(identity.equals("ta")) {
+			taRepository.updateTa(name, openid, opengid);
+		}else {
+			teacherRepository.updateTeacher(name, openid, opengid);
+		}
+	}
+	
+	@CrossOrigin
+    @RequestMapping(value="/getNameAndSno",method=RequestMethod.POST)
+	public JSONObject getNameAndSno(@RequestBody JSONObject data) {
+		String opengid = data.getString("opengid");
+		String openid = data.getString("openid");
+		String identity = data.getString("identity");
+		
+		JSONObject result = new JSONObject();
+		if(identity.equals("student")) {
+			List<StudentEntity> temp = studentRepository.findByStudentIdAndStudentGroupId(openid, opengid);
+			result.put("name", temp.get(0).getSname());
+			result.put("sno", temp.get(0).getSno());
+		}else if(identity.equals("ta")) {
+			List<TaEntity> temp = taRepository.findByTaidAndTaGroupId(openid, opengid);
+			result.put("name", temp.get(0).getTaName());
+		}else {
+			List<TeacherEntity> temp = teacherRepository.findByTeacherIdAndTeacherGroupId(openid, opengid);
+			result.put("name", temp.get(0).getTeacherName());
+		}
+		return result;
+	}
 }

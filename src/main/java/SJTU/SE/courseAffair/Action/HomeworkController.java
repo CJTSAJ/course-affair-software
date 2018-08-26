@@ -209,6 +209,13 @@ public class HomeworkController {
         return res.get(0).getGrade();
 
     }
+    
+    @CrossOrigin
+    @RequestMapping(value="/getRecentHomework",method=RequestMethod.POST)
+    public List<HomeworkEntity> getRecentHomework(@RequestBody JSONObject data) {
+    	String opengid = data.getString("opengid");
+    	return homeworkRepository.findRecentHomework(opengid);
+    }
 
     @RequestMapping(value="/homeworkTest")
     public void htest() {

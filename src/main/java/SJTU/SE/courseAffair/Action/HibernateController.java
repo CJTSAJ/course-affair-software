@@ -5,6 +5,7 @@ import SJTU.SE.courseAffair.Dao.NotificationRepository;
 import SJTU.SE.courseAffair.Dao.StudentRepository;
 import SJTU.SE.courseAffair.Dao.TaRepository;
 import SJTU.SE.courseAffair.Dao.TeacherRepository;
+import SJTU.SE.courseAffair.Entity.HomeworkEntity;
 import SJTU.SE.courseAffair.Entity.NotificationEntity;
 import SJTU.SE.courseAffair.Entity.StudentEntity;
 import SJTU.SE.courseAffair.Entity.TaEntity;
@@ -122,6 +123,13 @@ public class HibernateController {
         notificationEntity.setNotificationPublisherId(openid);
         notificationRepository.save(notificationEntity);
         }
+    
+    @CrossOrigin
+    @RequestMapping(value="/getRecentNotification",method=RequestMethod.POST)
+    public List<NotificationEntity> getRecentHomework(@RequestBody JSONObject data) {
+    	String opengid = data.getString("opengid");
+    	return notificationRepository.findRecentNotification(opengid);
+    }
 
     /*@RequestMapping(value = "addNotice", method = RequestMethod.GET)
     public void save(String openid, String content, HttpServletResponse response,Model model)

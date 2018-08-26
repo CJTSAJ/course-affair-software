@@ -18,4 +18,9 @@ public interface TaRepository extends JpaRepository<TaEntity, TaEntityPK> {
 	@Query(value = "delete from ta where ta.taid=?1 and ta.tagroupid=?2", nativeQuery = true)
 	@Modifying
 	public void deleteByTaidAndTaGroupId(String taid, String taGroupId);
+	
+	@Transactional
+	@Query(value = "update ta set taName=?1 where taid=?2 and tagroupid=?3", nativeQuery = true)
+	@Modifying
+	public void updateTa(String taName, String taid, String tagroupid);
 }

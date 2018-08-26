@@ -1,8 +1,12 @@
 package SJTU.SE.courseAffair.Action;
 
+import java.io.OutputStream;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +20,7 @@ import SJTU.SE.courseAffair.Dao.TeacherRepository;
 import SJTU.SE.courseAffair.Entity.FormEntity;
 import SJTU.SE.courseAffair.Entity.StudentEntity;
 import SJTU.SE.courseAffair.Entity.TeacherEntity;
+import SJTU.SE.courseAffair.service.ExcelUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -38,6 +43,7 @@ public class InformationController {
     	for(StudentEntity student : list) {
     		JSONObject json = new JSONObject();
     		json.put("studentName", student.getSname());
+    		json.put("studentid", student.getSno());
     		json.put("openid", student.getStudentId());
     		josnArray.add(json);
     	}
@@ -80,5 +86,37 @@ public class InformationController {
     	teacher.setTeacherId(openid);
     	teacher.setTeacherName(name);
     	teacherRepository.save(teacher);
+    }
+    
+    @CrossOrigin
+    @RequestMapping(value="/getAllStudentExcel",method=RequestMethod.GET)
+    public void getAllStudentExcel(String opengid, HttpServletResponse response) throws Exception{
+    	String[] title = {"学号", "姓名"};
+    	String fileName = "students.xls";
+    	
+    	List<StudentEntity> list = studentRepository.findByStudentGroupId(opengid);
+    	int len = list.size();
+    	String [][] content = new String[len][2];
+    	
+    	for(int i = 0; i < len; i++) {
+    		StudentEntity temp = list.get(i);
+    		
+    		content[i][0] = temp.getSno();
+    		content[i][1] = temp.getSname();
+    	}
+    	
+    	HSSFWorkbook wb = ExcelUtil.getHSSFWorkbook("学生信息表", title, content, null);
+    	
+    	try {
+    		response.setCharacterEncoding("UTF-8");
+    		response.setContentType("application/octet-stream;charset=ISO8859-1");
+            response.setHeader("Content-Disposition", "attachment;filename="+ fileName);
+    		OutputStream stream = response.getOutputStream();
+    		wb.write(stream);
+    		stream.flush();
+    		stream.close();
+    	}catch (Exception e) {
+    		e.printStackTrace();
+    	}
     }
 }

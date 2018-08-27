@@ -1,0 +1,16 @@
+<!--pages/signSituation/signSituation.wxml-->
+<view>
+  <navigator class='sign' wx:for="{{allSign}}" wx:for-index="key" wx:for-item="value" data-id="{{key}}" url='/pages/signData/signData?id={{value.signInId}}'>
+    <view>
+      <text>发起时间:</text>
+      <text>{{value.signDate}}</text>
+    </view>
+    <view class='signCode'>
+      <view>
+        <text>签到码:</text>
+        <text>{{value.signCode}}</text>
+      </view>
+      <view style='font-size:30rpx; color: #9D9D9D;'>查看详情>>></view>
+    </view>
+  </navigator>
+</view>

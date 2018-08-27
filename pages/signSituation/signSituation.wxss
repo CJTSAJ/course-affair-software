@@ -1,0 +1,18 @@
+/* pages/signSituation/signSituation.wxss */
+.sign{
+  border-bottom: 1rpx solid #ebebeb;
+  height: 150rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.sign text{
+  margin-left: 20rpx;
+}
+
+.signCode{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

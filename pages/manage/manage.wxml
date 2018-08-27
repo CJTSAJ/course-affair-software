@@ -4,8 +4,12 @@
     <text>设置管理员</text>
     <image src='/images/icons/rightArrow.png'></image>
   </view>
-  <view class='block' bindtap='toAllStudent'>
+  <view class='block' bindtap='toAllStudent' style='border-bottom: 1rpx solid #ebebeb'>
     <text>全体学生</text>
+    <image src='/images/icons/rightArrow.png'></image>
+  </view>
+  <view class='block' bindtap='toSignSituation'>
+    <text>签到情况</text>
     <image src='/images/icons/rightArrow.png'></image>
   </view>
 </view>

@@ -19,5 +19,10 @@ Page({
     wx.navigateTo({
       url: '/pages/allStudent/allStudent',
     })
+  },
+  toSignSituation:function(){
+    wx.navigateTo({
+      url: '/pages/signSituation/signSituation',
+    })
   }
 })

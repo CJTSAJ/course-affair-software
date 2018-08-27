@@ -30,7 +30,9 @@
     "pages/uploadFile/uploadFile",
     "pages/allFile/allFile",
     "pages/me/me",
-    "pages/allStudent/allStudent"
+    "pages/allStudent/allStudent",
+    "pages/signSituation/signSituation",
+    "pages/signData/signData"
   ],
   "tabBar": {
     "backgroundColor": "#ffffff",

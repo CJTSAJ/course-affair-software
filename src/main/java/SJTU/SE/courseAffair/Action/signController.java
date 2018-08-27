@@ -7,6 +7,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,13 +17,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.amap.api.location.CoordinateConverter;
-
 import SJTU.SE.courseAffair.Dao.SignInRecordRepository;
 import SJTU.SE.courseAffair.Dao.SignRepository;
+import SJTU.SE.courseAffair.Dao.StudentRepository;
 import SJTU.SE.courseAffair.Entity.SignInEntity;
 import SJTU.SE.courseAffair.Entity.SignInRecordEntity;
-import antlr.Utils;
+import SJTU.SE.courseAffair.Entity.StudentEntity;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -32,6 +32,48 @@ public class signController {
     private SignRepository signRepository;
 	@Autowired
 	SignInRecordRepository signInRecordRepository;
+	@Autowired
+    private StudentRepository studentRepository;
+	
+	@CrossOrigin
+    @RequestMapping(value="/getSignRecord",method=RequestMethod.POST)
+	public JSONObject getSignRecord(@RequestBody JSONObject data) {
+		int id = data.getInt("id");
+		List<SignInRecordEntity> signRecord = signInRecordRepository.findBySignInId(id);
+		List<StudentEntity> students = studentRepository.findByStudentGroupId(signRecord.get(0).getStudentGroupId());
+		
+		int signLen = signRecord.size();
+		int studentLen = students.size();
+		List<JSONObject> success = new ArrayList();
+		for(int i = 0; i < signLen; i++) {
+			List<StudentEntity> temp = studentRepository.findByStudentIdAndStudentGroupId(students.get(i).getStudentId(), students.get(i).getStudentGroupId());
+			JSONObject json = new JSONObject();
+			json.put("sno", temp.get(0).getSno());
+			json.put("sname", temp.get(0).getSname());
+			success.add(json);
+			String openid = signRecord.get(i).getStudentId();
+			for(int j = 0; j < studentLen; j++) {
+				System.out.println(students.get(j));
+				if(students.get(j).getStudentId().equals(openid)) {
+					students.remove(j);
+					studentLen--;
+					j--;
+				}
+			}
+		}
+		
+		JSONObject result = new JSONObject();
+		result.put("success", success);
+		result.put("fail", students);
+		return result;
+	}
+	@CrossOrigin
+    @RequestMapping(value="/getAllSign",method=RequestMethod.POST)
+	public List<SignInEntity> getAllSign(@RequestBody JSONObject data) {
+		String opengid = data.getString("opengid");
+		List<SignInEntity> signs = signRepository.findBySignInGroupId(opengid);
+		return signs;
+	}
 	
 	@CrossOrigin
     @RequestMapping(value="/sign",method=RequestMethod.POST)

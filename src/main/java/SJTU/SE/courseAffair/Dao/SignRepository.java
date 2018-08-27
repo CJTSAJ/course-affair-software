@@ -1,5 +1,7 @@
 package SJTU.SE.courseAffair.Dao;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -10,5 +12,5 @@ public interface SignRepository  extends JpaRepository<SignInEntity, Integer> {
 	//@Transactional
 	@Query(value = "select * from sign_in as s1 where s1.sign_in_groupid=?1 and s1.sign_date=(select MAX(s2.sign_date) from sign_in as s2 where s2.sign_in_groupid=?1)", nativeQuery = true)
 	public SignInEntity findRecentSignByGoupid(String groupid);
-	
+	public List<SignInEntity> findBySignInGroupId(String signInGroupId);
 }

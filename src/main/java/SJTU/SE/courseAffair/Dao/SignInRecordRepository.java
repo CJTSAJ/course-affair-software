@@ -9,4 +9,5 @@ import SJTU.SE.courseAffair.Entity.SignInRecordEntityPK;
 
 public interface SignInRecordRepository extends JpaRepository<SignInRecordEntity, SignInRecordEntityPK> {
 	public List<SignInRecordEntity> findByStudentIdAndStudentGroupIdAndSignInId(String studentId, String studentGroupId, int signInId);
+	public List<SignInRecordEntity> findBySignInId(int signInId);
 }

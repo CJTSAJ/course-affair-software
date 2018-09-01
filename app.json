@@ -26,13 +26,16 @@
     "pages/oneTest/oneTest",
     "pages/oneQuestion/oneQuestion",
     "pages/editQuestion/editQuestion",
+    "pages/editQuestionContent/editQuestionContent",
     "pages/editTest/editTest",
     "pages/uploadFile/uploadFile",
     "pages/allFile/allFile",
     "pages/me/me",
     "pages/allStudent/allStudent",
     "pages/signSituation/signSituation",
-    "pages/signData/signData"
+    "pages/signData/signData",
+    "pages/rollcall/rollcall",
+    "pages/testStatistics/testStatistics"
   ],
   "tabBar": {
     "backgroundColor": "#ffffff",

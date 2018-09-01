@@ -13,6 +13,7 @@
 }
 
 .testName{
+  margin-top: 25rpx;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 900rpx;
   font-size: xx-large;
@@ -33,17 +34,18 @@
 
 .question{
   width: 650rpx;
-  background-color: white;
   margin-left: 50rpx;
   margin-top: 50rpx;
   padding-bottom: 20rpx;
-  overflow: hidden;
   border-bottom-right-radius:2em;
   box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+  background-color: #FFF8DC;
+  min-height: 200rpx;
+  overflow: hidden;
 }
 
+
 .questionTitle{
-  background-color: #FFF8DC;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -56,20 +58,39 @@
   font-weight: 700;
 }
 
-.choose{
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  color: red;
+
+.questionContent{
+  background-color: white;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  display: block;
+  white-space: pre-line;
+  word-break:break-all;
+  min-height: 175rpx;
+}
+.questionContent text{
+  width: 600rpx;
 }
 
-.questionCon{
-  margin-left: 10rpx;
-  padding: 15rpx 35rpx;
+
+.questionChoice{
+  margin-bottom: 20rpx;
 }
-.questionCon text{
-  font-size: 35rpx;
+
+.oneChoice{
+  border-bottom: 1rpx solid #cdcdcd;
   display: flex;
+  height: 100rpx;
   flex-direction: row;
-  color: #555555;
+  align-items: center;
+  overflow: hidden;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  white-space:nowrap;
 }
 
 .tips{
@@ -80,6 +101,10 @@
   color: #D4D4D4;
 }
 
+.mainArea{
+  margin-bottom: 150rpx;
+}
+
 .submit{
   position:fixed; 
   bottom:0;
@@ -88,7 +113,7 @@
 .submit button{
   color: black;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  background-color: #FFF8DC;
+  background-color: #FFF68F;
   width: 750rpx;
   font-weight: 900;
 }

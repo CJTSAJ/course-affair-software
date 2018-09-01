@@ -33,34 +33,53 @@ Page({
       content:c
     })
   },
-  confirm:function(){
+  confirm:function(e){
     var id = app.globalData.openId;
     var openGId = app.globalData.openGId;
-    var content = this.data.content;
+    var content = e.detail.value.textarea
     console.log(id)
     console.log(content)
     console.log(openGId)
-    var tempData = {
-      openid: id,
-      content: content
+    if(content.length != 0){
+      wx.request({
+        url: 'http://207.148.114.118:8080/courseAffair/hibernate/addNotice',
+        data: {
+          openid: id,
+          content: content,
+          openGId: openGId
+        },
+        method: 'POST',
+        header: { 'content-type': 'application/json' },
+        success: function (res) {
+          if(res.statusCode == 200){
+            wx.showToast({
+              title: '成功',
+              icon: 'success',
+              mask: false,
+              success:function(){
+                setTimeout(function(){
+                  wx.navigateBack({
+                    delta: 1
+                  })
+                }, 1500)
+              }
+            })
+            
+          }else{
+            wx.showModal({
+              title: '错误',
+              content: '服务器发生错误',
+            })
+          }
+        },
+        fail: function (error) {
+        }
+      })
+    }else{
+      wx.showModal({
+        title: '提示',
+        content: '公告内容不能为空',
+      })
     }
-    wx.request({
-      url: 'http://207.148.114.118:8080/courseAffair/hibernate/addNotice',
-      data: {
-        openid: id,
-        content: content,
-        openGId: openGId
-      },
-      method: 'POST',
-      header: { 'content-type': 'application/json' },
-      success: function (res) {
-        wx.navigateBack({
-          delta: 1
-        })
-      },
-      fail: function (error) {
-        
-      }
-    })
   }
 })

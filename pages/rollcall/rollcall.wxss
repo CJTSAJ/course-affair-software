@@ -1,0 +1,28 @@
+.btn-area{
+  margin-top: 200rpx;
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #ffe95c;
+  width: 600rpx;
+  font-weight: 900;
+}
+
+.title{
+  margin-top: 50rpx;
+  margin-bottom: 30rpx;
+  margin-left: 25rpx;
+  padding-bottom: 25rpx;
+  width: 700rpx;
+  height: 250rpx;
+  overflow: hidden;
+  background-color:  #FFF8DC;
+  border-bottom-right-radius:2em;
+  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+}
+
+.tx{
+  display: flex;
+  flex-direction: column;
+  margin-left: 100rpx;
+  margin-top:50rpx;
+}

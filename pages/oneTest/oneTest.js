@@ -1,5 +1,6 @@
 // pages/oneTest/oneTest.js
 const app = getApp()
+var sort = require('../../utils/sort.js');
 Page({
 
   /**
@@ -11,12 +12,13 @@ Page({
     content:null,
     testId:null,
     countDown: null,
-    questionsContent:[],
-    questionsId:[],
+    choiceLetter: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+    question:[],
     point:[],
     studentChoose:[],
-    studentChooseSubmit:[]
   },
+
+
 
   /**
    * 生命周期函数--监听页面加载
@@ -30,29 +32,30 @@ Page({
       testId: options.testId,
     })
     wx.request({
-      url: 'http://207.148.114.118:8080/courseAffair/getTestDetail',
-      data: parseInt(self.data.testId),
+      url:  app.globalData.serverUrl + 'getTestDetail',
+      data: {
+        testId: this.data.testId,
+        student_groupId: app.globalData.openGId,
+        studentId: app.globalData.openId,
+      },
       method: 'POST',
       header: { 'content-type': 'application/json' },
-      success: function (res) {
-        let quesId = [];
-        let quesCon = [];
-        let quesPoint = [];
-        let answer = [];
-        let answerSubmit = [];
-        for (var i in res.data) {
-          quesId.push(res.data[i][0]);
-          quesPoint.push(res.data[i][1]);
-          quesCon.push(res.data[i][2]);
-          answer.push("未作答");
-          answerSubmit.push(null);
+      success: function (res){
+        let questionData=[]
+        for(var i in res.data){
+          let choiceData = [];
+          for(var j in res.data[i][4]){
+            let choiceArray = { cId: res.data[i][4][j][0], cContent: res.data[i][4][j][1]};
+            choiceData.push(choiceArray);
+          }
+          let questionArray = {qId: res.data[i][0], point: res.data[i][1], qContent: res.data[i][2], choice: choiceData};
+          questionData.push(questionArray);
+          self.data.studentChoose.push(-1);
         }
+        var question_sort = sort.sort(questionData);
         self.setData({
-          questionsId: quesId,
-          questionsContent: quesCon,
-          point: quesPoint,
-          studentChoose: answer,
-          studentChooseSubmit:answerSubmit
+          question: question_sort,
+          studentChoose: self.data.studentChoose
         })
         self.countDown();
       },
@@ -60,6 +63,7 @@ Page({
       }
     })
   },
+
 
   timeFormat(param) {//小于10的格式化函数
     return param < 10 ? '0' + param : param;
@@ -100,31 +104,61 @@ Page({
     return this.data.questionsContent[key]
   },
 
-  submitConfirm: function () {
-    var self = this;
-    wx.showModal({
-      content: '确定提交答案(答案不可重复提交)？',
-      success: function (res) {
-        if (res.confirm) {
-          console.log('用户点击确定');
-          self.submit();
-        }
-      }
-    })
+  radioChange: function(e) {
+    this.data.studentChoose[parseInt(e.currentTarget.id)] = e.detail.value;
+    this.setData({
+      studentChoose: this.data.studentChoose
+    });
   },
+
+  submitConfirm: function () {
+    console.log(this.data.studentChoose);
+    var self = this;
+    var ifMiss = -1;
+    for (var i in this.data.studentChoose){
+      if (this.data.studentChoose[i] == -1){
+        ifMiss = i;
+        break;
+      }
+    }
+    if(ifMiss>-1){
+      wx.showModal({
+        content: '第' + (ifMiss+1) + '题未完成',
+        showCancel: false
+      })
+    }
+    else{
+      wx.showModal({
+        content: '确定提交答案(答案不可重复提交)？',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定');
+            self.submit();
+          }
+        }
+      })
+    }
+  },
+
 
   submit:function(){
     var self = this;
+    let questionId = [];
+    let point = [];
+    for(var i in this.data.question){
+      questionId.push(this.data.question[i].qId);
+      point.push(this.data.question[i].point);
+    }
     if(self.data.state == 1){
       wx.request({
-        url: 'http://207.148.114.118:8080/courseAffair/submitTest',
+        url: app.globalData.serverUrl + 'submitTest',
         data: {
           student_groupId: app.globalData.openGId,
           studentId: app.globalData.openId,
-          questionId: self.data.questionsId,
+          questionId: questionId,
           testId: self.data.testId,
-          answer: self.data.studentChooseSubmit,
-          point: self.data.point
+          answer: this.data.studentChoose,
+          point:point
         },
         method: 'POST',
         header: { 'content-type': 'application/json' },
@@ -132,11 +166,13 @@ Page({
           if (res.data == "success") {
             wx.showModal({
               content: '提交成功',
+              showCancel: false
             });
           }
           else {
             wx.showModal({
               content: '不能重复提交',
+              showCancel: false
             })
           }
         },
@@ -147,6 +183,7 @@ Page({
     else{
       wx.showModal({
         content: '测试结束',
+        showCancel: false
       })
     }
   }

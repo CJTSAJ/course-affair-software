@@ -1,0 +1,5 @@
+/* pages/testStatistics/testStatistics.wxss */
+.canvas{
+   height: 100vh; 
+   width: 750rpx;
+}

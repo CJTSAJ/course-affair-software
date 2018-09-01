@@ -48,78 +48,89 @@ Page({
     wx.request({
       url: 'http://207.148.114.118:8080/courseAffair/getAllFile',
       data: {
-        opengid: '123'
+        opengid: app.globalData.openGId
       },
       method: 'POST',
       header: { 'content-type': 'application/json' },
       success:function(res){
-        console.log(res.data);
-        var temp = res.data[0].filename.split('.');
-        var houzhui = temp[temp.length - 1]
-        console.log("后缀" + houzhui);
-        res.data.reverse();
-        var arr = res.data;
-        var len = arr.length;
+        if(res.statusCode == 200){
+          console.log(res.data);
+          if(res.data.length > 0){
+            var temp = res.data[0].filename.split('.');
+            var houzhui = temp[temp.length - 1]
+            console.log("后缀" + houzhui);
+            res.data.reverse();
+            var arr = res.data;
+            var len = arr.length;
 
-        var tempPictureForm = [];
-        for(var i = 0; i < len; i++){
-          var temp = res.data[i].filename.split('.');
-          var houzhui = temp[temp.length - 1];
+            var tempPictureForm = [];
+            for (var i = 0; i < len; i++) {
+              var temp = res.data[i].filename.split('.');
+              var houzhui = temp[temp.length - 1];
 
-          //arr[i].updateDate = arr[i].updateDate.slice(0, 19);
-          var date = arr[i].uploadDate.slice(0, 19);
-          arr[i].uploadDate = date.replace('T', ' ');
-          switch(houzhui){
-            case 'mp3':
-            case 'wav':
-            case 'wma':
-            case 'midi':
-              tempPictureForm.push("/images/mp3.png");
-              break;
-            case 'mp4':
-            case 'mov':
-            case 'wmv':
-            case 'mkv':
-            case 'flv':
-            case 'avi':
-            case 'mpeg':
-            case 'rm':
-            case 'rmvb':
-              tempPictureForm.push("/images/mp4.png");
-              break;
-            case 'pdf':
-              tempPictureForm.push("/images/pdf.png");
-              break;
-            case 'doc':
-            case 'docx':
-              tempPictureForm.push("/images/word.png");
-              break;
-            case 'txt':
-              console.log("txt");
-              tempPictureForm.push("/images/txt.png");
-              break;
-            case 'ppt':
-            case 'pptx':
-              console.log("pptx");
-              tempPictureForm.push("/images/ppt.png");
-              break;
-            case 'gif':
-            case 'png':
-            case 'jpg':
-            case 'jpeg':
-            case 'bpm':
-              console.log("gif");
-              tempPictureForm.push("/images/picture.png");
-              break;
-            default:
-              console.log("default");
-              tempPictureForm.push("/images/file.png");
+              //arr[i].updateDate = arr[i].updateDate.slice(0, 19);
+              var date = arr[i].uploadDate.slice(0, 19);
+              arr[i].uploadDate = date.replace('T', ' ');
+              switch (houzhui) {
+                case 'mp3':
+                case 'wav':
+                case 'wma':
+                case 'midi':
+                  tempPictureForm.push("/images/mp3.png");
+                  break;
+                case 'mp4':
+                case 'mov':
+                case 'wmv':
+                case 'mkv':
+                case 'flv':
+                case 'avi':
+                case 'mpeg':
+                case 'rm':
+                case 'rmvb':
+                  tempPictureForm.push("/images/mp4.png");
+                  break;
+                case 'pdf':
+                  tempPictureForm.push("/images/pdf.png");
+                  break;
+                case 'doc':
+                case 'docx':
+                  tempPictureForm.push("/images/word.png");
+                  break;
+                case 'txt':
+                  console.log("txt");
+                  tempPictureForm.push("/images/txt.png");
+                  break;
+                case 'ppt':
+                case 'pptx':
+                  console.log("pptx");
+                  tempPictureForm.push("/images/ppt.png");
+                  break;
+                case 'gif':
+                case 'png':
+                case 'jpg':
+                case 'jpeg':
+                case 'bpm':
+                  console.log("gif");
+                  tempPictureForm.push("/images/picture.png");
+                  break;
+                default:
+                  console.log("default");
+                  tempPictureForm.push("/images/file.png");
+              }
+            }
+            self.setData({
+              allFile: arr,
+              fileForm: tempPictureForm
+            })
+          }else{
+            console.log("没有文件")
           }
+        }else{
+          wx.showModal({
+            title: '错误',
+            content: '服务器发生错误',
+          })
         }
-        self.setData({
-          allFile: arr,
-          fileForm: tempPictureForm
-        })
       }
     })
   },

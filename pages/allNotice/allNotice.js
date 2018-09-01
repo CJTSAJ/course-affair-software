@@ -2,8 +2,6 @@ const app = getApp()
 Page({
   data:{
     allContent: [],
-    time0:"2018-6-10 19:17",
-    time1: "2018-6-10 20:08",
     userInfo: null,
     isTeacher: false
   },
@@ -35,11 +33,19 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/json' },
       success: function (res) {
-        console.log("success:" + res.data);
-        console.log("content::" + res.data[0])
-        self.setData({
-          allContent: res.data
-        })
+        if(res.statusCode == 200){
+          console.log("success:" + res.data);
+          console.log("content::" + res.data[0])
+          self.setData({
+            allContent: res.data
+          })
+        }else{
+          wx.showModal({
+            title: '错误',
+            content: '服务器发生错误',
+          })
+        }
+        
       },
       fail: function (error) {
         console.log("error:" + error);

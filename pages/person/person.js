@@ -45,7 +45,7 @@ Page({
   onShow: function(){
     var self = this;
     wx.request({
-      url: 'http://localhost:8080/getNameAndSno',
+      url: app.globalData.serverUrl + 'getNameAndSno',
       data: {
         opengid: app.globalData.openGId,
         openid: app.globalData.openId,

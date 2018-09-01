@@ -6,7 +6,8 @@ App({
     longitude: null,
     latitude: null,
     sessionKey: null,
-    openGId: null
+    openGId: null,
+    serverUrl: 'http://207.148.114.118:8080/courseAffair/'
   },
   onLaunch: function (options) {
     var self = this;
@@ -135,58 +136,60 @@ App({
       if(self.globalData.openId != null){
         console.log("self.globalData.openId != null");
         console.log(options.shareTicket)
-        wx.getShareInfo({
-          shareTicket: options.shareTicket,
-          complete(res) {
-            console.log(res)
-            
-            wx.request({
-              url: 'http://207.148.114.118:8080/courseAffair/decode/decodeGid',
-              data: {
-                encryptedData: res.encryptedData,
-                iv: res.iv,
-                session_key: self.globalData.sessionKey
-              },
-              method: 'GET',
-              header: { 'content-type': 'application/json' },
-              success: function (res) {
-                console.log("返回的opengid:" + res.data.openGId);
-                self.globalData.openGId = res.data.openGId;
-                wx.request({
-                  url: 'http://207.148.114.118:8080/courseAffair/getIdentity',
-                  data: {
-                    openid: self.globalData.openId,
-                    opengid: res.data.openGId
-                  },
-                  method: 'POST',
-                  header: { 'content-type': 'application/json' },
-                  success: function (res) {
-                    var isExist = res.data.isExist;
-                    console.log("hhh" + res.data)
-                    console.log("是否存在:" + isExist);
-                    if (isExist == "true") {
-                      self.globalData.identity = res.data.identity;
-                      wx.reLaunch({
-                        url: '/pages/home/home',
-                      })
+        if (self.globalData.openGId == null){
+          wx.getShareInfo({
+            shareTicket: options.shareTicket,
+            complete(res) {
+              console.log(res)
+
+              wx.request({
+                url: 'http://207.148.114.118:8080/courseAffair/decode/decodeGid',
+                data: {
+                  encryptedData: res.encryptedData,
+                  iv: res.iv,
+                  session_key: self.globalData.sessionKey
+                },
+                method: 'GET',
+                header: { 'content-type': 'application/json' },
+                success: function (res) {
+                  console.log("返回的opengid:" + res.data.openGId);
+                  self.globalData.openGId = res.data.openGId;
+                  wx.request({
+                    url: 'http://207.148.114.118:8080/courseAffair/getIdentity',
+                    data: {
+                      openid: self.globalData.openId,
+                      opengid: res.data.openGId
+                    },
+                    method: 'POST',
+                    header: { 'content-type': 'application/json' },
+                    success: function (res) {
+                      var isExist = res.data.isExist;
+                      console.log("hhh" + res.data)
+                      console.log("是否存在:" + isExist);
+                      if (isExist == "true") {
+                        self.globalData.identity = res.data.identity;
+                        wx.reLaunch({
+                          url: '/pages/home/home',
+                        })
+                      }
+                      else {
+                        wx.reLaunch({
+                          url: '/pages/authority/authority',
+                        })
+                      }
                     }
-                    else {
-                      wx.reLaunch({
-                        url: '/pages/authority/authority',
-                      })
-                    }
-                  }
-                })
-              }
-            })
-          }
-        })
+                  })
+                }
+              })
+            }
+          })
+        }
       }
     }
   },
   /*onShow: function () {
     wx.reLaunch({
-      url: '/pages/person/person',
+      url: '/pages/testStatistics/testStatistics',
     })
   },*/
   getGoupid:function(){

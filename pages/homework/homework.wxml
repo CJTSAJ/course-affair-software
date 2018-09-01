@@ -1,5 +1,13 @@
 <view>
   <view class='content'>
+    <view>
+      <text>发布时间</text>
+      <text></text>
+    </view>
+    <view>
+      <text>截止日期</text>
+      <text></text>
+    </view>
     <text>{{content}}</text>
   </view>
 </view>

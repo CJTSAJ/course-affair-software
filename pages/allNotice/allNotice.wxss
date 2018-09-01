@@ -1,3 +1,11 @@
+.showDetail{
+  color: #CDCDCD;
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 15rpx;
+}
 .notice{
   overflow: hidden;
   width: 700rpx;  
@@ -28,17 +36,17 @@
 }
 
 .content{
-  margin-left: 10rpx;
-  padding: 15rpx 35rpx;
+  padding: 15rpx 15rpx;
+  height: 150rpx;
 }
 .content text{
-  font-size: 20rpx;
+  font-size: 24rpx;
   color: #555555;
 }
 
 .addNotice{
   position:fixed; 
-  bottom:10rpx;
+  bottom:0rpx;
 }
 
 .addNotice button{

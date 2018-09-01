@@ -1,4 +1,17 @@
 <view>
+  <view class='title'>
+    <view class='titleFirst'>
+      <image src='/images/icons/person.png'></image>
+      <text>发布者：</text>
+      <text>{{name}}</text>
+    </view>
+    <view class='titleFirst'>
+      <image src='/images/icons/time.png'></image>
+      <text>发布时间：</text>
+      <text>{{time}}</text>
+    </view>
+
+  </view>
   <view class='content'>
     <text>{{content}}</text>
   </view>

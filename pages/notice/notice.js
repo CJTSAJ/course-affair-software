@@ -1,12 +1,14 @@
 Page({
   data: {
-    time: "2018-6-10 19:17",
-    content: ""
+    time: "",
+    content: "",
+    name: ""
   },
   onLoad:function(options){
     this.setData({
       time:options.time,
-      content:options.content
+      content:options.content,
+      name: options.name
     })
   }
 })

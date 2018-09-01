@@ -6,13 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    opengid: "123",
-    openid: "1234"
+    opengid: "",
+    openid: ""
   },
-  onShow:function(){
-    /*this.setData({
+  onLoad:function(){
+    this.setData({
       opengid: app.globalData.openGId,
       openid: app.globalData.openId
-    })*/
+    })
   }
 })

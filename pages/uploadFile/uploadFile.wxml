@@ -1,2 +1,2 @@
 <!--pages/uploadFile/uploadFile.wxml-->
-<web-view src="{{'http://www.chenjiangtao.club:8080/upload/uploadtest.html?opengid=' + opengid + '&openid=' + openid}}"></web-view>
+<web-view src="{{'https://www.chenjiangtao.cn/upload/uploadtest.html?opengid=' + opengid + '&openid=' + openid}}"></web-view>

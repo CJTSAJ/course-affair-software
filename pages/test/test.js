@@ -15,6 +15,8 @@ Page({
     testId:[],
     isTeacher: false
   },
+
+
   onShow:function() {
     if (app.globalData.identity != "student") {
       this.setData({
@@ -27,7 +29,7 @@ Page({
     var self = this;
     var opengid = app.globalData.openGId;
     wx.request({
-      url: 'http://207.148.114.118:8080/courseAffair/getTest',
+      url: app.globalData.serverUrl + 'getTest',
       data: opengid,
       method: 'POST',
       header: { 'content-type': 'application/json' },
@@ -58,6 +60,12 @@ Page({
 
   timeFormat(param) {//小于10的格式化函数
     return param < 10 ? '0' + param : param;
+  },
+
+  toEditTest: function () {
+    wx.navigateTo({
+      url: '/pages/editTest/editTest',
+    })
   },
 
   countDown: function(){
@@ -95,11 +103,5 @@ Page({
       state: timeState
     })
     setTimeout(this.countDown, 1000);
-  },
-
-  toEditTest:function(){
-    wx.navigateTo({
-      url: '/pages/editTest/editTest',
-    })
   }
 })

@@ -35,11 +35,6 @@
   color: red;
 }
 
-.addTest{
-  position: fixed;
-  bottom: 0rpx;
-}
-
 .addTest button{
   color: black;
   font-family: Georgia, 'Times New Roman', Times, serif;
@@ -48,8 +43,7 @@
   font-weight: 900;
 }
 
-::-webkit-scrollbar {
-  width: 0;
-  height: 0;
-  color: transparent;
+.addTest button::after{
+  border:none;
 }
+

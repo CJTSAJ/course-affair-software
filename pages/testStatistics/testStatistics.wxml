@@ -1,0 +1,4 @@
+<!--pages/testStatistics/testStatistics.wxml-->
+<view>
+  <canvas canvas-id="columnCanvas" disable-scroll="true" class="canvas"></canvas>
+</view>

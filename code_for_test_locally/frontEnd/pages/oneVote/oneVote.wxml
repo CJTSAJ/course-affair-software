@@ -1,2 +1,26 @@
 <!--pages/oneVote/oneVote.wxml-->
-<text>pages/oneVote/oneVote.wxml</text>
+<view class='container'>
+  <scroll-view class="help-info" scroll-y="true" style="height:1180rpx">
+    <view class="mainArea">
+      <view class = "title">
+        <text class = 'title'>{{title}}</text>
+        <text class = 'content'>{{content}}</text>
+        <text class = 'time'>剩余时间: </text>
+        <text class = 'time'>{{countDown.hou}} 时 {{countDown.min}} 分 {{countDown.sec}} 秒</text>
+      </view>
+      <view class="Choice" >
+        <radio-group  bindchange="radioChange">
+          <label wx:for="{{choices}}" wx:for-index="keyChoice" wx:for-item="valueChoice">
+            <view class="oneChoice" style="background-color:{{(keyChoice==studentChoose) ? 'greenyellow':''}}">
+              <radio checked="{{keyChoice==studentChoose}}" value="{{keyChoice}}"/>
+              <text>{{choiceLetter[keyChoice]}} : {{valueChoice.cContent}}</text>
+            </view>
+          </label>
+        </radio-group>
+      </view>
+    </view>
+    <view class='submit'>
+      <button bindtap='submitConfirm'>提交投票</button>
+    </view>
+  </scroll-view>
+</view>

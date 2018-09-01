@@ -36,6 +36,12 @@ Page({
     })
   },
 
+  toTest:function(){
+    wx.navigateTo({
+      url: '/pages/test/test',
+    })
+  },
+
   toVote: function () {
     wx.navigateTo({
       url: '/pages/vote/vote',

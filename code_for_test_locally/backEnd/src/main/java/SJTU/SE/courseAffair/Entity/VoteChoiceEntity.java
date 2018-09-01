@@ -7,7 +7,7 @@ import javax.persistence.*;
 @IdClass(VoteChoiceEntityPK.class)
 public class VoteChoiceEntity {
     private int voteId;
-    private String voteChoiceNo;
+    private int voteChoiceNo;
     private String voteChoiceContent;
 
     @Id
@@ -21,12 +21,12 @@ public class VoteChoiceEntity {
     }
 
     @Id
-    @Column(name = "vote_Choice_No", nullable = false, length = 1)
-    public String getVoteChoiceNo() {
+    @Column(name = "vote_Choice_No", nullable = false)
+    public int getVoteChoiceNo() {
         return voteChoiceNo;
     }
 
-    public void setVoteChoiceNo(String voteChoiceNo) {
+    public void setVoteChoiceNo(int voteChoiceNo) {
         this.voteChoiceNo = voteChoiceNo;
     }
 
@@ -48,7 +48,7 @@ public class VoteChoiceEntity {
         VoteChoiceEntity that = (VoteChoiceEntity) o;
 
         if (voteId != that.voteId) return false;
-        if (voteChoiceNo != null ? !voteChoiceNo.equals(that.voteChoiceNo) : that.voteChoiceNo != null) return false;
+        if (voteChoiceNo != that.voteChoiceNo) return false;
         if (voteChoiceContent != null ? !voteChoiceContent.equals(that.voteChoiceContent) : that.voteChoiceContent != null)
             return false;
 
@@ -58,7 +58,7 @@ public class VoteChoiceEntity {
     @Override
     public int hashCode() {
         int result = voteId;
-        result = 31 * result + (voteChoiceNo != null ? voteChoiceNo.hashCode() : 0);
+        result = 31 * result + voteChoiceNo;
         result = 31 * result + (voteChoiceContent != null ? voteChoiceContent.hashCode() : 0);
         return result;
     }

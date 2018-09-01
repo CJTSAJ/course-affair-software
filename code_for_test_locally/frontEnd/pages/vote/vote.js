@@ -1,66 +1,103 @@
 // pages/vote/vote.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-  
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-  
+    allTitle: [],
+    userInfo: null,
+    state: null,
+    countDownList: [],
+    startTimeList: [],
+    endTimeList: [],
+    voteId: [],
+    isTeacher: false
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+    if (app.globalData.identity != "student") {
+      this.setData({
+        isTeacher: true
+      });
+    }
+    this.setData({
+      userInfo: app.globalData.userInfo
+    });
+    var self = this;
+    var opengid = app.globalData.openGId;
+    wx.request({
+      url: 'http://127.0.0.1:8080/getVote',
+      data: opengid,
+      method: 'POST',
+      header: { 'content-type': 'application/json' },
+      success: function (res){
+        let startTime = [];
+        let endTime = [];
+        let id = [];
+        let title = [];
+        for (var i in res.data) {
+          startTime.push(res.data[i][0]);
+          endTime.push(res.data[i][1]);
+          id.push(res.data[i][2]);
+          title.push(res.data[i][3]);
+        };
+        self.setData({
+          allTitle: title,
+          startTimeList: startTime,
+          endTimeList: endTime,
+          voteId: id
+        });
+        self.countDown();
+      },
+      fail: function (error) {
+      }
+    })
   },
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-  
+  timeFormat(param) {//小于10的格式化函数
+    return param < 10 ? '0' + param : param;
   },
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-  
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-  
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-  
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-  
+  countDown: function () {
+    var self = this;
+    let now = new Date().getTime();
+    let countDownArr = [];
+    let timeState = [];
+    for (var i in self.data.startTimeList) {
+      let startTime = new Date(this.data.startTimeList[i]).getTime();
+      let endTime = new Date(this.data.endTimeList[i]).getTime();
+      if (now - startTime < 0) {
+        timeState.push(0);
+        countDownArr.push(null);
+      }
+      else if (now - endTime > 0) {
+        timeState.push(2);
+        countDownArr.push(null);
+      }
+      else {
+        timeState.push(1);
+        let time = (endTime - now) / 1000;
+        let hou = parseInt(time / 3600);
+        let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
+        let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
+        let obj = {
+          hou: this.timeFormat(hou),
+          min: this.timeFormat(min),
+          sec: this.timeFormat(sec)
+        }
+        countDownArr.push(obj);
+      }
+    }
+    this.setData({
+      countDownList: countDownArr,
+      state: timeState
+    })
+    setTimeout(this.countDown, 1000);
   }
+
 })

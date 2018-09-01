@@ -34,7 +34,7 @@ Page({
     wx.request({
       url: 'http://127.0.0.1:8080/getTestDetail',
       data: {
-        testId: this.data.testId,
+        testId: self.data.testId,
         student_groupId: app.globalData.openGId,
         studentId: app.globalData.openId,
       },

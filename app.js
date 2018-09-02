@@ -1,5 +1,6 @@
 App({
   globalData: {
+    isInitial: false,
     identity: 'noExist',
     openId: null,
     userInfo: null,
@@ -7,7 +8,7 @@ App({
     latitude: null,
     sessionKey: null,
     openGId: null,
-    serverUrl: 'http://207.148.114.118:8080/courseAffair/'
+    serverUrl: 'http://118.25.194.153:8080/courseAffair/'
   },
   onLaunch: function (options) {
     var self = this;
@@ -52,7 +53,7 @@ App({
                   complete(res) {
                     console.log(res)
                     wx.request({
-                      url: 'http://207.148.114.118:8080/courseAffair/decode/decodeGid',
+                      url: 'http://118.25.194.153:8080/courseAffair/decode/decodeGid',
                       data: {
                         encryptedData: res.encryptedData,
                         iv: res.iv,
@@ -64,7 +65,7 @@ App({
                         console.log("返回的opengid:" + res.data.openGId);
                         self.globalData.openGId = res.data.openGId;
                         wx.request({
-                          url: 'http://207.148.114.118:8080/courseAffair/getIdentity',
+                          url: 'http://118.25.194.153:8080/courseAffair/getIdentity',
                           data: {
                             openid: self.globalData.openId,
                             opengid: res.data.openGId
@@ -125,25 +126,29 @@ App({
   },
 
   onShow: function (options) {
+    wx.showLoading({
+      title: '加载中',
+    })
     console.log("option" + options)
     if (options.scene != 1044) {
       wx.redirectTo({
         url: '/pages/shareToGroup/shareToGroup',
       })
+      wx.hideLoading()
     }
     else{
       var self = this;
       if(self.globalData.openId != null){
         console.log("self.globalData.openId != null");
         console.log(options.shareTicket)
-        if (self.globalData.openGId == null){
+        if (self.globalData.isInitial == false){
           wx.getShareInfo({
             shareTicket: options.shareTicket,
             complete(res) {
               console.log(res)
 
               wx.request({
-                url: 'http://207.148.114.118:8080/courseAffair/decode/decodeGid',
+                url: 'http://118.25.194.153:8080/courseAffair/decode/decodeGid',
                 data: {
                   encryptedData: res.encryptedData,
                   iv: res.iv,
@@ -155,7 +160,7 @@ App({
                   console.log("返回的opengid:" + res.data.openGId);
                   self.globalData.openGId = res.data.openGId;
                   wx.request({
-                    url: 'http://207.148.114.118:8080/courseAffair/getIdentity',
+                    url: 'http://118.25.194.153:8080/courseAffair/getIdentity',
                     data: {
                       openid: self.globalData.openId,
                       opengid: res.data.openGId
@@ -177,12 +182,17 @@ App({
                           url: '/pages/authority/authority',
                         })
                       }
+                      wx.hideLoading()
                     }
                   })
                 }
               })
             }
           })
+        }
+        else{
+          console.log("nothing")
+          wx.hideLoading()
         }
       }
     }

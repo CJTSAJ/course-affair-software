@@ -1,4 +1,5 @@
 // pages/signSituation/signSituation.js
+const app = getApp()
 Page({
 
   /**
@@ -11,15 +12,25 @@ Page({
   onShow:function(){
     var self = this;
     wx.request({
-      url: 'http://localhost:8080/getAllSign',
+      url: app.globalData.serverUrl + 'getAllSign',
       data:{
-        opengid: "tG7EaP4nMFgSbbz8PQ4nOVQkdwScY"
+        opengid: app.globalData.openGId
       },
       method: 'POST',
       header: { 'content-type': 'application/json' },
       success: function(res){
         res.data.reverse();
         console.log(res.data);
+
+
+
+
+
+
+
+
+
+        
         var temp = res.data;
         for (var i = 0; i < temp.length; i++) {
           var newDate = new Date();

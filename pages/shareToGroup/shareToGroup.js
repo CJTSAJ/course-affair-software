@@ -9,6 +9,16 @@ Page({
     encryptedData: null,
     iv:null
   },
+  onLoad: function(options){
+    /*console.log('sharetogroup')
+    wx.showLoading({
+      title: '加载中',
+      mask: false
+    })
+    if (options.scene == 1044){
+
+    }*/
+  },
 
   /**
    * 用户点击右上角分享
@@ -21,7 +31,7 @@ Page({
     var that = this
     return {
       title: "分享到群",
-      path: '/pages/shareToGroup/shareToGroup',
+      path: '/pages/home/home',
       success(res) {
         wx.getShareInfo({
           shareTicket: res.shareTickets[0],

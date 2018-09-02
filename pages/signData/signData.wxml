@@ -1,5 +1,7 @@
 <!--pages/signData/signData.wxml-->
 <view>
+  <text style='font-weight: bold'>统计图</text>
+  <canvas canvas-id="columnCanvas" disable-scroll="true" class="canvas"></canvas>
   <view>
     <text style='font-weight: bold'>未签到</text>
     <view style='border-top:1rpx solid #ebebeb'>

@@ -11,6 +11,9 @@ Page({
     allTeacher: []
   },
   onShow:function(){
+    wx.showLoading({
+      title: '加载中',
+    })
     console.log("allManager onshow")
     var self = this;
     wx.request({
@@ -27,6 +30,7 @@ Page({
           allTeacher: res.data.teacher,
           size: res.data.ta.length
         })
+        wx.hideLoading()
       }
     })
   },
@@ -67,8 +71,10 @@ Page({
     })
   },
   addManger:function(){
+    var self = this;
+    var model = JSON.stringify(self.data.allTa);
     wx.navigateTo({
-      url: '/pages/managerSetting/mangerSetting',
+      url: '/pages/managerSetting/mangerSetting?allTa=' + model,
     })
   }
 })

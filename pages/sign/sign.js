@@ -38,7 +38,7 @@ Page({
       var self = this;
       if (app.globalData.identity == "student") {
         wx.request({
-          url: 'http://207.148.114.118:8080/courseAffair/sign',
+          url: app.globalData.serverUrl + 'sign',
           data: {
             opengid: app.globalData.openGId,
             openid: app.globalData.openId,
@@ -60,12 +60,12 @@ Page({
                 reason = "距离老师超过100米"
               }
 
-              /*wx.showModal({
+              wx.showModal({
                 title: '签到失败',
                 content: reason,
-              })*/
+              })
 
-              if (reason == "距离老师超过100米"){
+              /*if (reason == "距离老师超过100米"){
                 wx.showToast({
                   title: '签到成功',
                   icon: 'success',
@@ -82,7 +82,7 @@ Page({
                   title: '签到失败',
                   content: reason,
                 })
-              }
+              }*/
             }else{
                 wx.showToast({
                   title: '签到成功',
@@ -99,7 +99,7 @@ Page({
         })
       } else if (app.globalData.identity != "student") {
         wx.request({
-          url: 'http://207.148.114.118:8080/courseAffair/addSign',
+          url: app.globalData.serverUrl + 'addSign',
           data: {
             opengid: app.globalData.openGId,
             signCode: signCode,

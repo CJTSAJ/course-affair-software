@@ -1,4 +1,6 @@
 // pages/signData/signData.js
+var wxCharts = require('../../utils/wxcharts.js');
+const app = getApp();
 Page({
 
   /**
@@ -13,9 +15,10 @@ Page({
     var self = this;
     var id = options.id;
     wx.request({
-      url: 'http://localhost:8080/getSignRecord',
+      url: app.globalData.serverUrl + 'getSignRecord',
       data:{
-        id: id
+        id: id,
+        opengid: app.globalData.openGId
       },
       method: 'POST',
       header: { 'content-type': 'application/json' },
@@ -26,6 +29,31 @@ Page({
           successSign: res.data.success,
           failSign: res.data.fail
         })
+        new wxCharts({
+          canvasId: 'columnCanvas',
+          type: 'column',
+          animation: true,
+          categories: ['已签到', '未签到'],
+          series: [{
+            name: '人数',
+            data: [res.data.success.length, res.data.fail.length],
+          }],
+          yAxis: {
+            title: '',
+            min: 0
+          },
+          xAxis: {
+            disableGrid: false,
+            type: 'calibration'
+          },
+          extra: {
+            column: {
+              width: 15
+            }
+          },
+          width: 375,
+          height: 250,
+        });
       }
     })
   }

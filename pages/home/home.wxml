@@ -69,9 +69,9 @@
 
   <view style='margin-top: 30rpx; width: 750rpx;'>
     <text style='font-weight: bold;margin-left: 20rpx;'>最新公告</text>
-    <navigator class='information' wx:for="{{recentNotification}}" wx:for-index="key" wx:for-item="value" url='/pages/notice/notice?time={{value.notificationDate}}&content={{value.notificationContent}}&name={{value.notificationPublisherId}}'>
+    <navigator class='information' wx:for="{{recentNotification}}" wx:for-index="key" wx:for-item="value" url='/pages/notice/notice?time={{value.notificationGroupId}}&content={{value.notificationContent}}&name={{value.notificationPublisherId}}'>
       <view class='title'>
-        <text class='time'>{{value.notificationDate}}</text>
+        <text class='time'>{{value.notificationGroupId}}</text>
         <text>{{value.notificationPublisherId}}</text>
       </view>
       <view class='content'>
@@ -85,12 +85,13 @@
 
   <view style='margin-top: 30rpx; width: 750rpx;'>
     <text style='font-weight: bold; margin-left: 20rpx;'>最新作业</text>
-    <navigator url='/pages/homework/homework?time={{value.hwdate}}&content={{value.homeworkContent}}&' class='information' wx:for="{{recentHomework}}" wx:for-index="key" wx:for-item="value">
+    <navigator url='/pages/homework/homework?time={{value.date}}&content={{value.content}}&deadline={{value.deadline}}' class='information' wx:for="{{recentHomework}}" wx:for-index="key" wx:for-item="value">
       <view class='title'>
-        <text class='time'>{{value.hwdate}}</text>
+        <text class='time'>{{value.date}}</text>
+        <text>{{value.publisher}}</text>
       </view>
       <view class='content'>
-        <text>{{value.homeworkContent}}</text>
+        <text>{{value.content}}</text>
       </view>
     </navigator>
     <view class='noContent' hidden='{{showHomework}}'>

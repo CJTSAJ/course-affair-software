@@ -9,3 +9,8 @@
   margin-left: 25rpx;
   line-height: 100rpx;
 }
+
+.canvas{
+   height: 50vh; 
+   width: 750rpx;
+}

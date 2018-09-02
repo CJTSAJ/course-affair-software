@@ -1,17 +1,15 @@
 <view class='container'>
   <scroll-view scroll-y="true" style='position: fixed;height:100%'>
   
-    <view class='homework' wx:for="{{allHomework}}" wx:for-index="key" wx:for-item="value">
+    <navigator class='homework' wx:for="{{allHomework}}" wx:for-index="key" wx:for-item="value" url="/pages/homework/homework?content={{value[0]}}&time={{value[1]}}&deadline={{value[2]}}">
       <view class='title'>
         <text class='time'>{{value[1]}}</text>
         <text class='look' bindtap='getGrade' data-id="{{key}}">查看成绩</text>
       </view>
-      <navigator url="/pages/homework/homework?content={{value[0]}}&time={{value[1]}}&deadline={{value[2]}}">
-        <view class='content' bindtap='toDetail'>
+        <view class='content'>
           <text>{{value[0]}}</text>
         </view>
-      </navigator>
-    </view>
+    </navigator>
   </scroll-view>
   
   <view class='releaseHomework' style='display: {{isTeacher?"":"none"}}'>

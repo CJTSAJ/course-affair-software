@@ -28,8 +28,8 @@ Page({
     var opengid = app.globalData.openGId;
     console.log("openid:" + opengid);
     wx.request({
-      url: 'http://207.148.114.118:8080/courseAffair/hibernate/getNotice',
-      data: opengid,
+      url: app.globalData.serverUrl + 'hibernate/getNotice',
+      data: app.globalData.openGId,
       method: 'POST',
       header: { 'content-type': 'application/json' },
       success: function (res) {

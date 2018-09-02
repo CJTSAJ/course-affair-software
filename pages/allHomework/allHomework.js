@@ -6,11 +6,6 @@ Page({
     grade1: "95",
     isTeacher: false
   },
-  toDetail(){
-    wx.navigateTo({
-      url: '/pages/homework/homework',
-    })
-  },
   getGrade:function(e){
     var index = e.target.dataset.id;
     var homeworkID = this.data.allHomework[index][3];
@@ -18,7 +13,7 @@ Page({
     console.log(homeworkID);
 
     wx.request({
-      url: 'http://207.148.114.118:8080/courseAffair/getHwGrade',
+      url: app.globalData.serverUrl + 'getHwGrade',
       data:{
         openid: app.globalData.openId,
         openGId: app.globalData.openGId,
@@ -58,7 +53,7 @@ Page({
 
     var self = this;
     wx.request({
-      url: 'http://207.148.114.118:8080/courseAffair/getHomework',
+      url: app.globalData.serverUrl + 'getHomework',
       data:{
         openGId: app.globalData.openGId
       },

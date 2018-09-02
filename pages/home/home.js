@@ -41,6 +41,7 @@ Page({
   },
   onShow:function(){
     var self = this;
+    app.globalData.isInitial = true;
     wx.request({
       url: app.globalData.serverUrl + 'hibernate/getRecentNotification',
       data:{
@@ -52,14 +53,14 @@ Page({
         if(res.data.length != 0){
           console.log(res.data)
           var temp = res.data;
-          for (var i = 0; i < temp.length; i++) {
+          /*for (var i = 0; i < temp.length; i++) {
             var newDate = new Date();
             var timestamp = Date.parse(new Date(res.data[i].notificationDate));
             newDate.setTime(timestamp);
             temp[i].notificationDate = newDate.toLocaleDateString() + ' ' + newDate.getHours() + ':' + newDate.getMinutes();
           }
 
-          console.log(temp[0].notificationDate);
+          console.log(temp[0].notificationDate);*/
           self.setData({
             recentNotification: temp,
             showNotification: true
@@ -81,12 +82,12 @@ Page({
         console.log(res.data)
         if(res.data.length != 0){
           var temp = res.data;
-          for (var i = 0; i < temp.length; i++) {
+          /*for (var i = 0; i < temp.length; i++) {
             var newDate = new Date();
             var timestamp = Date.parse(new Date(res.data[i].hwdate));
             newDate.setTime(timestamp);
             temp[i].hwdate = newDate.toLocaleDateString() + ' ' + newDate.getHours() + ':' + newDate.getMinutes();
-          }
+          }*/
 
           self.setData({
             recentHomework: temp,

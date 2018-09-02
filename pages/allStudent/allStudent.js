@@ -1,4 +1,5 @@
 // pages/allStudent/allStudent.js
+const app = getApp()
 Page({
 
   /**
@@ -11,9 +12,9 @@ Page({
   onShow: function(){
     var self = this;
     wx.request({
-      url: 'http://localhost:8080/getStudentByGid',
+      url: app.globalData.serverUrl + 'getStudentByGid',
       data: {
-        opengid: "tG7EaP4nMFgSbbz8PQ4nOVQkdwScY",
+        opengid: app.globalData.openGId,
       },
       method: 'POST',
       header: { 'content-type': 'application/json' },

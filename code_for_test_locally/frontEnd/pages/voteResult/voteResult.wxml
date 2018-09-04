@@ -1,0 +1,31 @@
+<!--pages/voteResult/voteResult.wxml-->
+<view class='container'>
+  <scroll-view class="help-info" scroll-y="true" style="height:1180rpx">
+    <view class="mainArea">
+      <view class = "title">
+        <text class = 'voteTitle'>{{title}}</text>
+        <text class = 'time'>截止时间: </text>
+        <text class = 'time'>{{endTime}}</text>
+      </view>
+      <view class="vote">
+        <view class="head" >
+          <text>投票内容</text>
+          <text>我的选择: {{choiceLetter[studentChoose]}}</text>
+        </view>
+        <view class="voteContent">
+          <text>{{content}}</text>
+        </view>
+        <view class="Choice" >
+            <view wx:for="{{choices}}" wx:for-index="keyChoice" wx:for-item="valueChoice">
+              <view class="oneChoice">
+                <view class="greenPart" style='width: {{chooseRate[keyChoice] * 100}}%'>
+                <text>{{choiceLetter[keyChoice]}} : {{valueChoice.cContent}}</text>
+                </view>
+                <text>{{valueChoice.cNum}}票</text>
+              </view>
+            </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

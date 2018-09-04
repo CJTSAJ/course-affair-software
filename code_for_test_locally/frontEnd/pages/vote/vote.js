@@ -82,10 +82,12 @@ Page({
       else {
         timeState.push(1);
         let time = (endTime - now) / 1000;
-        let hou = parseInt(time / 3600);
+        let day = parseInt(time / (3600*24));
+        let hou = parseInt(time % (3600*24)/3600);
         let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
         let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
         let obj = {
+          day: this.timeFormat(day),
           hou: this.timeFormat(hou),
           min: this.timeFormat(min),
           sec: this.timeFormat(sec)
@@ -98,6 +100,12 @@ Page({
       state: timeState
     })
     setTimeout(this.countDown, 1000);
+  },
+
+  toEditVote: function(){
+    wx.navigateTo({
+      url: '/pages/editVote/editVote',
+    })
   }
 
 })

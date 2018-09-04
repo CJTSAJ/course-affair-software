@@ -1,4 +1,4 @@
-/* pages/oneVote/oneVote.wxss */
+/* pages/voteResult/voteResult.wxss */
 .title{
   margin-top: 50rpx;
   margin-bottom: 30rpx;
@@ -83,13 +83,24 @@
   display: flex;
   height: 100rpx;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  padding-top: 15rpx;
-  padding-bottom: 15rpx;
-  padding-left: 25rpx;
   padding-right: 25rpx;
   white-space:nowrap;
+}
+
+.greenPart{
+  height: 100%;
+  background-color: greenyellow;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space:nowrap;
+}
+
+.greenPart text{
+  margin-left: 25rpx;
 }
 
 .tips{
@@ -104,22 +115,7 @@
   margin-bottom: 150rpx;
 }
 
-.submit{
-  position:fixed; 
-  bottom:0;
-}
 
-.submit button{
-  color: black;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  background-color: #FFF68F;
-  width: 750rpx;
-  font-weight: 900;
-}
-
-.submit button::after{
-  border:none;
-}
 
 ::-webkit-scrollbar {
   width: 0;

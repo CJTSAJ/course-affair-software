@@ -15,7 +15,7 @@ Page({
     countDown: null,
     choiceLetter: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
     choices: [],
-    studentChoose: null,
+    studentChoose: -1,
   },
 
   /**
@@ -39,20 +39,21 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/json' },
       success: function (res) {
-        console.log(res.data);
         let contentData = res.data[0][0];
         let choicesData=[];
-        for (var i = 1; i < res.data.length; i ++) {
+        for (var i = 1; i < (res.data.length-1); i ++) {
           let choiceArray = { cId: res.data[i][0], cContent: res.data[i][1] };
           choicesData.push(choiceArray);
         }
         var choice_sort = sort.onlySortChoice(choicesData);
+        var choose = res.data[(res.data.length-1)][0];
         self.setData({
           choices: choice_sort,
-          studentChoose: -1,
+          studentChoose: choose,
           content: contentData
         })
         self.countDown();
+        console.log(self.data);
       },
       fail: function (error) {
       }
@@ -68,10 +69,12 @@ Page({
     let endTime = new Date(this.data.endTime).getTime();
     let time = (endTime - now) / 1000;
     if (time > 0) {
-      let hou = parseInt(time / 3600);
+      let day = parseInt(time / (3600 * 24));
+      let hou = parseInt(time % (3600 * 24) / 3600);
       let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
       let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
       let obj = {
+        day: this.timeFormat(day),
         hou: this.timeFormat(hou),
         min: this.timeFormat(min),
         sec: this.timeFormat(sec)
@@ -101,5 +104,65 @@ Page({
     });
     console.log(this.data.studentChoose);
   },
+
+  submitConfirm: function () {
+    var self = this;
+    if (self.data.studentChoose == -1) {
+      wx.showModal({
+        content: '未选择',
+        showCancel: false
+      })
+    }
+    else {
+      wx.showModal({
+        content: '确定投票(投票不可重复提交)？',
+        success: function (res) {
+          if (res.confirm) {
+            console.log('用户点击确定');
+            self.submit();
+          }
+        }
+      })
+    }
+  },
+
+  submit: function () {
+    var self = this;
+    if (self.data.state == 1) {
+      wx.request({
+        url: 'http://127.0.0.1:8080/submitVote',
+        data: {
+          student_groupId: app.globalData.openGId,
+          studentId: app.globalData.openId,
+          voteId: self.data.voteId,
+          answer: self.data.studentChoose,
+        },
+        method: 'POST',
+        header: { 'content-type': 'application/json' },
+        success: function (res) {
+          if (res.data == "success") {
+            wx.showModal({
+              content: '提交成功',
+              showCancel: false
+            });
+          }
+          else {
+            wx.showModal({
+              content: '不能重复提交',
+              showCancel: false
+            })
+          }
+        },
+        fail: function (error) {
+        }
+      })
+    }
+    else {
+      wx.showModal({
+        content: '投票结束',
+        showCancel: false
+      })
+    }
+  }
 
 })

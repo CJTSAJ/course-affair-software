@@ -29,7 +29,9 @@
     "pages/vote/vote",
     "pages/editVote/editVote",
     "pages/oneVote/oneVote",
-    "pages/statistics/statistics"
+    "pages/statistics/statistics",
+    "pages/voteResult/voteResult",
+    "pages/editVoteContent/editVoteContent"
   ],
   "tabBar": {
     "backgroundColor": "white",

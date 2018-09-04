@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface VoteChooseRepository extends JpaRepository<VoteChooseEntity, Integer>{
     VoteChooseEntity findByVoteIdAndStudentGroupIdAndStudentId(int voteId, String groupId, String studentId);
+    int countByVoteIdAndVoteChoose(int voteId, int voteChoose);
 }

@@ -18,7 +18,7 @@ Page({
     /*向后端获取该群内所有学生名单*/
     var self = this;
      wx.request({
-       url: 'http://207.148.114.118:8080/courseAffair/getStudentByGid',
+       url: app.globalData.serverUrl + 'getStudentByGid',
        data:{
          opengid: app.globalData.openGId
        },
@@ -60,7 +60,7 @@ Page({
       console.log(openidArray);
 
       wx.request({
-        url: 'http://207.148.114.118:8080/courseAffair/addManager',
+        url: app.globalData.serverUrl + 'addManager',
         data: {
           opengid: app.globalData.openGId,
           openidArray: openidArray

@@ -60,10 +60,20 @@ Page({
       method: 'POST',
       header: { 'content-type': 'application/json' },
       success:function(res){
-        self.setData({
-          allHomework: res.data
-        })
-        console.log("success:" + self.data.allHomework)
+        if(res.statusCode == 200){
+          var temp = res.data;
+          temp.reverse();
+          self.setData({
+            allHomework: temp
+          })
+          console.log("success:" + self.data.allHomework)
+        }else{
+          wx.showModal({
+            title: '错误',
+            content: '服务器发生错误',
+          })
+        }
+        
       },
       fail:function(error){
 

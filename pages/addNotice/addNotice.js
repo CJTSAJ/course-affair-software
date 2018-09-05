@@ -42,7 +42,7 @@ Page({
     console.log(openGId)
     if(content.length != 0){
       wx.request({
-        url: 'http://207.148.114.118:8080/courseAffair/hibernate/addNotice',
+        url: app.globalData.serverUrl + 'hibernate/addNotice',
         data: {
           openid: id,
           content: content,

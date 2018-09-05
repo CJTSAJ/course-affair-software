@@ -1,3 +1,10 @@
+.formId{
+  height: 100rpx;
+  width: 60rpx;
+  position: absolute;
+  opacity: 0;
+  z-index: 0;
+}
 .noContent{
   color: #CDCDCD;
   font-size: 24rpx;
@@ -25,6 +32,10 @@
   display: block;
   height: 60rpx;
   width: 60rpx;
+}
+
+.nav text{
+  font-size: 30rpx;
 }
 
 .swiper_box{
@@ -67,7 +78,7 @@
   padding: 15rpx 35rpx;
 }
 .content text{
-  font-size: 20rpx;
+  font-size: 30rpx;
   color: #555555;
 }
 

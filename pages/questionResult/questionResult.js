@@ -1,3 +1,4 @@
+const app = getApp()
 Page({
 
   /**
@@ -43,7 +44,7 @@ Page({
       })
     }
     wx.request({
-      url: 'http://207.148.114.118:8080/courseAffair/getQuestionDetail',
+      url: app.globalData.serverUrl + 'getQuestionDetail',
       data: {
         testId: self.data.testId,
         questionId: self.data.questionId

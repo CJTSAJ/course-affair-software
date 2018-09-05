@@ -5,8 +5,42 @@ Page({
    * 页面的初始数据
    */
   data: {
+    allStudent:[],
     studentName: '',
-    studentId: ''
+    studentId: '',
+  },
+  onShow: function(){
+    var self = this;
+    wx.request({
+      url: app.globalData.serverUrl + 'getStudentByGid',
+      data:{
+        opengid: app.globalData.openGId
+      },
+      method: 'POST',
+      header: { 'content-type': 'application/json' },
+      success:function(res){
+        if(res.statusCode == 200){
+          self.setData({
+            allStudent: res.data
+          })
+        }else{
+          wx.showModal({
+            title: '错误',
+            content: '服务器发生错误',
+          })
+        }
+      }
+    })
+  },
+
+  newPick: function(){
+    var self = this;
+    var rand = parseInt(Math.random()*self.data.allStudent.length);
+    console.log(rand);
+    this.setData({
+      studentName: self.data.allStudent[rand].studentName,
+      studentId: self.data.allStudent[rand].studentid
+    })
   },
   
   pick: function () {

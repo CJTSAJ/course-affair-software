@@ -9,6 +9,10 @@ Page({
     allFile: [],
     fileForm: []
   },
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading()
+    this.onShow()
+  },
   download:function(e){
     var self = this;
     var index = e.currentTarget.dataset.id;
@@ -16,7 +20,7 @@ Page({
     var objectid = this.data.allFile[index].objectId
     console.log(objectid);
     wx.setClipboardData({
-      data: 'http://207.148.114.118:8080/courseAffair/downloadFile?objectid=' + objectid,
+      data: app.globalData.serverUrl + 'downloadFile?objectid=' + objectid,
       success: function(res){
         wx.getClipboardData({
           success: function(res){
@@ -46,7 +50,7 @@ Page({
   onShow:function(){
     var self = this;
     wx.request({
-      url: 'http://207.148.114.118:8080/courseAffair/getAllFile',
+      url: app.globalData.serverUrl + 'getAllFile',
       data: {
         opengid: app.globalData.openGId
       },
@@ -131,6 +135,8 @@ Page({
             content: '服务器发生错误',
           })
         }
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh()
       }
     })
   },

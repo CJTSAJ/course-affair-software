@@ -19,6 +19,69 @@ Page({
     showNotification: false,
     showHomework: false
   },
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading()
+    this.onShow()
+  },
+  test:function(e){
+    var formid = e.detail.formId;
+    console.log(formid)
+    var id = e.target.dataset.id
+    console.log(id)
+    switch (id) {
+      case '1':
+        wx.navigateTo({
+          url: '/pages/allFile/allFile',
+        })
+        break;
+      case '2':
+        wx.navigateTo({
+          url: '/pages/sign/sign',
+        })
+        break;
+      case '3':
+        wx.navigateTo({
+          url: '/pages/allNotice/allNotice',
+        })
+        break;
+      case '4':
+        wx.navigateTo({
+          url: '/pages/test/test',
+        })
+        break;
+      case '5':
+        wx.navigateTo({
+          url: '/pages/allHomework/allHomework',
+        })
+        break;
+      case '6':
+        wx.navigateTo({
+          url: '/pages/allHomework/allHomework',
+        })
+        break;
+      case '7':
+        wx.navigateTo({
+          url: '/pages/rollcall/rollcall',
+        })
+        break;
+      default:
+        wx.navigateTo({
+          url: '/pages/manage/manage',
+        })
+    }
+    wx.request({
+      url: app.globalData.serverUrl + 'addFormid',
+      data: {
+        openid: app.globalData.openId,
+        formid: formid
+      },
+      method: 'POST',
+      header: { 'content-type': 'application/json' },
+      success:function(res){
+
+      }
+    })
+  },
   /*toDetail:function(){
     wx.navigateTo({
       url: '/pages/homework/homework?content={{value.homeworkContent}}&time={{value.hwdate}}&deadline={{value.deadline}}',
@@ -68,7 +131,8 @@ Page({
         }else{
           console.log("没有");
         }
-        
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh()
       }
     })
     wx.request({

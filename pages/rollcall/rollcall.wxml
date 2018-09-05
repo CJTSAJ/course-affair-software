@@ -7,5 +7,5 @@
     <text>姓名：{{studentName}}</text>
     </view>
   </view>
-  <button class="btn-area" bindtap="pick">挑选学生</button>
+  <button class="btn-area" bindtap="newPick">挑选学生</button>
 </view>

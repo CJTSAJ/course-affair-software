@@ -77,7 +77,7 @@ Page({
     console.log(e.detail.value.username);
     console.log(e.detail.value.studentid);
     wx.request({
-      url: 'http://localhost:8080/modifyInformation',
+      url: app.globalData.serverUrl + 'modifyInformation',
       data: {
         opengid: app.globalData.openGId,
         openid: app.globalData.openId,

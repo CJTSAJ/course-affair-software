@@ -37,6 +37,8 @@ Page({
     else{
       var self = this;
       if (app.globalData.identity == "student") {
+        console.log('student')
+        console.log(self.data.location);
         wx.request({
           url: app.globalData.serverUrl + 'sign',
           data: {
@@ -56,8 +58,10 @@ Page({
                 reason = "签到已到期"
               } else if (res.data.reason == "signCode"){
                 reason = "签到码错误"
-              }else{
+              }else if(res.data.reason == "distance"){
                 reason = "距离老师超过100米"
+              }else{
+                reason = "不可重复签到"
               }
 
               wx.showModal({
@@ -84,6 +88,7 @@ Page({
                 })
               }*/
             }else{
+                console.log('teacher')
                 wx.showToast({
                   title: '签到成功',
                   icon: 'success',

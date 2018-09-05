@@ -58,7 +58,7 @@ Page({
 
       if(isStudent == true){
         wx.request({
-          url: 'http://207.148.114.118:8080/courseAffair/login',
+          url: app.globalData.serverUrl + 'login',
           data: {
             openid: app.globalData.openId,
             opengid: app.globalData.openGId,
@@ -82,7 +82,7 @@ Page({
       }else{
         //存老师信息
         wx.request({
-          url: 'http://207.148.114.118:8080/courseAffair/registerTeacher',
+          url: app.globalData.serverUrl + 'registerTeacher',
           data:{
             openid: app.globalData.openId,
             opengid: app.globalData.openGId,

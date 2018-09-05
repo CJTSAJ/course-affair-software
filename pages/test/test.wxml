@@ -1,5 +1,4 @@
 <view class='container'>
-  <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
   <view wx:for="{{allContent}}" wx:for-index="key" wx:for-item="value">
   <view class='test' wx:if = "{{state[key] == 0}}">
     <view class='content'>
@@ -29,7 +28,7 @@
     </view>
   </navigator>
   </view>
-  </scroll-view>
+
   <view class='addTest' style='display: {{isTeacher?"":"none"}}'>
     <button bindtap='toEditTest'>添加测试</button>
   </view>

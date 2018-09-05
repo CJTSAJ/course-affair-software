@@ -1,6 +1,5 @@
 <!--pages/allFile/allFile.wxml-->
 <view>
-  <scroll-view scroll-y="true" style='position: fixed;height:100%'>
     <view class='allFile'>
       <view wx:for="{{allFile}}" wx:for-index="key" wx:for-item="value">
         <view class='file' data-id="{{key}}" bindtap='download'>
@@ -12,7 +11,6 @@
         </view>
       </view>
     </view>
-  </scroll-view>
   <view class='upBut'>
     <button bindtap='toUploadFile'>上传文件</button>
   </view>

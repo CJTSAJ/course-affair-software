@@ -1,3 +1,11 @@
+.allNotice{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+}
+
 .showDetail{
   color: #CDCDCD;
   font-size: 24rpx;
@@ -11,8 +19,7 @@
   width: 700rpx;  
   height: 300rpx;
   background-color: white;
-  margin-left: 25rpx;
-  margin-top: 50rpx;
+  margin-bottom: 50rpx;
   border-bottom-right-radius:2em;
   box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
 }
@@ -40,7 +47,7 @@
   height: 150rpx;
 }
 .content text{
-  font-size: 24rpx;
+  font-size: 30rpx;
   color: #555555;
 }
 

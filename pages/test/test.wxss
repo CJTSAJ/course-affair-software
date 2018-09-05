@@ -35,6 +35,11 @@
   color: red;
 }
 
+.addTest{
+  position: fixed;
+  bottom: 0rpx;
+}
+
 .addTest button{
   color: black;
   font-family: Georgia, 'Times New Roman', Times, serif;

@@ -17,7 +17,7 @@ Page({
     console.log("allManager onshow")
     var self = this;
     wx.request({
-      url: 'http://207.148.114.118:8080/courseAffair/getTeacherAndTa',
+      url: app.globalData.serverUrl + 'getTeacherAndTa',
       data: {
         opengid: app.globalData.openGId
       },
@@ -53,7 +53,7 @@ Page({
           })
 
           wx.request({
-            url: 'http://207.148.114.118:8080/courseAffair/deleteTa',
+            url: app.globalData.serverUrl + 'deleteTa',
             data: {
               opengid: taGroupId,
               openid: taid

@@ -8,7 +8,7 @@ App({
     latitude: null,
     sessionKey: null,
     openGId: null,
-    serverUrl: 'http://118.25.194.153:8080/courseAffair/'
+    serverUrl: 'http://207.148.114.118:8080/courseAffair/'
   },
   onLaunch: function (options) {
     var self = this;
@@ -65,7 +65,7 @@ App({
                         console.log("返回的opengid:" + res.data.openGId);
                         self.globalData.openGId = res.data.openGId;
                         wx.request({
-                          url: 'http://118.25.194.153:8080/courseAffair/getIdentity',
+                          url: 'http://207.148.114.118:8080/courseAffair/getIdentity',
                           data: {
                             openid: self.globalData.openId,
                             opengid: res.data.openGId
@@ -160,7 +160,7 @@ App({
                   console.log("返回的opengid:" + res.data.openGId);
                   self.globalData.openGId = res.data.openGId;
                   wx.request({
-                    url: 'http://118.25.194.153:8080/courseAffair/getIdentity',
+                    url: 'http://207.148.114.118:8080/courseAffair/getIdentity',
                     data: {
                       openid: self.globalData.openId,
                       opengid: res.data.openGId

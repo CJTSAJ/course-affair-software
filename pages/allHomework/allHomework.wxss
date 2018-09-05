@@ -1,9 +1,16 @@
+.allHomework{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+}
+
 .homework{
   width: 700rpx;
   height: 300rpx;
   background-color: white;
-  margin-left: 25rpx;
-  margin-top: 50rpx;
+  margin-bottom: 50rpx;
   overflow: hidden;
   border-bottom-right-radius:2em;
   box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
@@ -28,7 +35,7 @@
   padding: 15rpx 35rpx;
 }
 .content text{
-  font-size: 20rpx;
+  font-size: 30rpx;
   color: #555555;
 }
 

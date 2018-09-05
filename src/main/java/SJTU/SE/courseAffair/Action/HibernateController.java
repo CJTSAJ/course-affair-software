@@ -65,7 +65,6 @@ public class HibernateController {
     @RequestMapping(value = "/getNotice", method = RequestMethod.POST)
     public JSONArray getAll(@RequestBody String opengid){
     	System.out.println(opengid);
-    	Map<String, Object> modelMap = new HashMap<String, Object>();
     	List<NotificationEntity> list = notificationRepository.findByNotificationGroupIdOrderByNotificationDateDesc(opengid);
 
     	if(list.size()==0) {
@@ -102,6 +101,7 @@ public class HibernateController {
                     }
                 }
             }
+    	    arrayList.add(String.valueOf(temp.getNotificationId()));
             Json.add(JSONArray.fromObject(arrayList));
     	}
     	JSONArray result = JSONArray.fromObject(Json.toArray());
@@ -128,7 +128,26 @@ public class HibernateController {
     @RequestMapping(value="/getRecentNotification",method=RequestMethod.POST)
     public List<NotificationEntity> getRecentHomework(@RequestBody JSONObject data) {
     	String opengid = data.getString("opengid");
-    	return notificationRepository.findRecentNotification(opengid);
+    	List<NotificationEntity> result = notificationRepository.findRecentNotification(opengid);
+    	DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+    	
+    	for(int i = 0; i < result.size(); i++) {
+    		String openid = result.get(i).getNotificationPublisherId();
+    		List<TeacherEntity> teacher = teacherRepository.findByTeacherIdAndTeacherGroupId(openid, opengid);
+    		result.get(i).setNotificationGroupId(sdf.format(result.get(i).getNotificationDate()));
+    		if(teacher.size() > 0) {
+    			result.get(i).setNotificationPublisherId(teacher.get(0).getTeacherName());
+    		}else {
+    			List<TaEntity> ta = taRepository.findByTaidAndTaGroupId(openid, opengid);
+    			if(ta.size() > 0) {
+    				result.get(i).setNotificationPublisherId(ta.get(0).getTaName());
+    			}else {
+    				List<StudentEntity> student = studentRepository.findByStudentIdAndStudentGroupId(openid, opengid);
+    				result.get(i).setNotificationPublisherId(student.get(0).getSname());
+    			}
+    		}
+    	}
+    	return result;
     }
 
     /*@RequestMapping(value = "addNotice", method = RequestMethod.GET)

@@ -4,10 +4,14 @@ import SJTU.SE.courseAffair.Dao.FormRepository;
 import SJTU.SE.courseAffair.Dao.HomeworkRepository;
 import SJTU.SE.courseAffair.Dao.HwGradeRepository;
 import SJTU.SE.courseAffair.Dao.StudentRepository;
+import SJTU.SE.courseAffair.Dao.TaRepository;
+import SJTU.SE.courseAffair.Dao.TeacherRepository;
 import SJTU.SE.courseAffair.Entity.FormEntity;
 import SJTU.SE.courseAffair.Entity.HomeworkEntity;
 import SJTU.SE.courseAffair.Entity.HwGradeEntity;
 import SJTU.SE.courseAffair.Entity.StudentEntity;
+import SJTU.SE.courseAffair.Entity.TaEntity;
+import SJTU.SE.courseAffair.Entity.TeacherEntity;
 import SJTU.SE.courseAffair.service.TimeUtil;
 import SJTU.SE.courseAffair.service.Group;
 import SJTU.SE.courseAffair.service.HttpRequest;
@@ -48,6 +52,10 @@ public class HomeworkController {
     private FormRepository formRepository;
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private TeacherRepository teacherRepository;
+    @Autowired
+    private TaRepository taRepository;
 
 
     @CrossOrigin
@@ -70,7 +78,7 @@ public class HomeworkController {
             ArrayList<String> arrayList = new ArrayList<String>();
             arrayList.add(temp.getHomeworkContent());
             DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-            DateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+            DateFormat sdf1 = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             arrayList.add(sdf.format(temp.getHwdate()));
             arrayList.add(sdf1.format(temp.getDeadline()));
             arrayList.add(Integer.toString(temp.getHomeworkId()));
@@ -212,9 +220,46 @@ public class HomeworkController {
     
     @CrossOrigin
     @RequestMapping(value="/getRecentHomework",method=RequestMethod.POST)
-    public List<HomeworkEntity> getRecentHomework(@RequestBody JSONObject data) {
+    public List<JSONObject> getRecentHomework(@RequestBody JSONObject data) {
     	String opengid = data.getString("opengid");
-    	return homeworkRepository.findRecentHomework(opengid);
+    	List<HomeworkEntity> homework = homeworkRepository.findRecentHomework(opengid);
+    	DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+    	int len = homework.size();
+    	List<JSONObject> result = new ArrayList();
+    	for(int i = 0; i < len; i++) {
+    		JSONObject temp = new JSONObject();
+    		temp.put("deadline", sdf.format(homework.get(i).getDeadline()));
+    		temp.put("date", sdf.format(homework.get(i).getHwdate()));
+    		temp.put("content", homework.get(i).getHomeworkContent());
+    		temp.put("id", homework.get(i).getHomeworkId());
+    		List<TeacherEntity> teacher = teacherRepository.findByTeacherIdAndTeacherGroupId(homework.get(i).getPublisherId(), opengid);
+    		if(teacher.size() != 0) {
+    			temp.put("publisher", teacher.get(0).getTeacherName());
+    		}else {
+    			List<TaEntity> ta = taRepository.findByTaidAndTaGroupId(homework.get(i).getPublisherId(), opengid);
+    			if(ta.size() != 0) {
+    				temp.put("publisher", ta.get(0).getTaName());
+    			}else {
+    				List<StudentEntity> stu = studentRepository.findByStudentIdAndStudentGroupId(homework.get(i).getPublisherId(), opengid);
+    				temp.put("publisher", stu.get(i).getSname());
+    			}
+    			
+    		}
+    		result.add(temp);
+    	}
+    	return result;
+    }
+    
+    @CrossOrigin
+    @RequestMapping(value="/addFormid",method=RequestMethod.POST)
+    public void addFromid(@RequestBody JSONObject data) {
+    	String openid = data.getString("openid");
+    	String formid = data.getString("formid");
+    	FormEntity form = new FormEntity();
+    	form.setFormId(formid);
+    	form.setStuId(openid);
+    	
+    	formRepository.save(form);
     }
 
     @RequestMapping(value="/homeworkTest")

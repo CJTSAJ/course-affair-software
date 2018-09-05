@@ -1,7 +1,6 @@
 package SJTU.SE.courseAffair.Action;
 
 import java.io.OutputStream;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;

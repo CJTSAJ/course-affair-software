@@ -39,9 +39,9 @@ public class signController {
     @RequestMapping(value="/getSignRecord",method=RequestMethod.POST)
 	public JSONObject getSignRecord(@RequestBody JSONObject data) {
 		int id = data.getInt("id");
+		String opengid = data.getString("opengid");
 		List<SignInRecordEntity> signRecord = signInRecordRepository.findBySignInId(id);
-		List<StudentEntity> students = studentRepository.findByStudentGroupId(signRecord.get(0).getStudentGroupId());
-		
+		List<StudentEntity> students = studentRepository.findByStudentGroupId(opengid);	
 		int signLen = signRecord.size();
 		int studentLen = students.size();
 		List<JSONObject> success = new ArrayList();
@@ -61,7 +61,6 @@ public class signController {
 				}
 			}
 		}
-		
 		JSONObject result = new JSONObject();
 		result.put("success", success);
 		result.put("fail", students);
@@ -97,7 +96,7 @@ public class signController {
 		
 		/*距离差不超过100米*/
 		String startLonLat = String.valueOf(longitude) + "," + String.valueOf(latitude);
-		String endLonLat = String.valueOf(longitude) + "," + String.valueOf(sign.getLatitude());
+		String endLonLat = String.valueOf(sign.getLongitude()) + "," + String.valueOf(sign.getLatitude());
 		Long deltDistance = getDistance(startLonLat, endLonLat);
 		System.out.println(deltDistance);
 		
@@ -151,10 +150,20 @@ public class signController {
 	}
 	
 	@RequestMapping(value="/testMap",method=RequestMethod.GET)
-	public Long test() {
-		String startLonLat = "121.44917,31.028815";
-		String endLonLat = "121.448465,31.028633";
-		Long result = getDistance(startLonLat,endLonLat);
+	public String test() {
+		/*String startLonLat = "108.484285210504,28.543830295139";
+		String endLonLat = "108.48427435981,28.54387234158";*/
+		
+		String startLonLat = String.valueOf(108.48427435981) + "," + String.valueOf(28.54387234158);
+		String endLonLat = String.valueOf(108.484285210504) + "," + String.valueOf(28.543830295139);
+		Long deltDistance = getDistance(startLonLat, endLonLat);
+		System.out.println(deltDistance);
+		Long delt = getDistance(startLonLat,endLonLat);
+		
+		SignInEntity sign = signRepository.findRecentSignByGoupid("G7EaP4qt1pgyGmiS2VF2L6ZHgP2c");
+		Timestamp currentTime= new Timestamp(System.currentTimeMillis());
+		long deltTime = currentTime.getTime() - sign.getSignDate().getTime();
+		String result = String.valueOf(delt) + "    " + String.valueOf(deltTime);
 		System.out.println(result);
 		return result;
 	}
@@ -162,7 +171,7 @@ public class signController {
 	private static Long getDistance(String startLonLat, String endLonLat){
         //返回起始地startAddr与目的地endAddr之间的距离，单位：米
         Long result = new Long(0);
-        String queryUrl = "http://restapi.amap.com/v3/distance?key=5866a861c514947f8147e38c8ccaf2aa&origins="+startLonLat+"&destination="+endLonLat;
+        String queryUrl = "http://restapi.amap.com/v3/distance?key=5866a861c514947f8147e38c8ccaf2aa&type=0&origins="+startLonLat+"&destination="+endLonLat;
         String queryResult = getResponse(queryUrl);
         
         JSONObject jo = new JSONObject().fromObject(queryResult);

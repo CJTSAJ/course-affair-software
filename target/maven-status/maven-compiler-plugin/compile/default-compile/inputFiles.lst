@@ -1,6 +1,7 @@
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Dao\TestRepository.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\service\Group.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Dao\HwGradeRepository.java
+D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Dao\VoteRepository.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\service\TimeUtil.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Test.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Entity\TaEntity.java
@@ -27,6 +28,7 @@ D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Dao\NotificationRepository.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Action\HomeworkController.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Entity\CorrectAnswerEntity.java
+D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Dao\VoteChooseRepository.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Action\signController.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Entity\SignInEntity.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Dao\QuestionRepository.java
@@ -34,6 +36,7 @@ D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Entity\StudentEntityPK.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Dao\AnswerRepository.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Dao\TeacherRepository.java
+D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Dao\VoteChoiceRepository.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Entity\TeacherEntity.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Dao\SignRepository.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Entity\FormEntity.java
@@ -52,6 +55,7 @@ D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Action\DecodeController.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Entity\NotificationEntity.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Action\TestController.java
+D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Action\VoteController.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Dao\StudentRepository.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Entity\FileEntity.java
 D:\workspaces\summerWorkspaces\new\course-affair-software-back-end\src\main\java\SJTU\SE\courseAffair\Action\HibernateController.java

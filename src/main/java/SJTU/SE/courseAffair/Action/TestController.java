@@ -32,6 +32,54 @@ public class TestController {
     private CorrectAnswerRepository correctAnswerRepository;
     @Autowired
     private TestGradeRepository testGradeRepository;
+    @Autowired
+    private StudentRepository studentRepository;
+    @Autowired
+    private TaRepository taRepository;
+    
+    @CrossOrigin
+    @RequestMapping(value = "getStudentGrade", method = RequestMethod.POST)
+    public JSONObject getStudentGrade(@RequestBody JSONObject data) {
+    	int testid = data.getInt("testid");
+    	String opengid = data.getString("opengid");
+    	List<TestGradeEntity> grade = testGradeRepository.findByTestId(testid);
+    	List<StudentEntity> students = studentRepository.findByStudentGroupId(opengid);
+    	int len = grade.size();
+    	int size = students.size();
+    	List<JSONObject> result = new ArrayList();
+    	JSONObject result_ = new JSONObject();
+    	for(int i = 0; i < len; i++) {
+    		JSONObject json = new JSONObject();
+    		List<StudentEntity> temp = studentRepository.findByStudentIdAndStudentGroupId(grade.get(i).getStudentId(), grade.get(i).getStudentGroupId());
+    		if(temp.size() == 0) {
+    			List<TaEntity> ta = taRepository.findByTaidAndTaGroupId(grade.get(i).getStudentId(), grade.get(i).getStudentGroupId());
+    			json.put("name", ta.get(0).getTaName());
+    			json.put("id", ta.get(0).getTaNo());
+    		}else {
+    			json.put("name", temp.get(0).getSname());
+        		json.put("id", temp.get(0).getSno());
+    		}
+    		json.put("grade", grade.get(i).getGrade());
+    		result.add(json);
+    		
+    		for(int j = 0; j < size; j++) {
+    			if(students.get(j).getStudentId().equals(grade.get(i).getStudentId())) {
+    				students.remove(j);
+    				size--;
+    				j--;
+    			}
+    		}
+    	}
+    	if(len == 0) {
+    		result_.put("success", "null");
+    		result_.put("fail", students);
+    		return result_;
+    	}else {
+    		result_.put("success", result);
+    		result_.put("fail", students);
+    		return result_;
+    	}
+    }
 
     @CrossOrigin
     @RequestMapping(value = "getTest", method = RequestMethod.POST)

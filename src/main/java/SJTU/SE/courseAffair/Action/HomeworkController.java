@@ -68,7 +68,7 @@ public class HomeworkController {
         if(list.size() == 0) {
             System.out.println("homework为空");
             return null;
-            }
+        }
 
         ArrayList<JSONArray> Json = new ArrayList<JSONArray>();
         for( int i = 0 ; i < list.size() ; i++) {//内部不锁定，效率最高，但在多线程要考虑并发操作的问题。

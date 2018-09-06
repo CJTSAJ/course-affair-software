@@ -1,11 +1,13 @@
 SJTU\SE\courseAffair\service\AesCbcUtil.class
 SJTU\SE\courseAffair\Entity\StudentEntity.class
+SJTU\SE\courseAffair\Dao\VoteRepository.class
 SJTU\SE\courseAffair\Entity\TeacherEntityPK.class
 SJTU\SE\courseAffair\Entity\TestGradeEntity.class
 SJTU\SE\courseAffair\Entity\HwGradeEntityPK.class
 SJTU\SE\courseAffair\Entity\TaEntityPK.class
 SJTU\SE\courseAffair\Entity\TestEntity.class
 SJTU\SE\courseAffair\helloTest.class
+SJTU\SE\courseAffair\Action\VoteController.class
 SJTU\SE\courseAffair\Dao\CorrectAnswerRepository.class
 SJTU\SE\courseAffair\service\ExcelUtil.class
 SJTU\SE\courseAffair\Entity\FormEntity.class
@@ -42,6 +44,7 @@ SJTU\SE\courseAffair\Dao\AnswerRepository.class
 SJTU\SE\courseAffair\Entity\FileEntity.class
 SJTU\SE\courseAffair\Action\RollcallController.class
 SJTU\SE\courseAffair\Test.class
+SJTU\SE\courseAffair\Dao\VoteChooseRepository.class
 SJTU\SE\courseAffair\service\HttpRequest.class
 SJTU\SE\courseAffair\Action\DecodeController.class
 SJTU\SE\courseAffair\Dao\TestRepository.class
@@ -64,3 +67,4 @@ SJTU\SE\courseAffair\Dao\HomeworkRepository.class
 SJTU\SE\courseAffair\Dao\TeacherRepository.class
 SJTU\SE\courseAffair\Entity\VoteEntity.class
 SJTU\SE\courseAffair\Dao\TaRepository.class
+SJTU\SE\courseAffair\Dao\VoteChoiceRepository.class

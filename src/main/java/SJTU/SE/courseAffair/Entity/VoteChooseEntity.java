@@ -9,7 +9,7 @@ public class VoteChooseEntity {
     private String studentId;
     private String studentGroupId;
     private int voteId;
-    private String voteChoose;
+    private int voteChoose;
 
     @Id
     @Column(name = "studentID", nullable = false, length = 28)
@@ -42,12 +42,12 @@ public class VoteChooseEntity {
     }
 
     @Basic
-    @Column(name = "vote_Choose", nullable = true, length = 8)
-    public String getVoteChoose() {
+    @Column(name = "vote_Choose", nullable = true)
+    public int getVoteChoose() {
         return voteChoose;
     }
 
-    public void setVoteChoose(String voteChoose) {
+    public void setVoteChoose(int voteChoose) {
         this.voteChoose = voteChoose;
     }
 
@@ -62,7 +62,7 @@ public class VoteChooseEntity {
         if (studentId != null ? !studentId.equals(that.studentId) : that.studentId != null) return false;
         if (studentGroupId != null ? !studentGroupId.equals(that.studentGroupId) : that.studentGroupId != null)
             return false;
-        if (voteChoose != null ? !voteChoose.equals(that.voteChoose) : that.voteChoose != null) return false;
+        if (voteChoose != that.voteChoose) return false;
 
         return true;
     }
@@ -72,7 +72,7 @@ public class VoteChooseEntity {
         int result = studentId != null ? studentId.hashCode() : 0;
         result = 31 * result + (studentGroupId != null ? studentGroupId.hashCode() : 0);
         result = 31 * result + voteId;
-        result = 31 * result + (voteChoose != null ? voteChoose.hashCode() : 0);
+        result = 31 * result + voteChoose;
         return result;
     }
 }

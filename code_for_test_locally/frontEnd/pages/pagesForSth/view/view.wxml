@@ -1,0 +1,32 @@
+<!--pages/pagesForSth/view/view.wxml-->
+<view class='addNotice'>
+  <view class="view">
+    <view class="viewTitle">
+      <text>标题</text>
+    </view>
+    <view class="titleContent">  
+      <input  class="inputTitle" bindblur='inputTitle' placeholder="请输入意见标题" auto-focus='true'/>
+    </view>
+  </view>
+  <view class="view">
+    <view class="viewTitle">
+      <text>微信号</text>
+    </view>
+    <view class="wxContent">  
+      <input  class="inputWxId" bindblur='inputWxId' placeholder="请输入微信号" auto-focus='true'/>
+    </view>
+  </view>
+  <view class="view">
+    <view class="viewTitle">
+      <text>意见内容</text>
+    </view>
+    <view class="viewContent">  
+      <textarea  class="inputView" bindblur='inputView' placeholder="请输入意见内容" auto-focus='true'/>
+    </view>
+  </view>
+  <view class='bottomButton'>
+    <button class='cancel' bindtap='cancel'>取消</button>
+    <button class='confirm' bindtap='confirm'>确认</button>
+  </view>
+</view>
+

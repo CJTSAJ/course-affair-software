@@ -1,0 +1,39 @@
+<!--pages/pagesForSth/aboutUs/aboutUs.wxml-->
+<view class="container">
+  <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
+  <view class="main">
+    <view class="information">
+      <view class="title">
+      关于我们
+      </view>
+      <view class="content">
+      {{content}}
+      </view>
+    </view>
+    <view class="information">
+      <view class="title">
+      陈江涛
+      </view>
+      <view class="content">
+      {{contentForChen}}
+      </view>
+    </view>
+    <view class="information">
+      <view class="title">
+      刘泽宇
+      </view>
+      <view class="content">
+      {{contentForLiu}}
+      </view>
+    </view>
+    <view class="information">
+      <view class="title">
+      方娄昊
+      </view>
+      <view class="content">
+      {{contentForFang}}
+      </view>
+    </view>
+  </view>  
+  </scroll-view>
+</view>

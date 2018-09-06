@@ -31,7 +31,11 @@
     "pages/oneVote/oneVote",
     "pages/statistics/statistics",
     "pages/voteResult/voteResult",
-    "pages/editVoteContent/editVoteContent"
+    "pages/editVoteContent/editVoteContent",
+    "pages/pagesForSth/aboutUs/aboutUs",
+    "pages/pagesForSth/connectUs/connectUs",
+    "pages/pagesForSth/guide/guide",
+    "pages/pagesForSth/view/view"
   ],
   "tabBar": {
     "backgroundColor": "white",

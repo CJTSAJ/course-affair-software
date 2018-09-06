@@ -33,12 +33,60 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 4,
 			"list": [
 				{
 					"id": 0,
 					"name": "groupid",
 					"pathName": "pages/shareToGroup/shareToGroup",
+					"query": "",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群2",
+						"shareName": "AJf8u1s0AGv35TwTfqvDahNyt3aaKyVLXuzsLI_38ss@cr4dev",
+						"shareKey": "411jb0wA0bVj8v_wKNPlmRBn_NE4D-i_eNy7N2REhBy7ff4y9oeCzQ33GrLMTWiYGPHjSGupQuJG-yq_GtI2mw~~"
+					}
+				},
+				{
+					"id": -1,
+					"name": "aboutUs",
+					"pathName": "pages/pagesForSth/aboutUs/aboutUs",
+					"query": "",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群2",
+						"shareName": "AJf8u1s0AGv35TwTfqvDahNyt3aaKyVLXuzsLI_38ss@cr4dev",
+						"shareKey": "411jb0wA0bVj8v_wKNPlmRBn_NE4D-i_eNy7N2REhBy7ff4y9oeCzQ33GrLMTWiYGPHjSGupQuJG-yq_GtI2mw~~"
+					}
+				},
+				{
+					"id": 2,
+					"name": "conectUs",
+					"pathName": "pages/pagesForSth/connectUs/connectUs",
+					"query": "",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群2",
+						"shareName": "AJf8u1s0AGv35TwTfqvDahNyt3aaKyVLXuzsLI_38ss@cr4dev",
+						"shareKey": "411jb0wA0bVj8v_wKNPlmRBn_NE4D-i_eNy7N2REhBy7ff4y9oeCzQ33GrLMTWiYGPHjSGupQuJG-yq_GtI2mw~~"
+					}
+				},
+				{
+					"id": -1,
+					"name": "guide",
+					"pathName": "pages/pagesForSth/guide/guide",
+					"query": "",
+					"scene": "1044",
+					"shareInfo": {
+						"groupName": "测试模拟群2",
+						"shareName": "AJf8u1s0AGv35TwTfqvDahNyt3aaKyVLXuzsLI_38ss@cr4dev",
+						"shareKey": "411jb0wA0bVj8v_wKNPlmRBn_NE4D-i_eNy7N2REhBy7ff4y9oeCzQ33GrLMTWiYGPHjSGupQuJG-yq_GtI2mw~~"
+					}
+				},
+				{
+					"id": -1,
+					"name": "view",
+					"pathName": "pages/pagesForSth/view/view",
 					"query": "",
 					"scene": "1044",
 					"shareInfo": {

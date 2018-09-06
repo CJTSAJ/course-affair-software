@@ -1,6 +1,6 @@
 <!--pages/manage/manage.wxml-->
 <view class='mange' style='margin-top: 50rpx;'>
-  <view class='block' bindtap='toManagerSetting' style='border-bottom: 1rpx solid #ebebeb'>
+  <view class='block' bindtap='toManagerSetting' style='border-bottom: 1rpx solid #ebebeb' hidden='{{isTa}}'>
     <text>设置管理员</text>
     <image src='/images/icons/rightArrow.png'></image>
   </view>

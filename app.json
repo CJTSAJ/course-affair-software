@@ -35,7 +35,13 @@
     "pages/signSituation/signSituation",
     "pages/signData/signData",
     "pages/rollcall/rollcall",
-    "pages/testStatistics/testStatistics"
+    "pages/testStatistics/testStatistics",
+    "pages/editVote/editVote",
+    "pages/editVoteContent/editVoteContent",
+    "pages/voteResult/voteResult",
+    "pages/vote/vote",
+    "pages/oneVote/oneVote",
+    "pages/studentTestGrade/studentTestGrade"
   ],
   "tabBar": {
     "backgroundColor": "#ffffff",

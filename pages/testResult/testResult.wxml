@@ -36,5 +36,8 @@
       </view>
     </view>
     </view>
+    <view class='statics' hidden='{{isStudent}}'>
+      <button bindtap='toStatics'>统计数据</button>
+    </view>
   </scroll-view>
 </view>

@@ -24,6 +24,7 @@ Page({
     this.onShow()
   },
   test:function(e){
+    app.globalData.isInitial = true;
     var formid = e.detail.formId;
     console.log(formid)
     var id = e.target.dataset.id
@@ -56,7 +57,7 @@ Page({
         break;
       case '6':
         wx.navigateTo({
-          url: '/pages/allHomework/allHomework',
+          url: '/pages/vote/vote',
         })
         break;
       case '7':
@@ -64,10 +65,18 @@ Page({
           url: '/pages/rollcall/rollcall',
         })
         break;
-      default:
-        wx.navigateTo({
-          url: '/pages/manage/manage',
-        })
+      default:{
+        if(app.globalData.identity == 'student'){
+          wx.showModal({
+            title: '提示',
+            content: '无权限使用该功能',
+          })
+        }else{
+          wx.navigateTo({
+            url: '/pages/manage/manage',
+          })
+        }
+      }
     }
     wx.request({
       url: app.globalData.serverUrl + 'addFormid',
@@ -104,86 +113,66 @@ Page({
   },
   onShow:function(){
     var self = this;
-    app.globalData.isInitial = true;
-    wx.request({
-      url: app.globalData.serverUrl + 'hibernate/getRecentNotification',
-      data:{
-        opengid: app.globalData.openGId
-      },
-      method: 'POST',
-      header: { 'content-type': 'application/json' },
-      success:function(res){
-        if(res.data.length != 0){
+    if (app.globalData.openGId != null){
+      wx.request({
+        url: app.globalData.serverUrl + 'hibernate/getRecentNotification',
+        data: {
+          opengid: app.globalData.openGId
+        },
+        method: 'POST',
+        header: { 'content-type': 'application/json' },
+        success: function (res) {
+          if (res.data.length != 0) {
+            console.log(res.data)
+            var temp = res.data;
+            /*for (var i = 0; i < temp.length; i++) {
+              var newDate = new Date();
+              var timestamp = Date.parse(new Date(res.data[i].notificationDate));
+              newDate.setTime(timestamp);
+              temp[i].notificationDate = newDate.toLocaleDateString() + ' ' + newDate.getHours() + ':' + newDate.getMinutes();
+            }
+  
+            console.log(temp[0].notificationDate);*/
+            self.setData({
+              recentNotification: temp,
+              showNotification: true
+            })
+          } else {
+            console.log("没有");
+          }
+          wx.hideNavigationBarLoading() //完成停止加载
+          wx.stopPullDownRefresh()
+        }
+      })
+      wx.request({
+        url: app.globalData.serverUrl + 'getRecentHomework',
+        data: {
+          opengid: app.globalData.openGId
+        },
+        method: 'POST',
+        header: { 'content-type': 'application/json' },
+        success: function (res) {
           console.log(res.data)
-          var temp = res.data;
-          /*for (var i = 0; i < temp.length; i++) {
-            var newDate = new Date();
-            var timestamp = Date.parse(new Date(res.data[i].notificationDate));
-            newDate.setTime(timestamp);
-            temp[i].notificationDate = newDate.toLocaleDateString() + ' ' + newDate.getHours() + ':' + newDate.getMinutes();
+          if (res.data.length != 0) {
+            var temp = res.data;
+            /*for (var i = 0; i < temp.length; i++) {
+              var newDate = new Date();
+              var timestamp = Date.parse(new Date(res.data[i].hwdate));
+              newDate.setTime(timestamp);
+              temp[i].hwdate = newDate.toLocaleDateString() + ' ' + newDate.getHours() + ':' + newDate.getMinutes();
+            }*/
+
+            self.setData({
+              recentHomework: temp,
+              showHomework: true
+            })
+          } else {
+            console.log("没有")
           }
 
-          console.log(temp[0].notificationDate);*/
-          self.setData({
-            recentNotification: temp,
-            showNotification: true
-          })
-        }else{
-          console.log("没有");
         }
-        wx.hideNavigationBarLoading() //完成停止加载
-        wx.stopPullDownRefresh()
-      }
-    })
-    wx.request({
-      url: app.globalData.serverUrl + 'getRecentHomework',
-      data: {
-        opengid: app.globalData.openGId
-      },
-      method: 'POST',
-      header: { 'content-type': 'application/json' },
-      success:function(res){
-        console.log(res.data)
-        if(res.data.length != 0){
-          var temp = res.data;
-          /*for (var i = 0; i < temp.length; i++) {
-            var newDate = new Date();
-            var timestamp = Date.parse(new Date(res.data[i].hwdate));
-            newDate.setTime(timestamp);
-            temp[i].hwdate = newDate.toLocaleDateString() + ' ' + newDate.getHours() + ':' + newDate.getMinutes();
-          }*/
-
-          self.setData({
-            recentHomework: temp,
-            showHomework: true
-          })
-        }else{
-          console.log("没有")
-        }
-        
-      }
-    })
-    /*wx.redirectTo({
-      url: '/pages/getUserInfo/getUserInfo',
-    })
-    <view class='information' bindtap='toDetail'>
-    <view class='title'>
-      <text class='titleContent'>{{informationData0}}</text>
-      <text class='time'>{{time0}}</text>
-    </view>
-    <view class='content'>
-      <text>{{content0}}</text>
-    </view>
-  </view>
-  <view class='information' bindtap='toDetail1'>
-    <view class='title'>
-      <text class='titleContent'>{{informationData1}}</text>
-      <text class='time'>{{time1}}</text>
-    </view>
-    <view class='content'>
-      <text>{{content1}}</text>
-    </view>
-  </view>*/
+      })
+    }
   },
   toManage: function(){
     wx.navigateTo({

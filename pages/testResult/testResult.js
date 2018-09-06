@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isStudent: true,
     content:null,
     testId:null,
     choiceLetter: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
@@ -28,6 +29,19 @@ Page({
   
   getQuestionContent: function (key) {
     return this.data.questionsContent[key]
+  },
+  toStatics:function(){
+    var id = this.data.testId;
+    wx.navigateTo({
+      url: '/pages/testStatistics/testStatistics?testid=' + id,
+    })
+  },
+  onShow:function(){
+    if(app.globalData.identity != 'student'){
+      this.setData({
+        isStudent: false
+      })
+    }
   },
 
   /**

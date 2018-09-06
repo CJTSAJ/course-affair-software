@@ -23,7 +23,12 @@ function sort(jsonArray){
   return sortChoice(temp);
 }
 
+function onlySortChoice(jsonArray){
+  return jsonArray.sort(sortByCId);
+}
+
 module.exports = {
+  onlySortChoice: onlySortChoice,
   sort: sort
 }
 

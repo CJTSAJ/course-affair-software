@@ -1,5 +1,6 @@
 <!--pages/allStudent/allStudent.wxml-->
 <view style='border-top: 1rpx solid #ebebeb'>
+  <view><text style='font-size:30rpx; color: #ABABAB'>{{'共' + allStudent.length + '人'}}</text></view>
   <view class='student' wx:for="{{allStudent}}" wx:for-index="key" wx:for-item="value">
     <view>{{value.studentName}}</view>
     <view>{{value.studentid}}</view>

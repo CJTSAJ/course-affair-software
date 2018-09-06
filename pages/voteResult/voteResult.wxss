@@ -1,17 +1,4 @@
-/* pages/testResult/testResult.wxss */
-
-.statics button{
-  color: black;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-  background-color: #FFF68F;
-  width: 600rpx;
-  font-weight: 900;
-}
-
-.mainArea{
-  margin-bottom: 150rpx;
-}
-
+/* pages/voteResult/voteResult.wxss */
 .title{
   margin-top: 50rpx;
   margin-bottom: 30rpx;
@@ -24,7 +11,7 @@
   box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
 }
 
-.testName{
+.voteTitle{
   margin-top: 25rpx;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 900rpx;
@@ -34,7 +21,7 @@
   justify-content: center;
 }
 
-.grade{
+.time{
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 900rpx;
   font-size: large;
@@ -44,19 +31,20 @@
   justify-content: center;
 }
 
-.question{
+.vote{
   width: 650rpx;
   margin-left: 50rpx;
   margin-top: 50rpx;
   padding-bottom: 20rpx;
   border-bottom-right-radius:2em;
   box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+  background-color: #FFF8DC;
   min-height: 200rpx;
   overflow: hidden;
 }
 
 
-.questionTitle{
+.head{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -64,13 +52,13 @@
   padding: 10rpx 20rpx;
 }
 
-.questionTitle text{
+.head text{
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 700;
 }
 
 
-.questionContent{
+.voteContent{
   background-color: white;
   padding-top: 15rpx;
   padding-bottom: 15rpx;
@@ -81,28 +69,53 @@
   word-break:break-all;
   min-height: 175rpx;
 }
-.questionContent text{
+.voteContent text{
   width: 600rpx;
 }
 
 
-.questionChoice{
+.Choice{
   margin-bottom: 20rpx;
 }
 
 .oneChoice{
   border-bottom: 1rpx solid #cdcdcd;
   display: flex;
-  height: 80rpx;
+  height: 100rpx;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   overflow: hidden;
-  padding-top: 15rpx;
-  padding-bottom: 15rpx;
-  padding-left: 25rpx;
   padding-right: 25rpx;
   white-space:nowrap;
 }
+
+.greenPart{
+  height: 100%;
+  background-color: greenyellow;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space:nowrap;
+}
+
+.greenPart text{
+  margin-left: 25rpx;
+}
+
+.tips{
+  font-size: small;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #D4D4D4;
+}
+
+.mainArea{
+  margin-bottom: 150rpx;
+}
+
+
 
 ::-webkit-scrollbar {
   width: 0;

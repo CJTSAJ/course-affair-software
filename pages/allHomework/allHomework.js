@@ -6,6 +6,10 @@ Page({
     grade1: "95",
     isTeacher: false
   },
+  onPullDownRefresh: function () {
+    wx.showNavigationBarLoading()
+    this.onShow()
+  },
   getGrade:function(e){
     var index = e.target.dataset.id;
     var homeworkID = this.data.allHomework[index][3];
@@ -73,7 +77,8 @@ Page({
             content: '服务器发生错误',
           })
         }
-        
+        wx.hideNavigationBarLoading() //完成停止加载
+        wx.stopPullDownRefresh()
       },
       fail:function(error){
 

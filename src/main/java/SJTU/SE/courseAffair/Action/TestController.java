@@ -36,6 +36,8 @@ public class TestController {
     private StudentRepository studentRepository;
     @Autowired
     private TaRepository taRepository;
+    @Autowired
+    private TeacherRepository teaRepository;
     
     @CrossOrigin
     @RequestMapping(value = "getStudentGrade", method = RequestMethod.POST)
@@ -53,8 +55,10 @@ public class TestController {
     		List<StudentEntity> temp = studentRepository.findByStudentIdAndStudentGroupId(grade.get(i).getStudentId(), grade.get(i).getStudentGroupId());
     		if(temp.size() == 0) {
     			List<TaEntity> ta = taRepository.findByTaidAndTaGroupId(grade.get(i).getStudentId(), grade.get(i).getStudentGroupId());
-    			json.put("name", ta.get(0).getTaName());
-    			json.put("id", ta.get(0).getTaNo());
+    			if(ta.size() != 0) {
+    				json.put("name", ta.get(0).getTaName());
+        			json.put("id", ta.get(0).getTaNo());
+    			}
     		}else {
     			json.put("name", temp.get(0).getSname());
         		json.put("id", temp.get(0).getSno());
@@ -71,7 +75,7 @@ public class TestController {
     		}
     	}
     	if(len == 0) {
-    		result_.put("success", "null");
+    		result_.put("success", "none");
     		result_.put("fail", students);
     		return result_;
     	}else {

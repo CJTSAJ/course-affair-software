@@ -118,7 +118,7 @@
     </dependencies>
 
     <build>
-        <finalName>courseAffair1</finalName>
+        <finalName>courseAffair</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

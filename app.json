@@ -41,7 +41,11 @@
     "pages/voteResult/voteResult",
     "pages/vote/vote",
     "pages/oneVote/oneVote",
-    "pages/studentTestGrade/studentTestGrade"
+    "pages/studentTestGrade/studentTestGrade",
+    "pages/pagesForSth/aboutUs/aboutUs",
+    "pages/pagesForSth/connectUs/connectUs",
+    "pages/pagesForSth/guide/guide",
+    "pages/pagesForSth/view/view"
   ],
   "tabBar": {
     "backgroundColor": "#ffffff",
@@ -55,14 +59,9 @@
         "iconPath": "images/icons/home.png",
         "selectedIconPath": "images/icons/homeS.png"
       },
+      
       {
-        "text": "",
-        "pagePath": "pages/about/about",
-        "iconPath": "images/icons/upload.png",
-        "selectedIconPath": "images/icons/uploadS.png"
-      },
-      {
-        "text": "发现",
+        "text": "我的",
         "pagePath": "pages/me/me",
         "iconPath": "images/icons/find.png",
         "selectedIconPath": "images/icons/findS.png"

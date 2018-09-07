@@ -21,7 +21,4 @@
       </view>
     </view>
   </view>
-  <view>
-    <button>导出EXCEL</button>
-  </view>
 </view>

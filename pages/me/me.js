@@ -17,5 +17,25 @@ Page({
     wx.navigateTo({
       url: '/pages/person/person',
     })
+  },
+  toView: function(){
+    wx.navigateTo({
+      url: "/pages/pagesForSth/view/view",
+    })
+  },
+  toAbout:function(){
+    wx.navigateTo({
+      url: "/pages/pagesForSth/aboutUs/aboutUs",
+    })
+  },
+  toGuide:function(){
+    wx.navigateTo({
+      url: '/pages/pagesForSth/guide/guide',
+    })
+  },
+  toConnect: function(){
+    wx.navigateTo({
+      url: '/pages/pagesForSth/connectUs/connectUs',
+    })
   }
 })

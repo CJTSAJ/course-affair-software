@@ -86,3 +86,7 @@ Page({
     })
   }
 })
+
+/*
+<text class='look' bindtap='getGrade' data-id="{{key}}">查看成绩</text>
+*/

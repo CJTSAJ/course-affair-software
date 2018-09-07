@@ -68,6 +68,9 @@ Page({
   },
 
   toEditTest: function () {
+   /*wx.navigateTo({
+      url: '/pages/testStatistics/testStatistics',
+    })*/
     wx.navigateTo({
       url: '/pages/editTest/editTest',
     })

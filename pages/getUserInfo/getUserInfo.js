@@ -47,6 +47,18 @@ Page({
         content: '学号不能为空',
       })
     }
+    else if(this.data.name.length > 20){
+      wx.showModal({
+        title: '提示',
+        content: '姓名补不能超过20字',
+      })
+    }
+    else if(this.data.studentID.length > 20){
+      wx.showModal({
+        title: '提示',
+        content: '学号不能超过20位',
+      })
+    }
     else{
       console.log("confirm")
       

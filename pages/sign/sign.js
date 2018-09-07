@@ -51,55 +51,66 @@ Page({
           method: 'POST',
           header: { 'content-type': 'application/json' },
           success: function (res) {
-            console.log(res.data);
-            var reason = '';
-            if(res.data.result == "fail"){
-              if (res.data.reason == "time"){
-                reason = "签到已到期"
-              } else if (res.data.reason == "signCode"){
-                reason = "签到码错误"
-              }else if(res.data.reason == "distance"){
-                reason = "距离老师超过100米"
-              }else{
-                reason = "不可重复签到"
-              }
+            if(res.statusCode == 200){
+              console.log(res.data);
+              var reason = '';
+              if (res.data.result == "fail") {
+                if (res.data.reason == "time") {
+                  reason = "签到已到期"
+                } else if (res.data.reason == "signCode") {
+                  reason = "签到码错误"
+                } else if (res.data.reason == "distance") {
+                  reason = "距离老师超过100米"
+                } else {
+                  reason = "不可重复签到"
+                }
 
-              wx.showModal({
-                title: '签到失败',
-                content: reason,
-              })
-
-              /*if (reason == "距离老师超过100米"){
-                wx.showToast({
-                  title: '签到成功',
-                  icon: 'success',
-                  mask: false,
-                  success: function () {
-                    wx.navigateBack({
-                      delta: 1
-                    })
-                  }
-                })
-              }
-              else{
                 wx.showModal({
                   title: '签到失败',
                   content: reason,
                 })
-              }*/
-            }else{
+
+                /*if (reason == "距离老师超过100米"){
+                  wx.showToast({
+                    title: '签到成功',
+                    icon: 'success',
+                    mask: false,
+                    success: function () {
+                      wx.navigateBack({
+                        delta: 1
+                      })
+                    }
+                  })
+                }
+                else{
+                  wx.showModal({
+                    title: '签到失败',
+                    content: reason,
+                  })
+                }*/
+              } else {
                 console.log('teacher')
                 wx.showToast({
                   title: '签到成功',
                   icon: 'success',
-                  mask: false,
-                  success: function(){
-                    wx.navigateBack({
-                      delta: 1
-                    })
+                  duration: 2000,
+                  mask: true,
+                  success: function () {
+                    setTimeout(function () {
+                      wx.navigateBack({
+                        delta: 1
+                      })
+                    }, 2000)
                   }
                 })
+              }
+            }else{
+              wx.showModal({
+                title: '错误',
+                content: '服务器发生错误',
+              })
             }
+            
           }
         })
       } else if (app.globalData.identity != "student") {
@@ -118,7 +129,7 @@ Page({
               title: '成功',
               icon: 'success',
               duration: 2000,
-              mask: false,
+              mask: true,
               success: function () {
                 setTimeout(function () {
                   wx.navigateBack({

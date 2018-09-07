@@ -8,7 +8,7 @@ App({
     latitude: null,
     sessionKey: null,
     openGId: null,
-    serverUrl: 'http://207.148.114.118:8080/courseAffair1/'
+    serverUrl: 'http://207.148.114.118:8080/courseAffair/'
   },
   onLaunch: function (options) {
     var self = this;
@@ -65,7 +65,7 @@ App({
                         console.log("返回的opengid:" + res.data.openGId);
                         self.globalData.openGId = res.data.openGId;
                         wx.request({
-                          url: 'http://207.148.114.118:8080/courseAffair1/getIdentity',
+                          url: 'http://207.148.114.118:8080/courseAffair/getIdentity',
                           data: {
                             openid: self.globalData.openId,
                             opengid: res.data.openGId
@@ -163,7 +163,7 @@ App({
                 if (res.data.openGId != self.globalData.openGId){
                   self.globalData.openGId = res.data.openGId;
                   wx.request({
-                    url: 'http://207.148.114.118:8080/courseAffair1/getIdentity',
+                    url: 'http://207.148.114.118:8080/courseAffair/getIdentity',
                     data: {
                       openid: self.globalData.openId,
                       opengid: res.data.openGId
@@ -191,7 +191,7 @@ App({
                 }else{/*从相同的群进入 */
                   if (self.globalData.isInitial == false) {
                     wx.request({
-                      url: 'http://207.148.114.118:8080/courseAffair1/getIdentity',
+                      url: 'http://207.148.114.118:8080/courseAffair/getIdentity',
                       data: {
                         openid: self.globalData.openId,
                         opengid: res.data.openGId

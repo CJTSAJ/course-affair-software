@@ -1,0 +1,39 @@
+<!--pages/pagesForSth/connectUs/connectUs.wxml-->
+<view class="container">
+  <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
+  <view class="main">
+    <view class="information">
+      <view class="title">
+      产品负责人
+      </view>
+      <view class="content">
+      {{name}}
+      </view>
+    </view>
+    <view class="information">
+      <view class="title">
+      微信号
+      </view>
+      <view class="content">
+      {{wxId}}
+      </view>
+    </view>
+    <view class="information">
+      <view class="title">
+      邮箱
+      </view>
+      <view class="content">
+      {{email}}
+      </view>
+    </view>
+    <view class="information">
+      <view class="title">
+      电话
+      </view>
+      <view class="content">
+      {{phoneNum}}
+      </view>
+    </view>
+  </view>  
+  </scroll-view>
+</view>

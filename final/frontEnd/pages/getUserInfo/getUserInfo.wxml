@@ -1,0 +1,39 @@
+<!--pages/getUserInfo.wxml-->
+<view class>
+<form report-submit='true' bindsubmit='formSubmit'>
+  <view class='identity'>
+    <view class='setting'>
+      <text>设置您的身份信息</text>
+    </view>
+    <view class='chooseIdentity'>
+      <radio-group class="radio-group" bindchange="radioChange">
+        <label class="radio" >
+          <radio value="学生">学生</radio>
+        </label>
+        <label class="radio">
+          <radio value="老师">老师</radio>
+        </label>
+      </radio-group>
+    </view>
+    <view class='detail'>
+      <view class='name' style='display:{{nameShow}}'>
+        <view class='inLine'>
+          <view><text>姓名：</text></view>
+          <view><input placeholder='请输入姓名' bindinput='getName'></input></view>
+        </view>
+        <view class='border'></view>
+      </view>
+      <view class='studentID' style='display:{{idShow}}'>
+        <view class='inLine'>
+          <view><text>学号：</text></view>
+          <view><input placeholder='请输入学号' bindinput='getID'></input></view>
+        </view>
+        <view class='border'></view>
+      </view>
+    </view>
+  </view>
+  <view class="userinfo">
+    <button formType="submit">确定</button>
+  </view>
+</form>
+</view>

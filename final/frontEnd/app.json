@@ -1,0 +1,76 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/allManager/allManager",
+    "pages/releaseHomework/releaseHomework",
+    "pages/manage/manage",
+    "pages/find/find",
+    "pages/getUserInfo/getUserInfo",
+    "pages/allHomework/allHomework",
+    "pages/notice/notice",
+    "pages/homework/homework",
+    "pages/person/person",
+    "pages/about/about",
+    "pages/weekly/weekly",
+    "pages/locationTest/locationTest",
+    "pages/shareToGroup/shareToGroup",
+    "pages/addNotice/addNotice",
+    "pages/allNotice/allNotice",
+    "pages/authority/authority",
+    "pages/managerSetting/mangerSetting",
+    "pages/authorizeLocation/authorizeLocation",
+    "pages/sign/sign",
+    "pages/test/test",
+    "pages/testResult/testResult",
+    "pages/questionResult/questionResult",
+    "pages/oneTest/oneTest",
+    "pages/oneQuestion/oneQuestion",
+    "pages/editQuestion/editQuestion",
+    "pages/editQuestionContent/editQuestionContent",
+    "pages/editTest/editTest",
+    "pages/uploadFile/uploadFile",
+    "pages/allFile/allFile",
+    "pages/me/me",
+    "pages/allStudent/allStudent",
+    "pages/signSituation/signSituation",
+    "pages/signData/signData",
+    "pages/rollcall/rollcall",
+    "pages/testStatistics/testStatistics",
+    "pages/editVote/editVote",
+    "pages/editVoteContent/editVoteContent",
+    "pages/voteResult/voteResult",
+    "pages/vote/vote",
+    "pages/oneVote/oneVote",
+    "pages/studentTestGrade/studentTestGrade",
+    "pages/pagesForSth/aboutUs/aboutUs",
+    "pages/pagesForSth/connectUs/connectUs",
+    "pages/pagesForSth/guide/guide",
+    "pages/pagesForSth/view/view"
+  ],
+  "tabBar": {
+    "backgroundColor": "#ffffff",
+    "borderStyle": "#cdcdcd",
+    "color": "#8a8a8a",
+    "selectedColor": "#2c2c2c",
+    "list": [
+      {
+        "text": "主页",
+        "pagePath": "pages/home/home",
+        "iconPath": "images/icons/home.png",
+        "selectedIconPath": "images/icons/homeS.png"
+      },
+      
+      {
+        "text": "我的",
+        "pagePath": "pages/me/me",
+        "iconPath": "images/icons/find.png",
+        "selectedIconPath": "images/icons/findS.png"
+      }
+    ]
+  },
+  "window": {
+    "navigationBarTitleText": "课程事务管理",
+    "navigationBarBackgroundColor": "#ffe95c",
+    "navigationBarTextStyle": "black"
+  }
+}

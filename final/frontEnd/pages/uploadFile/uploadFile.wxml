@@ -1,0 +1,2 @@
+<!--pages/uploadFile/uploadFile.wxml-->
+<web-view src="{{'https://www.chenjiangtao.cn/upload/uploadtest.html?opengid=' + opengid + '&openid=' + openid}}"></web-view>

@@ -1,0 +1,35 @@
+<view class='container'>
+  <view wx:for="{{allContent}}" wx:for-index="key" wx:for-item="value">
+  <view class='test' wx:if = "{{state[key] == 0}}">
+    <view class='content'>
+      <text>{{value}}</text>
+      <text class = 'time'>测试还未开始</text>
+    </view>
+    <view class = "discription">
+       <text>敬 请 期 待</text>
+    </view>
+  </view>
+  <navigator class='test'  wx:elif = "{{state[key] == 2}}" url="/pages/testResult/testResult?content={{value}}&testId={{testId[key]}}">
+    <view class='content'>
+      <text>{{value}}</text>
+      <text class = 'time'>测试已经结束</text>
+    </view>
+    <view class = "discription">
+       <text>点 击 查 看 测 试 结 果</text>
+    </view>
+  </navigator>
+  <navigator class='test' wx:else url="/pages/oneTest/oneTest?content={{value}}&state={{state[key]}}&endTime={{endTimeList[key]}}&testId={{testId[key]}}">
+    <view class='content'>
+      <text>{{value}}</text>
+      <text class = 'time'>{{countDownList[key].hou}} 时 {{countDownList[key].min}} 分 {{countDownList[key].sec}} 秒</text>
+    </view>
+    <view class = "discription">
+       <text>点 击 开 始 测 试</text>
+    </view>
+  </navigator>
+  </view>
+
+  <view class='addTest' style='display: {{isTeacher?"":"none"}}'>
+    <button bindtap='toEditTest'>添加测试</button>
+  </view>
+</view>

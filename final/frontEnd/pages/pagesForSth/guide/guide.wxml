@@ -1,0 +1,39 @@
+<!--pages/pagesForSth/guide/guide.wxml-->
+<view class="container">
+  <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
+  <view class="main">
+    <view class="information">
+      <view class="title">
+      {{question1}}
+      </view>
+      <view class="content">
+      {{guide1}}
+      </view>
+    </view>
+    <view class="information">
+      <view class="title">
+      {{question2}}
+      </view>
+      <view class="content">
+      {{guide2}}
+      </view>
+    </view>
+    <view class="information">
+      <view class="title">
+      {{question3}}
+      </view>
+      <view class="content">
+      {{guide3}}
+      </view>
+    </view>
+    <view class="information">
+      <view class="title">
+      {{question4}}
+      </view>
+      <view class="content">
+      {{quide4}}
+      </view>
+    </view>
+  </view>  
+  </scroll-view>
+</view>

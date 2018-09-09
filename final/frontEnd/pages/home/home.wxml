@@ -1,0 +1,109 @@
+<view class='container'>
+  <view>
+    <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="{{vertical}}"
+            autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+     <block wx:for="{{images}}" wx:for-item="value">
+            <swiper-item class='swiper_img'>
+                <image src="{{value}}" class="slide-image"/>
+            </swiper-item>
+        </block>
+    </swiper>
+  </view>
+
+  <view class='allNav'>
+    <view class='firstLine'>
+      <form data-id="1" bindsubmit='test' report-submit='true'>
+        <view class='nav'>
+          <button formType="submit" class='formId'></button>
+          <image src='/images/icons/file.png'></image>
+          <text>文件</text>
+        </view>
+      </form>
+      <form data-id="2" bindsubmit='test' report-submit='true'>
+        <view class='nav'>
+          <button formType="submit" class='formId'></button>
+          <image src='/images/icons/sign.png'></image>
+          <text>签到</text>
+        </view>
+      </form>
+      <form data-id="3" bindsubmit='test' report-submit='true'>
+        <view class='nav'>
+          <button formType="submit" class='formId'></button>
+          <image src='/images/icons/notice.png'></image>
+          <text>公告</text>
+        </view>
+      </form>
+      <form data-id="4" bindsubmit='test' report-submit='true'>
+        <view class='nav'>
+          <button formType="submit" class='formId'></button>
+          <image src='/images/icons/test.png'></image>
+          <text>测验</text>
+        </view>
+      </form>
+  </view>
+    
+  <view class='firstLine'>
+    <form data-id="5" bindsubmit='test' report-submit='true'>
+      <view class='nav'>
+        <button formType="submit" class='formId'></button>
+        <image src='/images/icons/homework.png'></image>
+        <text>作业</text>
+      </view>
+    </form>
+    <form data-id="6" bindsubmit='test' report-submit='true'>
+      <view class='nav'>
+        <button formType="submit" class='formId'></button>
+        <image src='/images/icons/vote.png'></image>
+        <text>投票</text>
+      </view>
+    </form>
+    <form data-id="7" bindsubmit='test' report-submit='true'>
+      <view class='nav'>
+        <button formType="submit" class='formId'></button>
+        <image src='/images/icons/random.png'></image>
+        <text>随机</text>
+      </view>
+    </form>
+    <form data-id="8" bindsubmit='test' report-submit='true'>
+      <view class='nav'>
+        <button formType="submit" class='formId'></button>
+        <image src='/images/icons/manage.png'></image>
+        <text>管理</text>
+      </view>
+    </form>
+    
+  </view>
+  </view>
+
+  <view style='margin-top: 30rpx; width: 750rpx;'>
+    <text style='font-weight: bold;margin-left: 20rpx;'>最新公告</text>
+    <navigator class='information' wx:for="{{recentNotification}}" wx:for-index="key" wx:for-item="value" url='/pages/notice/notice?time={{value.notificationGroupId}}&content={{value.notificationContent}}&name={{value.notificationPublisherId}}'>
+      <view class='title'>
+        <text class='time'>{{value.notificationGroupId}}</text>
+        <text>{{value.notificationPublisherId}}</text>
+      </view>
+      <view class='content'>
+        <text>{{value.notificationContent}}</text>
+      </view>
+    </navigator>
+    <view class='noContent' hidden='{{showNotification}}'>
+      <text>———— 没有公告 ————</text>
+    </view>
+  </view>
+
+  <view style='margin-top: 30rpx; width: 750rpx; margin-bottom: 30rpx;'>
+    <text style='font-weight: bold; margin-left: 20rpx;'>最新作业</text>
+    <navigator url='/pages/homework/homework?time={{value.date}}&content={{value.content}}&deadline={{value.deadline}}' class='information' wx:for="{{recentHomework}}" wx:for-index="key" wx:for-item="value">
+      <view class='title'>
+        <text class='time'>{{value.date}}</text>
+        <text>{{value.publisher}}</text>
+      </view>
+      <view class='content'>
+        <text>{{value.content}}</text>
+      </view>
+    </navigator>
+    <view class='noContent' hidden='{{showHomework}}'>
+      <text>———— 没有作业 ————</text>
+    </view>
+  </view>
+</view>

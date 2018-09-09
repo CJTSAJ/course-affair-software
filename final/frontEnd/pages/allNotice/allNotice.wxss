@@ -1,0 +1,70 @@
+.allNotice{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50rpx;
+  margin-bottom: 50rpx;
+}
+
+.showDetail{
+  color: #CDCDCD;
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-right: 15rpx;
+}
+.notice{
+  overflow: hidden;
+  width: 700rpx;  
+  height: 300rpx;
+  background-color: white;
+  margin-bottom: 50rpx;
+  border-bottom-right-radius:2em;
+  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+}
+
+.help-info{
+  padding-bottom: 50rpx;
+}
+
+.title{
+  background-color: #ffe95c;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 20rpx;
+}
+
+.title text{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+}
+
+.content{
+  padding: 15rpx 15rpx;
+  height: 150rpx;
+}
+.content text{
+  font-size: 30rpx;
+  color: #555555;
+}
+
+.addNotice{
+  position:fixed; 
+  bottom:0rpx;
+}
+
+.addNotice button{
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #ffe95c;
+  width: 750rpx;
+  font-weight: 900;
+}
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

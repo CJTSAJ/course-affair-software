@@ -1,0 +1,17 @@
+<view class='person'>
+  <view class='head'>
+    <image src="{{userInfo.avatarUrl}}"></image>
+    <text>{{userInfo.nickName}}</text>
+  </view>
+  <form bindsubmit='save'>
+    <view class='block'>
+      <text>姓名:</text>
+      <input class='input' value="{{name}}" name='username'></input>
+    </view>
+    <view class='block' style='display: {{showID?"":"none"}}'>
+      <text>学号:</text>
+      <input class='input' value="{{studentID}}" name='studentid'></input>
+    </view>
+    <button form-type='submit' style='margin-top:100rpx;'>保存</button>
+  </form>
+</view>

@@ -1,0 +1,17 @@
+<view>
+  <view class='title'>
+    <view class='titleFirst'>
+      <image src='/images/icons/time.png'></image>
+      <text>发布时间：</text>
+      <text>{{time}}</text>
+    </view>
+    <view class='titleFirst'>
+      <image src='/images/icons/time.png'></image>
+      <text>截止日期：</text>
+      <text>{{deadline}}</text>
+    </view>
+    <view class='content'>
+      <text>{{content}}</text>
+    </view>
+  </view>
+</view>

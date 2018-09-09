@@ -1,0 +1,36 @@
+<view class='container'>
+  <scroll-view class="help-info" scroll-y="true" style="height:1100rpx">
+  <view wx:for="{{allTitle}}" wx:for-index="key" wx:for-item="value">
+  <view class='vote' wx:if = "{{state[key] == 0}}">
+    <view class='content'>
+      <text>{{value}}</text>
+      <text class = 'time'>投票还未开始</text>
+    </view>
+    <view class = "discription">
+       <text>敬 请 期 待</text>
+    </view>
+  </view>
+  <navigator class='vote'  wx:elif = "{{state[key] == 2}}" url="/pages/voteResult/voteResult?title={{value}}&voteId={{voteId[key]}}&endTime={{endTimeList[key]}}">
+    <view class='content'>
+      <text>{{value}}</text>
+      <text class = 'time'>投票已经结束</text>
+    </view>
+    <view class = "discription">
+       <text>点 击 查 看 投 票 结 果</text>
+    </view>
+  </navigator>
+  <navigator class='vote' wx:else url="/pages/oneVote/oneVote?title={{value}}&state={{state[key]}}&endTime={{endTimeList[key]}}&voteId={{voteId[key]}}">
+    <view class='content'>
+      <text>{{value}}</text>
+      <text class = 'time'>{{countDownList[key].day}} 天 {{countDownList[key].hou}} 时 {{countDownList[key].min}} 分 {{countDownList[key].sec}} 秒</text>
+    </view>
+    <view class = "discription">
+       <text>点 击 开 始 测 试</text>
+    </view>
+  </navigator>
+  </view>
+  </scroll-view>
+  <view class='addVote' style='display: {{isTeacher?"":"none"}}'>
+    <button bindtap='toEditVote'>添加投票</button>
+  </view>
+</view>

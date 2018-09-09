@@ -1,0 +1,24 @@
+/* pages/manage/manage.wxss */
+
+page{
+  background-color: #eee;
+}
+
+.block{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 120rpx;
+  line-height: 120rpx; 
+  background-color: white;
+}
+
+.block text{
+  margin-left: 20rpx;
+}
+
+.block image{
+  width: 50rpx;
+  height: 50rpx;
+}

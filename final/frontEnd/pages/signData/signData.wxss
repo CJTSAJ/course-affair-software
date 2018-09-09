@@ -1,0 +1,16 @@
+/* pages/signData/signData.wxss */
+.student{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1rpx solid #ebebeb;
+  height: 100rpx;
+  width: 700rpx;
+  margin-left: 25rpx;
+  line-height: 100rpx;
+}
+
+.canvas{
+   height: 50vh; 
+   width: 750rpx;
+}

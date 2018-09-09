@@ -1,0 +1,37 @@
+/* pages/pagesForSth/guide/guide.wxss */
+.information{
+  width: 700rpx;
+  background-color: white;
+  margin-left: 25rpx;
+  margin-top: 50rpx;
+  overflow: hidden;
+  border-bottom-right-radius:2em;
+  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+}
+
+.title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffe95c;
+  padding: 10rpx 20rpx;
+}
+
+.title text{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+}
+
+.content{
+  margin-left: 10rpx;
+  padding: 15rpx 35rpx;
+}
+.content text{
+  font-size: 20rpx;
+  color: #555555;
+}
+
+.main{
+  margin-bottom: 150rpx;
+}

@@ -1,0 +1,59 @@
+<!--editTest.wxml-->
+<view class='container'>
+  <scroll-view  scroll-y="true" style="height:1180rpx">
+    <view class="title">
+      <view class="inputBar">
+        <input class = "titleInput" bindinput='inputTitle' placeholder="请输入小测试标题" maxlength='10' auto-focus/>
+      </view>
+      <view class="tui-picker-content">
+        <picker mode="multiSelector" value="{{dateTime}}" bindchange="changeDateTime" bindcolumnchange="changeDateTimeColumn" range="{{dateTimeArray}}">
+          <view class="tui-picker-detail">选择测试开始时间: {{dateTimeArray[0][dateTime[0]]}}-{{dateTimeArray[1][dateTime[1]]}}-{{dateTimeArray[2][dateTime[2]]}} {{dateTimeArray[3][dateTime[3]]}}:{{dateTimeArray[4][dateTime[4]]}}
+          </view>
+        </picker>
+      </view> 
+      <view class="tui-picker-content">
+        <picker mode="time" value="{{time}}" start="00:00" end="02:00" bindchange="changeTime">
+          <view class="tui-picker-detail">
+            选择测试时长: {{time}} 
+          </view>
+        </picker>
+      </view>
+    </view> 
+    <view wx:for="{{questionContent}}" wx:for-index="key" wx:for-item="value">
+      <view class="question">
+        <view class="questionTitle" >
+          <text>第{{key + 1}}题</text>
+          <text class='tips'>请 点 击 相 应 区 域 进 行 编 辑</text>
+        </view>
+        <navigator class="questionContent" url='/pages/editQuestionContent/editQuestionContent?key={{key}}'>
+          <text wx:if="{{value != null}}">{{value}}</text>
+          <text wx:else class="questionNull">问题内容未编辑</text>
+          <text class='tips'>点 此 处 进 入 问 题 内 容 编 辑</text>
+        </navigator>
+        <view class="questionChoice" >
+          <radio-group  bindchange="radioChange" id="{{key}}">
+            <label wx:for="{{choiceContent[key]}}" wx:for-index="keyChoice" wx:for-item="valueChoice">
+              <view class="oneChoice {{isTouchMove[key][keyChoice] ? 'touch-move-active':''}}" style="background-color:{{(keyChoice==correctAnswer[key]) ? 'greenyellow':''}}" bindtouchstart="touchS" bindtouchmove="touchM" data-index="{{keyChoice}}" id="{{key}}">
+                <view class="choiceEdit">
+                <radio checked="{{keyChoice==correctAnswer[key]}}" value="{{keyChoice}}"/>{{choiceLetter[keyChoice]}} : 
+                <input bindblur='inputChoiceContent' wx:if="{{valueChoice==null||valueChoice.length==0}}" placeholder='请输入选项内容' id='{{key}}+{{keyChoice}}'/>
+                <input bindblur='inputChoiceContent' wx:else value="{{valueChoice}}" id='{{key}}+{{keyChoice}}'/>
+                </view>
+                <view class="delChoice" catchtap="delChoice" data-index="{{keyChoice}}" id="{{key}}">删除</view>
+              </view>
+            </label>
+          </radio-group>
+          <text class='tips' bindtap='addChoice' id="{{key}}">点 击 此 处 增 加 选 项</text>
+        </view>
+      </view>
+    </view>
+    <view class='addQuestion'>
+      <button bindtap='addQuestion'>增加题目</button>
+    </view>
+    <view class='submit'>
+      <button bindtap='submitConfirm' >提交</button>
+    </view>
+  </scroll-view>
+</view>
+
+

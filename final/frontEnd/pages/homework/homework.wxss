@@ -1,0 +1,21 @@
+.titleFirst{
+  width: 700rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  margin-left: 25rpx;
+  border-bottom: 1rpx solid #9D9D9D;
+}
+
+.title image{
+  margin-right: 20rpx;
+  width: 50rpx;
+  height: 50rpx;
+  vertical-align: middle;
+}
+
+.content{
+  margin-left: 25rpx;
+  margin-right: 25rpx;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+}

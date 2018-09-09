@@ -1,0 +1,29 @@
+<!--pages/me/me.wxml-->
+<view>
+  <view class='head'>
+    <image src="{{userInfo.avatarUrl}}"></image>
+    <text>{{userInfo.nickName}}</text>
+  </view>
+  <view class='body' style='margin-top:50rpx;'>
+    <view class='managerSetting' bindtap='toPerson'>
+      <view><text>个人资料</text></view>
+      <view><image src='/images/icons/rightArrow.png'></image></view>
+    </view>
+    <view class='managerSetting' bindtap='toView' style='margin-top:80rpx;border-bottom: 1rpx solid #ebebeb'>
+      <view><text>意见表</text></view>
+      <view><image src='/images/icons/rightArrow.png'></image></view>
+    </view>
+    <view class='managerSetting' bindtap='toConnect' style='border-bottom: 1rpx solid #ebebeb'>
+      <view><text>客服</text></view>
+      <view><image src='/images/icons/rightArrow.png'></image></view>
+    </view>
+    <view class='managerSetting' bindtap='toGuide'>
+      <view><text>指南</text></view>
+      <view><image src='/images/icons/rightArrow.png'></image></view>
+    </view>
+    <view class='managerSetting' bindtap='toAbout' style='margin-top:80rpx;'>
+      <view><text>关于</text></view>
+      <view><image src='/images/icons/rightArrow.png'></image></view>
+    </view>
+  </view>
+</view>

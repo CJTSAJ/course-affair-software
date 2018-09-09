@@ -1,0 +1,10 @@
+<!--pages/addNotice/addNotice.wxml-->
+<view class='addNotice'>
+  <form bindsubmit='confirm'>
+  <textarea placeholder='内容' maxlength='1024' name='textarea'></textarea>
+  <view class='bottomButton'>
+    <button class='cancel' bindtap='cancel'>取消</button>
+    <button class='confirm' form-type='submit'>确认</button>
+  </view>
+  </form>
+</view>

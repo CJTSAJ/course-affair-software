@@ -1,0 +1,24 @@
+<!--pages/signData/signData.wxml-->
+<view>
+  <text style='font-weight: bold'>统计图</text>
+  <canvas canvas-id="columnCanvas" disable-scroll="true" class="canvas"></canvas>
+  <view>
+    <text style='font-weight: bold'>未签到</text>
+    <view style='border-top:1rpx solid #ebebeb'>
+      <view class='student' wx:for="{{failSign}}" wx:for-index="key" wx:for-item="value">
+        <view>{{value.sname}}</view>
+        <view>{{value.sno}}</view>
+      </view>
+    </view>
+    
+  </view>
+  <view style='margin-top: 40rpx;'>
+    <text style='font-weight: bold'>已签到</text>
+    <view style='border-top:1rpx solid #ebebeb'>
+      <view class='student' wx:for="{{successSign}}" wx:for-index="key" wx:for-item="value">
+        <view>{{value.sname}}</view>
+        <view>{{value.sno}}</view>
+      </view>
+    </view>
+  </view>
+</view>

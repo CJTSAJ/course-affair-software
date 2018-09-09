@@ -1,0 +1,124 @@
+/* pages/voteResult/voteResult.wxss */
+.title{
+  margin-top: 50rpx;
+  margin-bottom: 30rpx;
+  margin-left: 25rpx;
+  padding-bottom: 25rpx;
+  width: 700rpx;
+  overflow: hidden;
+  background-color:  #FFF8DC;
+  border-bottom-right-radius:2em;
+  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+}
+
+.voteTitle{
+  margin-top: 25rpx;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 900rpx;
+  font-size: xx-large;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.time{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 900rpx;
+  font-size: large;
+  color: red;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.vote{
+  width: 650rpx;
+  margin-left: 50rpx;
+  margin-top: 50rpx;
+  padding-bottom: 20rpx;
+  border-bottom-right-radius:2em;
+  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+  background-color: #FFF8DC;
+  min-height: 200rpx;
+  overflow: hidden;
+}
+
+
+.head{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 20rpx;
+}
+
+.head text{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+}
+
+
+.voteContent{
+  background-color: white;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  display: block;
+  white-space: pre-line;
+  word-break:break-all;
+  min-height: 175rpx;
+}
+.voteContent text{
+  width: 600rpx;
+}
+
+
+.Choice{
+  margin-bottom: 20rpx;
+}
+
+.oneChoice{
+  border-bottom: 1rpx solid #cdcdcd;
+  display: flex;
+  height: 100rpx;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  padding-right: 25rpx;
+  white-space:nowrap;
+}
+
+.greenPart{
+  height: 100%;
+  background-color: greenyellow;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space:nowrap;
+}
+
+.greenPart text{
+  margin-left: 25rpx;
+}
+
+.tips{
+  font-size: small;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #D4D4D4;
+}
+
+.mainArea{
+  margin-bottom: 150rpx;
+}
+
+
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}

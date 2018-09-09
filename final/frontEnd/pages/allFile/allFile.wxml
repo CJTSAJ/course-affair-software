@@ -1,0 +1,17 @@
+<!--pages/allFile/allFile.wxml-->
+<view>
+    <view class='allFile'>
+      <view wx:for="{{allFile}}" wx:for-index="key" wx:for-item="value">
+        <view class='file' data-id="{{key}}" bindtap='download'>
+          <image src='{{fileForm[key]}}'></image>
+          <view class='fileInformation'>
+            <view>{{value.filename}}</view>
+            <view>{{value.uploadDate}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  <view class='upBut'>
+    <button bindtap='toUploadFile'>上传文件</button>
+  </view>
+</view>

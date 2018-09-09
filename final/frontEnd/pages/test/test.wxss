@@ -1,0 +1,54 @@
+/* pages/test/test.wxss */
+.test{
+  overflow: hidden;
+  width: 700rpx;
+  margin-top: 50rpx;
+  margin-left: 25rpx;
+  background-color: #FFFFFF;
+  border-bottom-right-radius:2em;
+  box-shadow:8rpx 8rpx 20rpx 5rpx #ABABAB;
+}
+
+.content{
+  background-color: #FFF8DC;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10rpx 35rpx;
+}
+
+.content text{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 700;
+}
+
+.discription{
+  font-size: small;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #D4D4D4;
+}
+
+.time{
+  color: red;
+}
+
+.addTest{
+  position: fixed;
+  bottom: 0rpx;
+}
+
+.addTest button{
+  color: black;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  background-color: #FFF68F;
+  width: 750rpx;
+  font-weight: 900;
+}
+
+.addTest button::after{
+  border:none;
+}
+

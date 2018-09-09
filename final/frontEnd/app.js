@@ -8,7 +8,7 @@ App({
     latitude: null,
     sessionKey: null,
     openGId: null,
-    serverUrl: 'http://207.148.114.118:8080/courseAffair/'
+    serverUrl: 'https://www.chenjiangtao.cn/courseAffair/'
   },
   onLaunch: function (options) {
     var self = this;
@@ -53,7 +53,7 @@ App({
                   complete(res) {
                     console.log(res)
                     wx.request({
-                      url: 'http://118.25.194.153:8080/courseAffair/decode/decodeGid',
+                      url: 'https://www.chenjiangtao.cn/courseAffair/decode/decodeGid',
                       data: {
                         encryptedData: res.encryptedData,
                         iv: res.iv,
@@ -65,7 +65,7 @@ App({
                         console.log("返回的opengid:" + res.data.openGId);
                         self.globalData.openGId = res.data.openGId;
                         wx.request({
-                          url: 'http://207.148.114.118:8080/courseAffair/getIdentity',
+                          url: 'https://www.chenjiangtao.cn/courseAffair/getIdentity',
                           data: {
                             openid: self.globalData.openId,
                             opengid: res.data.openGId
@@ -149,7 +149,7 @@ App({
             console.log(res)
 
             wx.request({
-              url: 'http://118.25.194.153:8080/courseAffair/decode/decodeGid',
+              url: 'https://www.chenjiangtao.cn/courseAffair/decode/decodeGid',
               data: {
                 encryptedData: res.encryptedData,
                 iv: res.iv,
@@ -163,7 +163,7 @@ App({
                 if (res.data.openGId != self.globalData.openGId){
                   self.globalData.openGId = res.data.openGId;
                   wx.request({
-                    url: 'http://207.148.114.118:8080/courseAffair/getIdentity',
+                    url: 'https://www.chenjiangtao.cn/courseAffair/getIdentity',
                     data: {
                       openid: self.globalData.openId,
                       opengid: res.data.openGId
@@ -191,7 +191,7 @@ App({
                 }else{/*从相同的群进入 */
                   if (self.globalData.isInitial == false) {
                     wx.request({
-                      url: 'http://207.148.114.118:8080/courseAffair/getIdentity',
+                      url: 'https://www.chenjiangtao.cn/courseAffair/getIdentity',
                       data: {
                         openid: self.globalData.openId,
                         opengid: res.data.openGId
